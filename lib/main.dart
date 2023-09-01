@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:imt_framework_front/views/widgets/appbar/colors.dart';
+import 'package:imt_framework_front/views/widgets/appbar/appBar.dart';
+import 'package:imt_framework_front/views/utils/colors.dart';
 
 void main() {
   runApp(const MyApp());
@@ -52,10 +53,10 @@ class _MyHomePageState extends State<MyHomePage> {
     // fast, so that you can just rebuild anything that needs updating rather
     // than having to individually change instances of widgets.
     return Scaffold(
-      appBar: AppBar(
-        // Here we take the value from the MyHomePage object that was created by
-        // the App.build method, and use it to set our appbar title.
-        title: Text(widget.title),
+      appBar: HomeAppBar(
+        title: "yydchjbdz",
+        cartVisible: true,
+        arrowVisible: false,
       ),
       body: Center(
         // Center is a layout widget. It takes a single child and positions it

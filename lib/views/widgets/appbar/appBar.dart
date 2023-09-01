@@ -1,5 +1,4 @@
-import 'package:flutter/cupertino.dart';
-import 'package:imt_framework_front/views/widgets/appbar/colors.dart';
+import 'package:imt_framework_front/views/utils/colors.dart';
 import 'package:flutter/material.dart';
 
 class HomeAppBar extends StatelessWidget implements PreferredSizeWidget {
@@ -37,7 +36,7 @@ class HomeAppBar extends StatelessWidget implements PreferredSizeWidget {
             },
           ),
         ),
-        title: Text(title!, textAlign: TextAlign.center),
+        title: Text(title!),
         centerTitle: true,
 
         actions: <Widget>[
