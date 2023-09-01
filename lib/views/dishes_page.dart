@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:imt_framework_front/view/widgets/dish_card.dart';
+import 'package:imt_framework_front/views/widgets/dish_card.dart';
 
 class DishesPage extends StatelessWidget {
   const DishesPage({super.key});
