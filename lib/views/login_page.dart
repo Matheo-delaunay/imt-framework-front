@@ -1,5 +1,4 @@
 import 'dart:ui';
-
 import 'package:flutter/material.dart';
 import 'package:imt_framework_front/views/utils/fade_animation.dart';
 import 'package:imt_framework_front/views/utils/colors.dart';
@@ -46,9 +45,7 @@ class _LoginScreenState extends State<LoginScreen> {
             fit: BoxFit.cover,
             colorFilter: ColorFilter.mode(
                 AppColors.idk.withOpacity(0.8), BlendMode.dstATop),
-            image: const NetworkImage(
-              'https://images.pexels.com/photos/1640777/pexels-photo-1640777.jpeg?cs=srgb&dl=pexels-ella-olsson-1640777.jpg&fm=jpg',
-            ),
+            image: AssetImage("assets/images/background.jpg"),
           ),
         ),
         child: Center(
@@ -56,7 +53,7 @@ class _LoginScreenState extends State<LoginScreen> {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                const Text('Deliveroo', style: TextStyle(fontSize: 40, fontFamily: 'Colombia'),),
+                const Text('NomNomNow', style: TextStyle(fontSize: 40, fontFamily: 'Colombia'),),
                 ClipRRect(
                   borderRadius: BorderRadius.circular(25),
                   child: BackdropFilter(
@@ -223,7 +220,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                 ),
                               ),
                               style: TextButton.styleFrom(
-                                  backgroundColor: Color(0xFF5B149D),
+                                  backgroundColor: Color(0xFFF1A264),
                                   padding: const EdgeInsets.symmetric(
                                       vertical: 14.0, horizontal: 80),
                                   shape: RoundedRectangleBorder(

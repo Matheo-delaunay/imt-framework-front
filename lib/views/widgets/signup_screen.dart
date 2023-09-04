@@ -1,6 +1,6 @@
 import 'dart:ui';
 import 'package:flutter/material.dart';
-import '../connection_page.dart';
+import '../login_page.dart';
 import '../utils/colors.dart';
 import '../utils/fade_animation.dart';
 
@@ -46,9 +46,7 @@ class _SignupScreenState extends State<SignupScreen> {
           fit: BoxFit.cover,
           colorFilter: ColorFilter.mode(
           AppColors.idk.withOpacity(0.8), BlendMode.dstATop),
-          image: const NetworkImage(
-          'https://images.pexels.com/photos/1640777/pexels-photo-1640777.jpeg?cs=srgb&dl=pexels-ella-olsson-1640777.jpg&fm=jpg',
-          ),
+            image: AssetImage("assets/images/background.jpg"),
         ),
         ),
         child: Center(
@@ -56,7 +54,7 @@ class _SignupScreenState extends State<SignupScreen> {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                const Text('Deliveroo', style: TextStyle(fontSize: 40, fontFamily: 'Colombia'),),
+                const Text('NomNomNow', style: TextStyle(fontSize: 40, fontFamily: 'Colombia'),),
             ClipRRect(
               borderRadius: BorderRadius.circular(25),
               child: BackdropFilter(
@@ -387,7 +385,7 @@ class _SignupScreenState extends State<SignupScreen> {
                                 ),
                               ),
                               style: TextButton.styleFrom(
-                                  backgroundColor: const Color(0xFF5B149D),
+                                  backgroundColor: const Color(0xFFF1A264),
                                   padding: const EdgeInsets.symmetric(
                                       vertical: 14.0, horizontal: 80),
                                   shape: RoundedRectangleBorder(
