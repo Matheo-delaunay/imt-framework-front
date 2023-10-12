@@ -1,11 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:imt_framework_front/main.dart';
 import 'package:imt_framework_front/views/widgets/dish_card.dart';
+import 'package:provider/provider.dart';
 
 class DishesPage extends StatelessWidget {
   const DishesPage({super.key});
 
   @override
   Widget build(BuildContext context) {
+    var appState = context.watch<MyAppState>();
+
     return MaterialApp(
       home: Scaffold(
         appBar: AppBar(
