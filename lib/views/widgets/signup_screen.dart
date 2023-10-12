@@ -12,12 +12,11 @@ class SignupScreen extends StatefulWidget {
 }
 
 class _SignupScreenState extends State<SignupScreen> {
-  Color enabled = const Color.fromARGB(255, 63, 56, 89);
-  Color enabledtxt = Colors.white;
-  Color deaible = Colors.grey;
-  Color backgroundColor = const Color(0xFF1F1A30);
+  Color enabled = const Color(0xFFF2F2F2);
+  Color enabledtxt = Colors.black54;
+  Color deaible = Colors.black38;
+  Color backgroundColor = const Color(0xFFF2F2F2);
   bool ispasswordev = true;
-
   FormData? selected;
 
   TextEditingController nameController = new TextEditingController();
@@ -29,37 +28,32 @@ class _SignupScreenState extends State<SignupScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Container(
+
+      body:Container(
         decoration: BoxDecoration(
-          gradient: LinearGradient(
-            begin: Alignment.topLeft,
-            end: Alignment.bottomRight,
-            stops: const [0.1, 0.4, 0.7, 0.9],
-            colors: [
-              AppColors.beige.withOpacity(0.8),
-              AppColors.purple,
-              AppColors.purple2,
-              AppColors.purple3,
-            ],
-          ),
           image: DecorationImage(
           fit: BoxFit.cover,
           colorFilter: ColorFilter.mode(
-          AppColors.idk.withOpacity(0.8), BlendMode.dstATop),
+          AppColors.blacks.withOpacity(0.3), BlendMode.srcOver),
             image: AssetImage("assets/images/background.jpg"),
         ),
         ),
-        child: Center(
-          child: SingleChildScrollView(
-            child: Column(
+        child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                const Text('NomNomNow', style: TextStyle(fontSize: 40, fontFamily: 'Colombia'),),
-            ClipRRect(
-              borderRadius: BorderRadius.circular(25),
+            Container(
               child: BackdropFilter(
-                filter: ImageFilter.blur(sigmaX: 15, sigmaY: 15),
+                filter: ImageFilter.blur(sigmaX: 7, sigmaY: 7),
                 child: Container(
+                  child: Column(
+                    mainAxisSize: MainAxisSize.min,
+                  children: [
+                    FadeAnimation(delay: 1, child:
+                  const Text('DishDash',
+                    style: TextStyle(fontSize: 40,
+                        fontFamily: 'Sofia'),),
+                  ),
+                  Container(
                   width: 400,
                   decoration: BoxDecoration(
                       gradient: const LinearGradient(
@@ -78,9 +72,10 @@ class _SignupScreenState extends State<SignupScreen> {
                           delay: 1,
                           child: Container(
                             child: const Text(
-                              "Create your account",
+                              "Create a new account",
                               style: TextStyle(
-                                  color: Colors.white, letterSpacing: 0.5),
+                                  fontSize: 15,
+                                  color: Colors.white, letterSpacing: 0.4),
                             ),
                           ),
                         ),
@@ -110,7 +105,7 @@ class _SignupScreenState extends State<SignupScreen> {
                                 enabledBorder: InputBorder.none,
                                 border: InputBorder.none,
                                 prefixIcon: Icon(
-                                  Icons.title,
+                                  Icons.account_circle,
                                   color: selected == FormData.Name
                                       ? enabledtxt
                                       : deaible,
@@ -159,7 +154,7 @@ class _SignupScreenState extends State<SignupScreen> {
                                 enabledBorder: InputBorder.none,
                                 border: InputBorder.none,
                                 prefixIcon: Icon(
-                                  Icons.account_circle,
+                                  Icons.account_circle_outlined,
                                   color: selected == FormData.LastName
                                       ? enabledtxt
                                       : deaible,
@@ -375,7 +370,14 @@ class _SignupScreenState extends State<SignupScreen> {
                           delay: 1,
                           child: TextButton(
                               onPressed: () {},
-                              child: Text(
+                              style: TextButton.styleFrom(
+                                  backgroundColor: const Color(0xFFE9BE4B),
+                                  padding: const EdgeInsets.symmetric(
+                                      vertical: 14.0, horizontal: 80),
+                                  shape: RoundedRectangleBorder(
+                                      borderRadius:
+                                      BorderRadius.circular(20.0))),
+                              child: const Text(
                                 "Sign Up",
                                 style: TextStyle(
                                   color: Colors.white,
@@ -383,20 +385,13 @@ class _SignupScreenState extends State<SignupScreen> {
                                   fontSize: 16.0,
                                   fontWeight: FontWeight.bold,
                                 ),
-                              ),
-                              style: TextButton.styleFrom(
-                                  backgroundColor: const Color(0xFFF1A264),
-                                  padding: const EdgeInsets.symmetric(
-                                      vertical: 14.0, horizontal: 80),
-                                  shape: RoundedRectangleBorder(
-                                      borderRadius:
-                                      BorderRadius.circular(20.0)))),
+                              )),
                         ),
                       ],
                     ),
                   ),
-              ),
-                ),
+
+
 
                 //End of Center Card
                 //Start of outer card
@@ -432,12 +427,11 @@ class _SignupScreenState extends State<SignupScreen> {
                       ),
                     ],
                   ),
-                ),
-              ],
+                ),],
             ),
-          ),
-        ),
-      ),
-    );
+        ),),
+      ),],),
+    ),
+      );
   }
 }
