@@ -53,7 +53,7 @@ class _LoginScreenState extends State<LoginScreen> {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                const Text('NomNomNow', style: TextStyle(fontSize: 40, fontFamily: 'Colombia'),),
+                const Text('DishDash', style: TextStyle(fontSize: 45, fontFamily: 'Sofia'),),
                 ClipRRect(
                   borderRadius: BorderRadius.circular(25),
                   child: BackdropFilter(
@@ -222,10 +222,10 @@ class _LoginScreenState extends State<LoginScreen> {
                               style: TextButton.styleFrom(
                                   backgroundColor: Color(0xFFF1A264),
                                   padding: const EdgeInsets.symmetric(
-                                      vertical: 14.0, horizontal: 80),
+                                      vertical: 15.0, horizontal: 125),
                                   shape: RoundedRectangleBorder(
                                       borderRadius:
-                                      BorderRadius.circular(20.0)))),
+                                      BorderRadius.circular(16.0)))),
                         ),
                       ],
                     ),
