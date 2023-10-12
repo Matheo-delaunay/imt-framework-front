@@ -8,7 +8,8 @@ class DishCardImage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: ,
+      width: 115,
+      height: 130,
       child: ClipRRect(
         borderRadius: BorderRadius.circular(20),
         child: Image(
