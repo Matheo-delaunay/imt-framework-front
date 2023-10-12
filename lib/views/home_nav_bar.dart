@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:imt_framework_front/views/dishes_page.dart';
 import 'package:provider/provider.dart';
 
 import '../main.dart';
@@ -15,9 +16,27 @@ class _HomeNavBarState extends State<HomeNavBar> {
   @override
   Widget build(BuildContext context) {
 
+    Widget page;
+
+    switch (currentPageIndex) {
+      case 0:
+        page = DishesPage();
+        break;
+      case 1:
+        page = Placeholder();
+        break;
+      case 2:
+        page = Placeholder();
+        break;
+      case 3:
+        page = Placeholder();
+        break;
+      default:
+        throw UnimplementedError('no widget for $currentPageIndex');
+    }
+
     return  Scaffold(
-            bottomNavigationBar: Container(
-              child: NavigationBar(
+            bottomNavigationBar: NavigationBar(
                 onDestinationSelected: (int index) {
                   setState(() {
                     currentPageIndex = index;
@@ -49,7 +68,9 @@ class _HomeNavBarState extends State<HomeNavBar> {
                   ),
                 ],
               ),
-            ),
+      body: Container(
+        child: page,
+      ),
     );
   }
 }
