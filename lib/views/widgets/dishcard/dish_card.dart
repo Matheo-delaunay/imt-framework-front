@@ -6,7 +6,7 @@ class DishCard extends StatefulWidget {
   final String category;
   final String description;
   final String image;
-  final double price;
+  final String price;
 
   const DishCard(
       {super.key,
@@ -25,16 +25,75 @@ class _DishCardState extends State<DishCard> {
   Widget build(BuildContext context) {
     return Card(
       elevation: 5,
-      color: Colors.white,
+      surfaceTintColor: Colors.white,
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(20.0),
       ),
       child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           DishCardImage(image: 'assets/images/food.jpg'),
-          Text('helloaz')
+          CardTittle(),
+          CardDescription(),
+          Row(
+            children: [
+              CardPrice(),
+              Container(
+                child: ElevatedButton(
+                    style: ButtonStyle(
+                      minimumSize: MaterialStatePropertyAll(Size(1,1)),
+                    ) ,
+                    onPressed: ()=>{}, child: Text("+")),
+              )
+            ],
+          )
         ],
       ),
+    );
+  }
+}
+
+class CardPrice extends StatelessWidget {
+  const CardPrice({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.fromLTRB(10,0,0,10),
+      child: Text('€ 19.90' ,
+        style: TextStyle(fontSize: 16,fontWeight: FontWeight.bold),),
+    );
+  }
+}
+
+class CardDescription extends StatelessWidget {
+  const CardDescription({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+    padding: const EdgeInsets.fromLTRB(10,0,0,10),
+    child: Text('Classic cheese',
+      style: TextStyle(fontSize: 12,color: Colors.grey),),
+    );
+  }
+}
+
+class CardTittle extends StatelessWidget {
+  const CardTittle({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.fromLTRB(10,10,0,3),
+      child: Text('Classic cheese', style: TextStyle(fontWeight: FontWeight.bold,
+      fontSize: 14),),
     );
   }
 }

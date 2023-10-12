@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:imt_framework_front/main.dart';
 import 'package:imt_framework_front/views/widgets/dishcard/dish_card.dart';
 
 class DishesPage extends StatelessWidget {
@@ -7,25 +6,31 @@ class DishesPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    return SafeArea(
+      child: SingleChildScrollView(
+        child: Column(children: [
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              DishCard(
 
-    return Container(
-      child: const Column(
-          children:[
-            DishCard(
-              title: 'Margherita',
-              category: 'Pizza',
-              description: 'Pizza italienne',
-              image: '',
-              price: 19.90,
-            ),
-            DishCard(
-              title: 'Margherita',
-              category: 'Pizza',
-              description: 'Pizza italienne',
-              image: '',
-              price: 19.90,
-            ),
-          ]
+                title: 'Margherita',
+                category: 'Pizza',
+                description: 'Pizza italienne',
+                image: '',
+                price: '19.90',
+              ),
+              DishCard(
+                title: 'Margherita',
+                category: 'Pizza',
+                description: 'Pizza italienne',
+                image: '',
+                price: '19.90',
+              ),
+            ],
+          ),
+
+        ]),
       ),
     );
   }
