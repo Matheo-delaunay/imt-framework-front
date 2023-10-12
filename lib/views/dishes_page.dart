@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:imt_framework_front/main.dart';
-import 'package:imt_framework_front/views/widgets/dish_card.dart';
+import 'package:imt_framework_front/views/widgets/dishcard/dish_card.dart';
 import 'package:provider/provider.dart';
 
 class DishesPage extends StatelessWidget {
@@ -10,7 +10,28 @@ class DishesPage extends StatelessWidget {
   Widget build(BuildContext context) {
     var appState = context.watch<MyAppState>();
 
-    return MaterialApp(
+    return Container(
+      child: const Column(
+          children:[
+            DishCard(
+              title: 'Margherita',
+              category: 'Pizza',
+              description: 'Pizza italienne',
+              image: '',
+              price: 19.90,
+            ),
+            DishCard(
+              title: 'Margherita',
+              category: 'Pizza',
+              description: 'Pizza italienne',
+              image: '',
+              price: 19.90,
+            ),
+          ]
+      ),
+    );
+
+    /*return MaterialApp(
       home: Scaffold(
         appBar: AppBar(
           title: const Text("Delivecrous"),
@@ -59,7 +80,7 @@ class DishesPage extends StatelessWidget {
                   ),
                 ],
               ),
-              /*GridView.count(
+              GridView.count(
                   crossAxisCount: 2,
                   padding: const EdgeInsets.all(20),
                   children: [
@@ -84,11 +105,11 @@ class DishesPage extends StatelessWidget {
                       child: DishCard(),
                     ),
                   ],
-                ),*/
+                ),
             ),
           ],
         ),
       ),
-    );
+    );*/
   }
 }
