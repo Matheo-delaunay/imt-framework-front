@@ -28,7 +28,7 @@ class _SignupScreenState extends State<SignupScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-
+      resizeToAvoidBottomInset: false,
       body:Container(
         decoration: BoxDecoration(
           image: DecorationImage(
@@ -50,7 +50,7 @@ class _SignupScreenState extends State<SignupScreen> {
                   children: [
                     FadeAnimation(delay: 1, child:
                   const Text('DishDash',
-                    style: TextStyle(fontSize: 40,
+                    style: TextStyle(fontSize: 45,
                         fontFamily: 'Sofia'),),
                   ),
                   Container(
@@ -64,7 +64,8 @@ class _SignupScreenState extends State<SignupScreen> {
                       border: Border.all(width: 2, color: Colors.white30)
                   ),
                   margin: EdgeInsets.all(15.0),
-                  padding: const EdgeInsets.all(40.0),
+                    padding: const EdgeInsets.only(
+                        top: 20, bottom: 40, right: 10, left: 10),
                   child: Column(
                       mainAxisSize: MainAxisSize.min,
                       children: [
@@ -74,7 +75,7 @@ class _SignupScreenState extends State<SignupScreen> {
                             child: const Text(
                               "Create a new account",
                               style: TextStyle(
-                                  fontSize: 15,
+                                  fontSize: 17,
                                   color: Colors.white, letterSpacing: 0.4),
                             ),
                           ),
@@ -85,15 +86,15 @@ class _SignupScreenState extends State<SignupScreen> {
                         FadeAnimation(
                           delay: 1,
                           child: Container(
-                            width: 300,
-                            height: 40,
+                            width: 330,
+                            height: 48,
                             decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(12.0),
+                              borderRadius: BorderRadius.circular(50.0),
                               color: selected == FormData.Email
                                   ? enabled
                                   : backgroundColor,
                             ),
-                            padding: const EdgeInsets.all(5.0),
+                            padding: const EdgeInsets.all(2.0),
                             child: TextField(
                               controller: nameController,
                               onTap: () {
@@ -134,15 +135,15 @@ class _SignupScreenState extends State<SignupScreen> {
                         FadeAnimation(
                           delay: 1,
                           child: Container(
-                            width: 300,
-                            height: 40,
+                            width: 330,
+                            height: 48,
                             decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(12.0),
+                              borderRadius: BorderRadius.circular(50.0),
                               color: selected == FormData.LastName
                                   ? enabled
                                   : backgroundColor,
                             ),
-                            padding: const EdgeInsets.all(5.0),
+                            padding: const EdgeInsets.all(2.0),
                             child: TextField(
                               controller: lastNameController,
                               onTap: () {
@@ -183,15 +184,15 @@ class _SignupScreenState extends State<SignupScreen> {
                         FadeAnimation(
                           delay: 1,
                           child: Container(
-                            width: 300,
-                            height: 40,
+                            width: 330,
+                            height: 48,
                             decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(12.0),
+                              borderRadius: BorderRadius.circular(50.0),
                               color: selected == FormData.Email
                                   ? enabled
                                   : backgroundColor,
                             ),
-                            padding: const EdgeInsets.all(5.0),
+                            padding: const EdgeInsets.all(2.0),
                             child: TextField(
                               controller: emailController,
                               onTap: () {
@@ -232,14 +233,14 @@ class _SignupScreenState extends State<SignupScreen> {
                         FadeAnimation(
                           delay: 1,
                           child: Container(
-                            width: 300,
-                            height: 40,
+                            width: 330,
+                            height: 48,
                             decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(12.0),
+                                borderRadius: BorderRadius.circular(50.0),
                                 color: selected == FormData.password
                                     ? enabled
                                     : backgroundColor),
-                            padding: const EdgeInsets.all(5.0),
+                            padding: const EdgeInsets.all(2.0),
                             child: TextField(
                               controller: passwordController,
                               onTap: () {
@@ -299,14 +300,14 @@ class _SignupScreenState extends State<SignupScreen> {
                         FadeAnimation(
                           delay: 1,
                           child: Container(
-                            width: 300,
-                            height: 40,
+                            width: 330,
+                            height: 48,
                             decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(12.0),
+                                borderRadius: BorderRadius.circular(50.0),
                                 color: selected == FormData.ConfirmPassword
                                     ? enabled
                                     : backgroundColor),
-                            padding: const EdgeInsets.all(5.0),
+                            padding: const EdgeInsets.all(2.0),
                             child: TextField(
                               controller: confirmPasswordController,
                               onTap: () {
@@ -373,10 +374,10 @@ class _SignupScreenState extends State<SignupScreen> {
                               style: TextButton.styleFrom(
                                   backgroundColor: const Color(0xFFE9BE4B),
                                   padding: const EdgeInsets.symmetric(
-                                      vertical: 14.0, horizontal: 80),
+                                      vertical: 17.0, horizontal: 130),
                                   shape: RoundedRectangleBorder(
                                       borderRadius:
-                                      BorderRadius.circular(20.0))),
+                                      BorderRadius.circular(17.0))),
                               child: const Text(
                                 "Sign Up",
                                 style: TextStyle(
