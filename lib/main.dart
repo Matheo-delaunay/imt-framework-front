@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:imt_framework_front/views/home_nav_bar.dart';
+import 'package:imt_framework_front/views/onboarding.dart';
 import 'package:provider/provider.dart';
 
 import 'package:imt_framework_front/views/pages/login_page.dart';
@@ -10,13 +11,12 @@ void main() {
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
-
-
   @override
   Widget build(BuildContext context) {
     return ChangeNotifierProvider(
       create: (context) => MyAppState(),
       child: MaterialApp(
+        debugShowCheckedModeBanner: false,
         title: 'DishDash',
         theme: ThemeData(
           useMaterial3: true,
@@ -28,12 +28,17 @@ class MyApp extends StatelessWidget {
             ),
           ),
         ),
-        home: HomeNavBar(),
-      ),
-    );
+        home: OnboardingScreen(),
+      ),);
   }
 }
 
 class MyAppState extends ChangeNotifier {
 
 }
+
+
+
+
+
+
