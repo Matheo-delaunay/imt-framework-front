@@ -27,38 +27,35 @@ class _ProfilePageState extends State<ProfilePage> {
                   children: [
                     IconButton(onPressed: () {
                       Navigator.pop(context);
-                          }
-                    , icon: Icon(Icons.arrow_back_ios),
-                    padding: EdgeInsets.all(38),),
+                    }
+                      , icon: Icon(Icons.arrow_back_ios),
+                      padding: EdgeInsets.all(38),),
                     IconButton(onPressed: () {},
-                        icon: Icon(Icons.close),
-                        padding: EdgeInsets.all(38),
-                        iconSize: 30,)
+                      icon: Icon(Icons.close),
+                      padding: EdgeInsets.all(38),
+                      iconSize: 30,)
                   ],
                 ),
                 Container(
                   child: CircleAvatar(
                     backgroundImage: AssetImage('assets/images/profile_icon.png'),
-                  backgroundColor: Colors.amber,
-                  radius: 100,
+                    backgroundColor: Colors.amber,
+                    radius: 100,
                   ),
                 ),
+                SizedBox(height: 20,),
                 Container(
-                  decoration: BoxDecoration(
-                    color: Colors.white,
-                    borderRadius: BorderRadius.only(
-                        topRight: Radius.circular(50),
-                        topLeft: Radius.circular(50))
-                  ),
-
+                  alignment: Alignment.bottomCenter,
+                  height: MediaQuery.sizeOf(context).height *0.5,
+                  color: Colors.white,
                 )
-
 
               ],
             ),
           )
         ],
       ),
+
 
 
     );
