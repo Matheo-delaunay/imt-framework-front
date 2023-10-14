@@ -20,6 +20,7 @@ class MyApp extends StatelessWidget {
         title: 'DishDash',
         theme: ThemeData(
           useMaterial3: true,
+          fontFamily: 'Sora',
           colorScheme: ColorScheme.fromSeed(seedColor: Colors.amber),
           elevatedButtonTheme: ElevatedButtonThemeData(
             style: ElevatedButton.styleFrom(

@@ -1,8 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:imt_framework_front/views/dishes_page.dart';
-import 'package:provider/provider.dart';
-
-import '../main.dart';
 
 class HomeNavBar extends StatefulWidget {
   @override
@@ -43,6 +40,7 @@ class _HomeNavBarState extends State<HomeNavBar> {
                   });
                 },
                 labelBehavior: NavigationDestinationLabelBehavior.alwaysHide,
+                surfaceTintColor: Colors.white,
                 indicatorColor: Colors.white10,
                 selectedIndex: currentPageIndex,
                 destinations: const <Widget>[
