@@ -1,12 +1,12 @@
 import 'dart:ui';
+import 'package:flutter/material.dart';
+
 
 class AppColors{
   static final Color beige = const Color(0xFFDACAA4);
   static final Color blacks = const Color(0xFF000000);
-  static final Color purple = const Color(0xff9b6c2f);
-  static final Color purple2 = const Color(0xff9b6c2f);
-  static final Color purple3 = const Color(0xffe1c892);
-  static final Color idk = const Color(0xFFFFF);
-
-
+  static final Color enabled = const Color(0xFFF2F2F2);
+  static final Color enabledtxt = Colors.black54;
+  static final Color deaible = Colors.black38;
+  static final Color backgroundColor = const Color(0xFFF2F2F2);
 }
