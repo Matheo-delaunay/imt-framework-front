@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:imt_framework_front/views/home_nav_bar.dart';
 import 'package:provider/provider.dart';
 
+import 'package:imt_framework_front/views/pages/login_page.dart';
+
 void main() {
   runApp( MyApp());
 }
