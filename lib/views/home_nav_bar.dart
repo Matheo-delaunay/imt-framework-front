@@ -1,48 +1,23 @@
 import 'package:flutter/material.dart';
-import 'package:imt_framework_front/views/dishes_page.dart';
+import 'package:imt_framework_front/main.dart';
+import 'package:provider/provider.dart';
+import 'package:provider/provider.dart';
 
-class HomeNavBar extends StatefulWidget {
-  @override
-  State<HomeNavBar> createState() => _HomeNavBarState();
-}
-
-class _HomeNavBarState extends State<HomeNavBar> {
-  var currentPageIndex = 0;
-
-
+class HomeNavBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
 
-    Widget page;
-
-    switch (currentPageIndex) {
-      case 0:
-        page = DishesPage();
-        break;
-      case 1:
-        page = Placeholder();
-        break;
-      case 2:
-        page = Placeholder();
-        break;
-      case 3:
-        page = Placeholder();
-        break;
-      default:
-        throw UnimplementedError('no widget for $currentPageIndex');
-    }
+    var appState = context.watch<MyAppState>();
 
     return  Scaffold(
             bottomNavigationBar: NavigationBar(
                 onDestinationSelected: (int index) {
-                  setState(() {
-                    currentPageIndex = index;
-                  });
+                    appState.currentPageIndex = index;
+                    appState.pageChange();
                 },
                 labelBehavior: NavigationDestinationLabelBehavior.alwaysHide,
-                surfaceTintColor: Colors.white,
                 indicatorColor: Colors.white10,
-                selectedIndex: currentPageIndex,
+                selectedIndex: appState.currentPageIndex,
                 destinations: const <Widget>[
                   NavigationDestination(
                     selectedIcon: Icon(
@@ -67,7 +42,7 @@ class _HomeNavBarState extends State<HomeNavBar> {
                 ],
               ),
       body: Container(
-        child: page,
+        child: appState.page,
       ),
     );
   }
