@@ -2,7 +2,7 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:imt_framework_front/views/utils/fade_animation.dart';
 import 'package:imt_framework_front/views/utils/colors.dart';
-import 'package:imt_framework_front/views/widgets/cards/login_card.dart';
+import 'package:imt_framework_front/views/widgets/connection_cards/login_card.dart';
 import 'package:imt_framework_front/views/pages/signup_screen.dart';
 
 enum FormData {

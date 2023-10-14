@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:imt_framework_front/views/utils/constants.dart';
-import 'package:imt_framework_front/views/widgets/dishcard/dish_card.dart';
-import 'package:imt_framework_front/views/widgets/searchbar/search_bar.dart';
+import 'package:imt_framework_front/views/widgets/dish_card/dish_card.dart';
+import 'package:imt_framework_front/views/widgets/search_bar/search_bar.dart';
 import 'package:imt_framework_front/views/widgets/user_button/user_button.dart';
 
 class DishesPage extends StatelessWidget {
