@@ -24,7 +24,7 @@ class DishesPage extends StatelessWidget {
                 Row(children: [
                   Padding(
                     padding: EdgeInsets.only(
-                        left: MediaQuery.of(context).size.width * 0.04,
+                        left: MediaQuery.of(context).size.width * 0.07,
                         top: MediaQuery.of(context).size.height * 0.02,
                         bottom: MediaQuery.of(context).size.height * 0.02),
                     child: UserButton(),
