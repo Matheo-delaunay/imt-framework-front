@@ -19,7 +19,7 @@ class DetailPage extends StatelessWidget {
             Expanded(
                 child: SingleChildScrollView(
                   child: Padding(
-                    padding: const EdgeInsets.only(top: 20.0, left: 50, right: 50),
+                    padding: const EdgeInsets.only(top: 20.0, left: 20, right: 20),
                     child: Column(
                       children: [
                         DetailPageImage(image: image),
@@ -73,9 +73,10 @@ class DownBarWithButton extends StatelessWidget {
                     children: [
                       Text('Price',style: TextStyle(
                         color: Colors.grey,
+                        fontSize: 19
                       ),),
                       Text('€ 19.90',style: TextStyle(
-                        fontSize: 20,
+                        fontSize: 22,
                         color: Colors.amber
                       ),)
                     ],
@@ -92,7 +93,8 @@ class DownBarWithButton extends StatelessWidget {
                     )
                   ),
                   onPressed: () {},
-                  child: Text('Add to cart'),),
+                  child: Text('Add to cart',
+                    style: TextStyle(fontSize: 20, fontFamily: 'Sora', fontWeight: FontWeight.bold),),),
               ],
             ),
           ),
@@ -149,9 +151,9 @@ class DetailPageAlergenTitle extends StatelessWidget {
   Widget build(BuildContext context) {
     return Row(children: [
       Padding(
-        padding: const EdgeInsets.only(top: 10.0),
+        padding: const EdgeInsets.only(top: 20.0),
         child: Text(
-          'Classic cheese',
+          'Allergenes',
           style: TextStyle(
             fontSize: 20,
             fontWeight: FontWeight.bold,
