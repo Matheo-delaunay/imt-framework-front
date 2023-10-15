@@ -56,15 +56,18 @@ class AddButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.only(bottom: 15,right: 5),
-        child: ElevatedButton(
+      margin: EdgeInsets.only(bottom: 10,right: 3),
+        child: FittedBox(
+          fit: BoxFit.scaleDown,
+          child: ElevatedButton(
       style: ButtonStyle(
-        minimumSize: MaterialStatePropertyAll(Size(50,50)),
-        shape: MaterialStatePropertyAll(CircleBorder()),
+          minimumSize: MaterialStatePropertyAll(Size(50,50)),
+          shape: MaterialStatePropertyAll(CircleBorder()),
       ),
       onPressed: () => {},
-          child: Icon(Icons.add),
-    ));
+            child: Icon(Icons.add),
+    ),
+        ));
   }
 }
 
@@ -76,11 +79,14 @@ class CardPrice extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.fromLTRB(15, 0, 0, 10),
-      child: Text(
-        '€ 19.90',
-        overflow: TextOverflow.ellipsis,
-        style: TextStyle(fontSize: 26, fontWeight: FontWeight.bold),
+      padding: const EdgeInsets.fromLTRB(13, 0, 0, 10),
+      child: FittedBox(
+        fit: BoxFit.scaleDown,
+        child: Text(
+          '€ 19.90',
+          overflow: TextOverflow.ellipsis,
+          style: TextStyle(fontSize: 17, fontWeight: FontWeight.bold),
+        ),
       ),
     );
   }
@@ -94,7 +100,7 @@ class CardDescription extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.fromLTRB(15, 0, 0, 10),
+      padding: const EdgeInsets.fromLTRB(13, 0, 0, 10),
       child: Text(
         'Classic cheese',
         overflow: TextOverflow.ellipsis,
@@ -112,11 +118,11 @@ class CardTittle extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.fromLTRB(15, 10, 0, 3),
+      padding: const EdgeInsets.fromLTRB(13, 10, 0, 3),
       child: Text(
         'Classic cheeseezezezezezezezez',
         overflow: TextOverflow.ellipsis,
-        style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
+        style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
       ),
     );
   }
