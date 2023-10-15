@@ -28,6 +28,7 @@ dev_dependencies:
 flutter:
   assets:
     - assets/images/
+    - assets/images/delivery.png
 
   fonts:
     - family: Sofia
