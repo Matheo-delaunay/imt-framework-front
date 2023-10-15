@@ -36,7 +36,7 @@ class TopAppBar extends StatelessWidget implements PreferredSizeWidget {
                 Text(title,
                   style: TextStyle(
                       fontSize: 26,
-                      fontWeight: FontWeight.bold
+                      fontWeight: FontWeight.bold,
                   ),
               ),
               Visibility(

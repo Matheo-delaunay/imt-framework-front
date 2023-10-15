@@ -26,13 +26,16 @@ class _FavoritesWidgetState extends State<FavoritesWidget> {
       },
 
       child: Card(
+        margin: EdgeInsets.only(top: 20),
         color: Colors.white,
         surfaceTintColor: Colors.white,
         elevation: 0,
         child: ListTile(
+          visualDensity: VisualDensity(vertical: 3),
+
           leading: Container(
-            height: 60,
-            width: 60,
+            height: 80,
+            width: 80,
             child: ClipRRect(
               borderRadius: BorderRadius.all(Radius.circular(10)),
               child: Image(image: AssetImage(widget.imagePath),
