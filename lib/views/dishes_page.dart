@@ -48,7 +48,7 @@ class DishesPage extends StatelessWidget {
                             ),
                             SizedBox(
                               width: MediaQuery.of(context).size.width *
-                                  AppCardSize.betweenCardWidth,
+                                  Constants.betweenCardWidth,
                             ),
                             DishCard(
                               title: 'Margherita',
@@ -71,7 +71,7 @@ class DishesPage extends StatelessWidget {
                             ),
                             SizedBox(
                               width: MediaQuery.of(context).size.width *
-                                  AppCardSize.betweenCardWidth,
+                                  Constants.betweenCardWidth,
                             ),
                             DishCard(
                               title: 'Margherita',
@@ -94,7 +94,7 @@ class DishesPage extends StatelessWidget {
                             ),
                             SizedBox(
                               width: MediaQuery.of(context).size.width *
-                                  AppCardSize.betweenCardWidth,
+                                  Constants.betweenCardWidth,
                             ),
                             DishCard(
                               title: 'Margherita',
@@ -117,7 +117,7 @@ class DishesPage extends StatelessWidget {
                             ),
                             SizedBox(
                               width: MediaQuery.of(context).size.width *
-                                  AppCardSize.betweenCardWidth,
+                                  Constants.betweenCardWidth,
                             ),
                             DishCard(
                               title: 'Margherita',

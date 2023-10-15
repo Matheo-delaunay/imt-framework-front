@@ -21,7 +21,7 @@ class DishCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: MediaQuery.of(context).size.width * AppCardSize.width,
+      width: MediaQuery.of(context).size.width * Constants.width,
       child: Card(
         elevation: 5,
         surfaceTintColor: Colors.white,
