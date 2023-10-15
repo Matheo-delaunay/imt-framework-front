@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:imt_framework_front/views/pages/details_page.dart';
 import 'package:imt_framework_front/views/pages/dishes_page.dart';
+import 'package:imt_framework_front/views/pages/onboarding.dart';
 import 'package:provider/provider.dart';
 
 
@@ -30,7 +30,7 @@ class MyApp extends StatelessWidget {
             ),
           ),
         ),
-        home: DetailPage(image: 'assets/images/background.jpg', alergens: ['cdjsc','jncdsd']),
+        home: OnboardingScreen(),
       ),
     );
   }
