@@ -34,56 +34,67 @@ class DetailPage extends StatelessWidget {
                   ),
                 ),
             ),
-            Container(
-              height: 120,
-              padding: EdgeInsets.only(bottom: 10),
-              width: MediaQuery.of(context).size.width,
-              decoration: const BoxDecoration(
-                color: Colors.white,
-                borderRadius: BorderRadius.only(topLeft: Radius.circular(20),topRight: Radius.circular(20)),
-                boxShadow: [
-                  BoxShadow(
-                      color: Colors.grey, //New
-                      blurRadius: 25.0,
-                      offset: Offset(0, -5))
-                ],
-              ),
-                  child: Padding(
-                    padding: EdgeInsets.symmetric(horizontal: MediaQuery.of(context).size.width * 0.05),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                          Column(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Text('Price',style: TextStyle(
-                                color: Colors.grey,
-                              ),),
-                              Text('€ 19.90',style: TextStyle(
-                                fontSize: 20,
-                                color: Colors.amber
-                              ),)
-                            ],
-                        ),
-                        ElevatedButton(
-                          style: ButtonStyle(
-                            shape: MaterialStatePropertyAll(
-                              RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(20),
-                              ),
-                            ),
-                            minimumSize: MaterialStatePropertyAll(
-                              Size(MediaQuery.of(context).size.width * 0.65,75)
-                            )
-                          ),
-                          onPressed: () {},
-                          child: Text('Add to cart'),),
-                      ],
-                    ),
-                  ),
-            )
+            DownBarWithButton()
           ],
         ),
+    );
+  }
+}
+
+class DownBarWithButton extends StatelessWidget {
+  const DownBarWithButton({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      height: 120,
+      padding: EdgeInsets.only(bottom: 10),
+      width: MediaQuery.of(context).size.width,
+      decoration: const BoxDecoration(
+        color: Colors.white,
+        borderRadius: BorderRadius.only(topRight: Radius.circular(40),topLeft: Radius.circular(40)),
+        boxShadow: [
+          BoxShadow(
+              color: Colors.grey, //New
+              blurRadius: 40.0,
+              offset: Offset(0, 10))
+        ],
+      ),
+          child: Padding(
+            padding: EdgeInsets.symmetric(horizontal: MediaQuery.of(context).size.width * 0.05),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                  Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Text('Price',style: TextStyle(
+                        color: Colors.grey,
+                      ),),
+                      Text('€ 19.90',style: TextStyle(
+                        fontSize: 20,
+                        color: Colors.amber
+                      ),)
+                    ],
+                ),
+                ElevatedButton(
+                  style: ButtonStyle(
+                    shape: MaterialStatePropertyAll(
+                      RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(20),
+                      ),
+                    ),
+                    minimumSize: MaterialStatePropertyAll(
+                      Size(MediaQuery.of(context).size.width * 0.65,75)
+                    )
+                  ),
+                  onPressed: () {},
+                  child: Text('Add to cart'),),
+              ],
+            ),
+          ),
     );
   }
 }
@@ -236,7 +247,7 @@ class DetailPageDishName extends StatelessWidget {
   Widget build(BuildContext context) {
     return Row(children: [
       Padding(
-        padding: const EdgeInsets.only(top: 20.0),
+        padding:  EdgeInsets.only(top: 20.0),
         child: Text(
           'hello',
           style:

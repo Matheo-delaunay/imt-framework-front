@@ -22,20 +22,7 @@ class DishCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
         onTap: () => {
-          Navigator.push(context, MaterialPageRoute(builder: (context) => DetailPage(image: 'assets/images/food.jpg', alergens: [
-            "hello",
-            "hello",
-            "hello",
-            "hello",
-            "hello",
-            "hello",
-            "hello",
-            "hello",
-            "hello",
-            "hello",
-            "hello",
-            "hello",
-          ],)))
+          Navigator.push(context, MaterialPageRoute(builder: (context) => DetailPage(image: 'assets/images/food.jpg', alergens: [],)))
         },
       child: SizedBox(
         width: MediaQuery.of(context).size.width * AppCardSize.width,
