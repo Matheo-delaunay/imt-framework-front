@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:imt_framework_front/views/dishes_page.dart';
 import 'package:imt_framework_front/views/home_nav_bar.dart';
-import 'package:imt_framework_front/views/onboarding.dart';
 import 'package:provider/provider.dart';
 
-import 'package:imt_framework_front/views/pages/login_page.dart';
 
 void main() {
   runApp( MyApp());
@@ -11,6 +10,8 @@ void main() {
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
+
+
   @override
   Widget build(BuildContext context) {
     return ChangeNotifierProvider(
@@ -29,17 +30,35 @@ class MyApp extends StatelessWidget {
             ),
           ),
         ),
-        home: OnboardingScreen(),
-      ),);
+        home: HomeNavBar(),
+      ),
+    );
   }
 }
 
 class MyAppState extends ChangeNotifier {
 
+  var currentPageIndex = 0;
+  Widget page = DishesPage();
+
+  Widget pageChange(){
+
+    switch (currentPageIndex) {
+      case 0:
+        page = DishesPage();
+        break;
+      case 1:
+        page = Placeholder();
+        break;
+      case 2:
+        page = Placeholder();
+        break;
+      default:
+        throw UnimplementedError('no widget for $currentPageIndex');
+    }
+    notifyListeners();
+
+    return page;
+  }
+
 }
-
-
-
-
-
-

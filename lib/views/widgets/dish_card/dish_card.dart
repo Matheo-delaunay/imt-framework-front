@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:imt_framework_front/views/widgets/dishcard/dish_card_image.dart';
+import 'package:imt_framework_front/views/widgets/dish_card/dish_card_image.dart';
 
 import '../../utils/constants.dart';
 

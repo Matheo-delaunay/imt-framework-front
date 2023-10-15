@@ -1,9 +1,3 @@
-import 'dart:ui';
-
-class AppColors{
-  static final Color beige = const Color(0xFFDACAA4);
-
-}
 
 class AppCardSize{
   static final double width = 0.40;

@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'login_page.dart';
 import '../utils/colors.dart';
 import '../utils/fade_animation.dart';
-import '../widgets/cards/signup_card.dart';
+import '../widgets/connection_cards/signup_card.dart';
 
 enum FormData { Name, LastName, Email, Gender, password, ConfirmPassword }
 
