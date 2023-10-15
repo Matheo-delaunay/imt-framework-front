@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:imt_framework_front/views/dishes_page.dart';
-import 'package:imt_framework_front/views/utils/favorites_page.dart';
+import 'package:imt_framework_front/views/order_confirmation_page.dart';
 import 'package:provider/provider.dart';
 
 
@@ -30,7 +30,7 @@ class MyApp extends StatelessWidget {
             ),
           ),
         ),
-        home: FavoritesPage(),
+        home: OrderConfirmation(balance: 900),
       ),
     );
   }
