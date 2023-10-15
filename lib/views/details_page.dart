@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:imt_framework_front/views/utils/pageSeparator.dart';
 import 'package:imt_framework_front/views/widgets/appbar/appBar.dart';
 
 class DetailPage extends StatelessWidget {
@@ -24,7 +25,7 @@ class DetailPage extends StatelessWidget {
                         DetailPageImage(image: image),
                         DetailPageDishName(),
                         DetailPageShortDescription(),
-                        DetailPageSeparator(),
+                        PageSeparator(),
                         DetailPageDescriptionTitle(),
                         DetailPageDescription(),
                         DetailPageAlergenTitle(),
@@ -197,25 +198,6 @@ class DetailPageDescriptionTitle extends StatelessWidget {
         ),
       )
     ]);
-  }
-}
-
-class DetailPageSeparator extends StatelessWidget {
-  const DetailPageSeparator({
-    super.key,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.only(top: 20.0),
-      child: Container(
-        height: 1,
-        decoration: BoxDecoration(
-          color: Colors.black12,
-        ),
-      ),
-    );
   }
 }
 
