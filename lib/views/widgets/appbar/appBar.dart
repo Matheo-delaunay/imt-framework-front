@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:imt_framework_front/views/utils/colors.dart';
 
 class TopAppBar extends StatelessWidget implements PreferredSizeWidget {
   const TopAppBar({
@@ -39,13 +40,17 @@ class TopAppBar extends StatelessWidget implements PreferredSizeWidget {
                       fontWeight: FontWeight.bold,
                   ),
               ),
+
               Visibility(
-                visible: heartVisible,
+                visible: true,
                 child: Padding(
                   padding: const EdgeInsets.only(right: 20.0),
-                  child: IconButton(
-                      onPressed: ()=>{},
-                      icon: Icon(Icons.favorite_border,size: 50,)
+                  child: AbsorbPointer(
+                    absorbing: true,
+                    child: IconButton(
+                        onPressed: () {},
+                        icon: Icon(Icons.favorite_border,size: 40,color: heartVisible? Colors.black:AppColors.transparent,)
+                    ),
                   ),
                 ),
               )
