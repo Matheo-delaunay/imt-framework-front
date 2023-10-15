@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:imt_framework_front/views/widgets/dish_card/dish_card_image.dart';
-
 import '../../details_page.dart';
+import '../../utils/constants.dart';
 
 class DishCard extends StatelessWidget {
   final String title;
@@ -25,7 +25,7 @@ class DishCard extends StatelessWidget {
           Navigator.push(context, MaterialPageRoute(builder: (context) => DetailPage(image: 'assets/images/food.jpg', alergens: [],)))
         },
       child: SizedBox(
-        width: MediaQuery.of(context).size.width * AppCardSize.width,
+        width: MediaQuery.of(context).size.width * Constants.width,
         child: Card(
           elevation: 5,
           surfaceTintColor: Colors.white,
