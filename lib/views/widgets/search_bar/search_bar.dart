@@ -15,7 +15,7 @@ class _SearchBarAppState extends State<SearchBarApp> {
     ///TODO SearchAnchor for filter
 
     return Padding(
-      padding: const EdgeInsets.only(top: 8,),
+      padding: const EdgeInsets.only(top: 6,),
       child: Container(
         width: MediaQuery.of(context).size.width * 0.83,
         child: SearchBar(
