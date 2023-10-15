@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:imt_framework_front/views/widgets/dish_card/dish_card_image.dart';
 
-import '../../utils/constants.dart';
+import '../../details_page.dart';
 
 class DishCard extends StatelessWidget {
   final String title;
@@ -20,28 +20,30 @@ class DishCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      width: MediaQuery.of(context).size.width * Constants.width,
-      child: Card(
-        elevation: 5,
-        surfaceTintColor: Colors.white,
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(20.0),
-        ),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            DishCardImage(image: image),
-            CardTittle(),
-            CardDescription(),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                CardPrice(),
-                AddButton()
-              ],
-            )
-          ],
+    return GestureDetector(
+        onTap: () => {
+          Navigator.push(context, MaterialPageRoute(builder: (context) => DetailPage(image: 'assets/images/food.jpg', alergens: [],)))
+        },
+      child: SizedBox(
+        width: MediaQuery.of(context).size.width * AppCardSize.width,
+        child: Card(
+          elevation: 5,
+          surfaceTintColor: Colors.white,
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(20.0),
+          ),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              DishCardImage(image: image),
+              CardTittle(),
+              CardDescription(),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [CardPrice(), AddButton()],
+              )
+            ],
+          ),
         ),
       ),
     );
@@ -80,14 +82,11 @@ class CardPrice extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.fromLTRB(13, 0, 0, 10),
-      child: FittedBox(
-        fit: BoxFit.scaleDown,
-        child: Text(
+      child: Text(
           '€ 19.90',
           overflow: TextOverflow.ellipsis,
           style: TextStyle(fontSize: 17, fontWeight: FontWeight.bold),
         ),
-      ),
     );
   }
 }

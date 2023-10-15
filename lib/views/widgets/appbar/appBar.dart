@@ -1,17 +1,16 @@
-import 'package:imt_framework_front/views/utils/colors.dart';
 import 'package:flutter/material.dart';
 
-class HomeAppBar extends StatelessWidget implements PreferredSizeWidget {
-  const HomeAppBar({
+class TopAppBar extends StatelessWidget implements PreferredSizeWidget {
+  const TopAppBar({
     Key? key,
-    this.arrowVisible,
-    this.cartVisible,
-    this.title,
+    required this.arrowVisible,
+    required this.heartVisible,
+    required this.title,
   }) : super(key: key);
 
-  final bool? arrowVisible;
-  final bool? cartVisible;
-  final String? title;
+  final bool arrowVisible;
+  final bool heartVisible;
+  final String title;
 
   @override
   Size get preferredSize => const Size(double.infinity, 72);
@@ -19,48 +18,40 @@ class HomeAppBar extends StatelessWidget implements PreferredSizeWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(22)
-        ),
-        toolbarHeight: 100.0,
-        elevation: 0,
-        backgroundColor: AppColors.beige,
-        leading: Visibility(
-          visible: arrowVisible!,
-          child: IconButton(
-            icon: const Icon(Icons.arrow_back_ios),
-            onPressed: () {
-              Navigator.of(context).pop();
-            },
-          ),
-        ),
-        title: Text(title!),
-        centerTitle: true,
-
-        actions: <Widget>[
-          Visibility( visible: cartVisible!,
-              child: IconButton(
-                  icon: const Icon(Icons.shopping_cart),
-                  onPressed: () {
-                    Navigator.push(context, MaterialPageRoute<void>(
-                      builder: (BuildContext context) {
-                        return const Scaffold(
-                          appBar: HomeAppBar(
-                            title: 'AppBar',
-                            arrowVisible: true,
-                            cartVisible: true,
-                          )
-                        );
-                      },
-                    ));
-                  },
+    return SafeArea(
+        child: Padding(
+          padding: const EdgeInsets.only(top: 20.0),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Visibility(
+                visible: arrowVisible,
+                child: Padding(
+                  padding: const EdgeInsets.only(left: 20.0),
+                  child: IconButton(
+                      onPressed: () => {Navigator.pop(context)},
+                      icon: Icon(Icons.keyboard_arrow_left, size: 50,),),
                 ),
-          )
-        ],
-      ),
+              ),
+                Text(title,
+                  style: TextStyle(
+                      fontSize: 26,
+                      fontWeight: FontWeight.bold
+                  ),
+              ),
+              Visibility(
+                visible: heartVisible,
+                child: Padding(
+                  padding: const EdgeInsets.only(right: 20.0),
+                  child: IconButton(
+                      onPressed: ()=>{},
+                      icon: Icon(Icons.favorite_border,size: 50,)
+                  ),
+                ),
+              )
+            ],
+          ),
+        )
     );
   }
-
 }
