@@ -24,7 +24,7 @@ class DishesPage extends StatelessWidget {
                 Row(children: [
                   Padding(
                     padding: EdgeInsets.only(
-                        left: MediaQuery.of(context).size.width * 0.04,
+                        left: MediaQuery.of(context).size.width * 0.05,
                         top: MediaQuery.of(context).size.height * 0.02,
                         bottom: MediaQuery.of(context).size.height * 0.02),
                     child: UserButton(),
@@ -48,7 +48,7 @@ class DishesPage extends StatelessWidget {
                             ),
                             SizedBox(
                               width: MediaQuery.of(context).size.width *
-                                  AppCardSize.betweenCardWidth,
+                                  Constants.betweenCardWidth,
                             ),
                             DishCard(
                               title: 'Margherita',
@@ -71,7 +71,7 @@ class DishesPage extends StatelessWidget {
                             ),
                             SizedBox(
                               width: MediaQuery.of(context).size.width *
-                                  AppCardSize.betweenCardWidth,
+                                  Constants.betweenCardWidth,
                             ),
                             DishCard(
                               title: 'Margherita',
@@ -94,7 +94,7 @@ class DishesPage extends StatelessWidget {
                             ),
                             SizedBox(
                               width: MediaQuery.of(context).size.width *
-                                  AppCardSize.betweenCardWidth,
+                                  Constants.betweenCardWidth,
                             ),
                             DishCard(
                               title: 'Margherita',
@@ -117,7 +117,7 @@ class DishesPage extends StatelessWidget {
                             ),
                             SizedBox(
                               width: MediaQuery.of(context).size.width *
-                                  AppCardSize.betweenCardWidth,
+                                  Constants.betweenCardWidth,
                             ),
                             DishCard(
                               title: 'Margherita',
