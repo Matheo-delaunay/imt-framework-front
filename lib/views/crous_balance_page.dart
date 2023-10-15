@@ -2,10 +2,10 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 
 class CrousBalance extends StatefulWidget {
-  final String balance;
+
   const CrousBalance({super.key, required this.balance});
 
-
+  final double balance;
   @override
   State<CrousBalance> createState() => _CrousBalanceState();
 }
@@ -57,8 +57,9 @@ class _CrousBalanceState extends State<CrousBalance> {
                       child: Container(
                           color: Colors.white,
                           child: Center(
-                            child: Text('Remaining Crous balance: ',
-                                style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold)),
+                            child: Text('Remaining Crous balance: \n € ${widget.balance}',
+                                style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
+                            textAlign: TextAlign.center,),
                           )
 
                       )),
