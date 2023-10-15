@@ -1,6 +1,6 @@
 import 'dart:ui';
 import 'package:flutter/material.dart';
-import 'package:imt_framework_front/views/onboarding.dart';
+import 'package:imt_framework_front/views/pages/onboarding.dart';
 import 'package:imt_framework_front/views/utils/animation.dart';
 import 'package:imt_framework_front/views/utils/colors.dart';
 

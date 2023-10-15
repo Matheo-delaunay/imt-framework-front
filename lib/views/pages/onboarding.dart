@@ -1,7 +1,6 @@
 import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:imt_framework_front/views/utils/animation.dart';
-import 'package:imt_framework_front/views/login_screen.dart';
 
 
 class OnboardingScreen extends StatefulWidget {

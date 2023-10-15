@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:imt_framework_front/views/details_page.dart';
-import 'package:imt_framework_front/views/dishes_page.dart';
+import 'package:imt_framework_front/views/pages/details_page.dart';
+import 'package:imt_framework_front/views/pages/dishes_page.dart';
 import 'package:provider/provider.dart';
 
 

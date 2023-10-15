@@ -1,6 +1,6 @@
 import 'dart:ui';
 import 'package:flutter/material.dart';
-import 'package:imt_framework_front/views/widgets/textfieldwidget.dart';
+import 'package:imt_framework_front/views/widgets/text_field/textfieldwidget.dart';
 
 class PersonalInfo extends StatefulWidget {
   const PersonalInfo({super.key});
