@@ -61,7 +61,7 @@ class AddButton extends StatelessWidget {
           fit: BoxFit.scaleDown,
           child: ElevatedButton(
       style: ButtonStyle(
-          minimumSize: MaterialStatePropertyAll(Size(50,50)),
+          minimumSize: MaterialStatePropertyAll(Size(45,45)),
           shape: MaterialStatePropertyAll(CircleBorder()),
       ),
       onPressed: () => {},
@@ -104,7 +104,7 @@ class CardDescription extends StatelessWidget {
       child: Text(
         'Classic cheese',
         overflow: TextOverflow.ellipsis,
-        style: TextStyle(fontSize: 16, color: Colors.grey),
+        style: TextStyle(fontSize: 14, color: Colors.grey),
       ),
     );
   }
@@ -122,7 +122,7 @@ class CardTittle extends StatelessWidget {
       child: Text(
         'Classic cheeseezezezezezezezez',
         overflow: TextOverflow.ellipsis,
-        style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
+        style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
       ),
     );
   }
