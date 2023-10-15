@@ -2,7 +2,8 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 
 class ProfilePage extends StatefulWidget {
-  const ProfilePage({super.key});
+  const ProfilePage({super.key, required this.username});
+  final String username;
 
   @override
   State<ProfilePage> createState() => _ProfilePageState();
@@ -57,7 +58,7 @@ class _ProfilePageState extends State<ProfilePage> {
                     radius: 90,
                   ),
                 ),
-                Text('Username',
+                Text('${widget.username}',
                     style: TextStyle(
                         fontFamily: 'Sora',
                         fontSize: 25,
