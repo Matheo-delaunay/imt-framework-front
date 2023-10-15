@@ -1,5 +1,13 @@
 import 'dart:ui';
 
+class ApiConstants {
+  static String baseUrl = 'http://localhost:8080';
+  static String dishesEndpoint = '/v1/dishes';
+  static String usersEndpoint = '/v1/users';
+  static String favoritesEndpoint = '/v1/favorites';
+  static String ordersEndpoint = '/v1/orders';
+}
+
 class AppColors{
   static final Color beige = const Color(0xFFDACAA4);
 
