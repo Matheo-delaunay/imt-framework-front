@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:imt_framework_front/API/models/DishesModel.dart';
+import 'package:imt_framework_front/API/models/results/UserRes.dart';
 import 'package:imt_framework_front/API/api_service.dart';
 
 class Home extends StatefulWidget {
@@ -10,7 +11,8 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
-  late List<DishesModel>? _dishModel = [];
+  //late List<DishesModel>? _dishModel = [];
+  late UserRes? _userRes;
   @override
   void initState() {
     super.initState();
@@ -18,8 +20,10 @@ class _HomeState extends State<Home> {
   }
 
   void _getData() async {
-    _dishModel = (await ApiService().getDishes())!;
-    Future.delayed(const Duration(seconds: 1)).then((value) => setState(() {}));
+    //_dishModel = (await ApiService().getDishes())!;
+    //Future.delayed(const Duration(seconds: 1)).then((value) => setState(() {}));
+    _userRes = await ApiService().authUser("test@test.net", "test");
+    Future.delayed(const Duration(seconds: 1)).then((value) => print(_userRes));
   }
 
   @override
@@ -28,7 +32,8 @@ class _HomeState extends State<Home> {
       appBar: AppBar(
         title: const Text('REST API Example'),
       ),
-      body: _dishModel == null || _dishModel!.isEmpty
+      body: Container(),
+      /*_dishModel == null || _dishModel!.isEmpty
           ? const Center(
         child: CircularProgressIndicator(),
       )
@@ -59,7 +64,7 @@ class _HomeState extends State<Home> {
             ),
           );
         },
-      ),
+      ),*/
     );
   }
 }

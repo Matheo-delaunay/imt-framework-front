@@ -4,6 +4,7 @@ class ApiConstants {
   static String baseUrl = 'http://localhost:8080';
   static String dishesEndpoint = '/v1/dishes';
   static String usersEndpoint = '/v1/users';
+  static String authUserEndpoint = '/v1/users/auth';
   static String favoritesEndpoint = '/v1/favorites';
   static String ordersEndpoint = '/v1/orders';
 }

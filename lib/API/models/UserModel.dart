@@ -13,15 +13,13 @@ class UserModel {
   String mail;
   String firstname;
   String lastname;
-  String password;
-  int balance;
+  double balance;
 
   UserModel({
     required this.id,
     required this.mail,
     required this.firstname,
     required this.lastname,
-    required this.password,
     required this.balance,
   });
 
@@ -30,7 +28,6 @@ class UserModel {
     mail: json["mail"],
     firstname: json["firstname"],
     lastname: json["lastname"],
-    password: json["password"],
     balance: json["balance"],
   );
 
@@ -39,7 +36,6 @@ class UserModel {
     "mail": mail,
     "firstname": firstname,
     "lastname": lastname,
-    "password": password,
     "balance": balance,
   };
 }
