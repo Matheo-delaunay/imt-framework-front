@@ -1,7 +1,7 @@
 import 'dart:ui';
 import 'package:flutter/material.dart';
-import 'package:imt_framework_front/views/utils/animation.dart';
-import 'package:imt_framework_front/views/login_screen.dart';
+import 'package:imt_framework_front/views/pages/login_page.dart';
+import '../utils/fade_animation.dart';
 
 
 class OnboardingScreen extends StatefulWidget {
@@ -64,11 +64,10 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                                 delay: 1,
                                 child: TextButton(
                                     onPressed: () {
-                                      // Navigator.pop(context);
-                                      // Navigator.of(context)
-                                      //     .push(MaterialPageRoute(builder: (context) {
-                                      //   return MyApp(isLogin: true);
-                                      // }));
+                                      Navigator.of(context)
+                                           .push(MaterialPageRoute(builder: (context) {
+                                         return LoginScreen();
+                                       }));
                                     },
 
                                     style: TextButton.styleFrom(

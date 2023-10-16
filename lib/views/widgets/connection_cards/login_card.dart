@@ -1,5 +1,6 @@
 import 'dart:ui';
 import 'package:flutter/material.dart';
+import 'package:imt_framework_front/views/pages/home_nav_bar.dart';
 import 'package:imt_framework_front/views/utils/fade_animation.dart';
 import 'package:imt_framework_front/views/utils/colors.dart';
 import 'package:imt_framework_front/views/pages/signup_screen.dart';
@@ -160,11 +161,10 @@ TextEditingController passwordController = new TextEditingController();
             delay: 1.1,
             child: TextButton(
                 onPressed: () {
-                  // Navigator.pop(context);
-                  // Navigator.of(context)
-                  //     .push(MaterialPageRoute(builder: (context) {
-                  //   return MyApp(isLogin: true);
-                  // }));
+                   Navigator.of(context)
+                       .push(MaterialPageRoute(builder: (context) {
+                     return HomeNavBar();
+                   }));
                 },
                 style: TextButton.styleFrom(
                     backgroundColor: Color(0xFFE9BE4B),

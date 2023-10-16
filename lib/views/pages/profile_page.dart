@@ -1,5 +1,8 @@
 import 'dart:ui';
 import 'package:flutter/material.dart';
+import 'package:imt_framework_front/views/pages/crous_balance_page.dart';
+import 'package:imt_framework_front/views/pages/favorites_page.dart';
+import 'package:imt_framework_front/views/pages/personal_information_page.dart';
 
 class ProfilePage extends StatefulWidget {
   const ProfilePage({super.key, required this.username});
@@ -12,9 +15,13 @@ class ProfilePage extends StatefulWidget {
 class _ProfilePageState extends State<ProfilePage> {
   final List<String> entries = <String>[
     'Personal Information',
-    'My Order',
     'My Favorites',
-    'Crous Balance'
+    'Crous Balance',
+  ];
+  final List<Widget> routes = <Widget>[
+    PersonalInfo(),
+    FavoritesPage(arrowVisible: true),
+    CrousBalance(balance: 90)
   ];
 
 
@@ -82,7 +89,10 @@ class _ProfilePageState extends State<ProfilePage> {
                               Material(
                                 color: Colors.white,
                                 child: InkWell(
-                                  onTap: () {},
+                                  onTap: () {
+                                    Navigator.push(context,
+                                        MaterialPageRoute(builder: (context) {return routes[index];}));
+                                  },
                                   child: Row(
                                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                     children: [

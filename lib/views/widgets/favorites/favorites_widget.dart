@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../details_page.dart';
+import '../../pages/details_page.dart';
 
 class FavoritesWidget extends StatefulWidget {
   const FavoritesWidget({super.key,

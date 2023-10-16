@@ -6,7 +6,8 @@ import 'package:imt_framework_front/views/widgets/favorites/favorites_widget.dar
 
 class FavoritesPage extends StatefulWidget {
 
-  const FavoritesPage({super.key});
+  const FavoritesPage({super.key, required this.arrowVisible});
+  final bool arrowVisible;
 
   @override
   State<FavoritesPage> createState() => _FavoritesPageState();
@@ -24,7 +25,7 @@ class _FavoritesPageState extends State<FavoritesPage> {
             color: Colors.amber,
           ), Column(
               children: [
-                TopAppBar(arrowVisible: true, heartVisible: false, title: 'My Favorites'),
+                TopAppBar(arrowVisible: widget.arrowVisible, heartVisible: false, title: 'My Favorites'),
                 SizedBox(
                   height: 15,
                 ),

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:imt_framework_front/views/widgets/dish_card/dish_card_image.dart';
-import '../../details_page.dart';
+import '../../pages/details_page.dart';
 import '../../utils/constants.dart';
 
 class DishCard extends StatelessWidget {
