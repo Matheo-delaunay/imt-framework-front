@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:imt_framework_front/views/pages/dishes_page.dart';
+import 'package:imt_framework_front/views/pages/favorites_page.dart';
 import 'package:imt_framework_front/views/pages/onboarding.dart';
 import 'package:provider/provider.dart';
 
@@ -48,7 +49,7 @@ class MyAppState extends ChangeNotifier {
         page = DishesPage();
         break;
       case 1:
-        page = Placeholder();
+        page = FavoritesPage(arrowVisible: false,);
         break;
       case 2:
         page = Placeholder();
