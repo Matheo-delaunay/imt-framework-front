@@ -3,21 +3,8 @@ import 'package:imt_framework_front/views/utils/colors.dart';
 import 'package:imt_framework_front/views/utils/pageSeparator.dart';
 import 'package:imt_framework_front/views/widgets/appbar/appBar.dart';
 
-class OrderPage extends StatefulWidget {
+class OrderPage extends StatelessWidget {
   const OrderPage({super.key});
-
-  @override
-  State<OrderPage> createState() => _OrderPageState();
-}
-
-class _OrderPageState extends State<OrderPage> {
-  List<String> fruits = <String>[
-    'Delivery',
-    'Pick Up',
-  ];
-  bool _isEnable = false;
-  bool _noteVisible = false;
-  final List<bool> _selectedButton = <bool>[true, false];
 
   @override
   Widget build(BuildContext context) {
@@ -25,6 +12,44 @@ class _OrderPageState extends State<OrderPage> {
       body: Column(
         children: [
           TopAppBar(arrowVisible: false, heartVisible: false, title: 'Order'),
+          Expanded(
+            child: ListView(
+                children: [
+                  DeliveryAddressWidget(),
+
+                ],
+            ),
+          ),
+          PageSeparator(),
+          DownBarWithButton()
+        ],
+      ),
+    );
+  }
+}
+
+class DeliveryAddressWidget extends StatefulWidget {
+  const DeliveryAddressWidget({super.key});
+
+  @override
+  State<DeliveryAddressWidget> createState() => _DeliveryAddressWidgetState();
+}
+
+class _DeliveryAddressWidgetState extends State<DeliveryAddressWidget> {
+  List<String> fruits = <String>[
+    'Delivery',
+    'Pick Up',
+  ];
+  final List<bool> _selectedButton = <bool>[true, false];
+  bool _isEnable = false;
+  bool _noteVisible = false;
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 30.0),
+      child: Column(
+        children: [
           SizedBox(
             height: 30,
           ),
@@ -51,7 +76,7 @@ class _OrderPageState extends State<OrderPage> {
                 isSelected: _selectedButton,
                 children: List<Widget>.generate(
                     2,
-                    (index) => Container(
+                        (index) => Container(
                         decoration: BoxDecoration(
                           color: _selectedButton[index]
                               ? Colors.amber
@@ -71,8 +96,6 @@ class _OrderPageState extends State<OrderPage> {
           ),
           Visibility(
             visible: _selectedButton[0],
-            child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 60.0),
               child: Column(
                 children: [
                   Row(
@@ -90,7 +113,7 @@ class _OrderPageState extends State<OrderPage> {
                   Row(
                     children: [
                       Container(
-                        width: MediaQuery.of(context).size.width - 120,
+                        width: MediaQuery.of(context).size.width - 60,
                         child: TextField(
                           style: TextStyle(fontSize: 16, color: Colors.grey),
                           onSubmitted: (text) {
@@ -103,13 +126,13 @@ class _OrderPageState extends State<OrderPage> {
                       ),
                     ],
                   ),
-                  SizedBox(
-                    height: 30,
-                  ),
                   Visibility(
                     visible: _noteVisible,
                     child: Column(
                       children: [
+                        SizedBox(
+                          height: 30,
+                        ),
                         Row(
                           children: [
                             Text(
@@ -128,7 +151,7 @@ class _OrderPageState extends State<OrderPage> {
                               width: MediaQuery.of(context).size.width - 120,
                               child: TextField(
                                 style:
-                                    TextStyle(fontSize: 16, color: Colors.grey),
+                                TextStyle(fontSize: 16, color: Colors.grey),
                                 onSubmitted: (text) {},
                               ),
                             ),
@@ -146,9 +169,9 @@ class _OrderPageState extends State<OrderPage> {
                           style: ButtonStyle(
                               elevation: MaterialStatePropertyAll(0),
                               surfaceTintColor:
-                                  MaterialStatePropertyAll(Colors.white),
+                              MaterialStatePropertyAll(Colors.white),
                               backgroundColor:
-                                  MaterialStatePropertyAll(Colors.white),
+                              MaterialStatePropertyAll(Colors.white),
                               side: MaterialStatePropertyAll(
                                   BorderSide(color: Colors.grey))),
                           onPressed: () {
@@ -178,9 +201,9 @@ class _OrderPageState extends State<OrderPage> {
                           style: ButtonStyle(
                               elevation: MaterialStatePropertyAll(0),
                               surfaceTintColor:
-                                  MaterialStatePropertyAll(Colors.white),
+                              MaterialStatePropertyAll(Colors.white),
                               backgroundColor:
-                                  MaterialStatePropertyAll(Colors.white),
+                              MaterialStatePropertyAll(Colors.white),
                               side: MaterialStatePropertyAll(
                                   BorderSide(color: Colors.grey))),
                           onPressed: () {
@@ -213,13 +236,50 @@ class _OrderPageState extends State<OrderPage> {
                 ],
               ),
             ),
-          ),
-          Container(
-            height: 300,
-            width: MediaQuery.of(context).size.width,
-            padding: EdgeInsets.only(left: 20),
-          )
         ],
+      ),
+    );
+  }
+}
+
+class DownBarWithButton extends StatelessWidget {
+  const DownBarWithButton({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      height: 80,
+      width: MediaQuery.of(context).size.width,
+      decoration: const BoxDecoration(
+        color: Colors.white,
+        borderRadius: BorderRadius.only(topRight: Radius.circular(40),topLeft: Radius.circular(40)),
+        boxShadow: [
+          BoxShadow(
+              color: Colors.grey, //New
+              blurRadius: 40.0,
+              offset: Offset(0, 10))
+        ],
+      ),
+      child: Padding(
+        padding: EdgeInsets.only(
+          top: MediaQuery.of(context).size.width * 0.05,
+          left: MediaQuery.of(context).size.width * 0.05,
+          right: MediaQuery.of(context).size.width * 0.05,
+        ),
+        child:
+            ElevatedButton(
+              style: ButtonStyle(
+                  shape: MaterialStatePropertyAll(
+                    RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(20),
+                    ),
+                  ),
+              ),
+              onPressed: () {},
+              child: Text('Add to cart',
+                style: TextStyle(fontSize: 20, fontFamily: 'Sora', fontWeight: FontWeight.bold),),),
       ),
     );
   }
