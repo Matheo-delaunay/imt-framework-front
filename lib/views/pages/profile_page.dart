@@ -14,7 +14,8 @@ class _ProfilePageState extends State<ProfilePage> {
     'Personal Information',
     'My Order',
     'My Favorites',
-    'Crous Balance'
+    'Crous Balance',
+    'My Past Orders'
   ];
 
 
