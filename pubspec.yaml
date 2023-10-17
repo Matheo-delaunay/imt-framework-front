@@ -14,10 +14,11 @@ dependencies:
 
   cupertino_icons: ^1.0.2
   provider: ^6.0.5
-  simple_animations: ^4.1.0
+  simple_animations: ^5.0.2
   supercharged: ^2.1.1
   build_runner: ^2.1.11
   build_web_compilers: ^3.2.3
+  sa4_migration_kit: ^1.0.0
 
 dev_dependencies:
   flutter_test:
