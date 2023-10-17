@@ -26,9 +26,6 @@ class _FavoritesPageState extends State<FavoritesPage> {
           ), Column(
               children: [
                 TopAppBar(arrowVisible: widget.arrowVisible, heartVisible: false, title: 'My Favorites'),
-                SizedBox(
-                  height: 15,
-                ),
                 Expanded(
                   flex: 3,
                   child: ClipRRect(

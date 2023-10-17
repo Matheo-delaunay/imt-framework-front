@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:imt_framework_front/views/pages/crous_balance_page.dart';
 import 'package:imt_framework_front/views/pages/favorites_page.dart';
 import 'package:imt_framework_front/views/pages/personal_information_page.dart';
+import 'package:imt_framework_front/views/widgets/appbar/appBar.dart';
 
 class ProfilePage extends StatefulWidget {
   const ProfilePage({super.key, required this.username});
@@ -36,34 +37,9 @@ class _ProfilePageState extends State<ProfilePage> {
           Container(
             child: Column(
               children: [
-                SizedBox(
-                  height: 50,
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    IconButton(
-                      onPressed: () {
-                        Navigator.pop(context);
-                      },
-                      icon: Icon(Icons.arrow_back_ios),
-                      padding: EdgeInsets.all(38),
-                    ),
-                    IconButton(
-                      onPressed: () {},
-                      icon: Icon(Icons.close),
-                      padding: EdgeInsets.all(30),
-                      iconSize: 30,
-                    )
-                  ],
-                ),
+                TopAppBar(arrowVisible: true, heartVisible: false, title: ''),
                 Container(
-                  child: CircleAvatar(
-                    backgroundImage:
-                    AssetImage('assets/images/profile_icon.png'),
-                    backgroundColor: Colors.amber,
-                    radius: 90,
-                  ),
+                  child: Icon(Icons.account_circle_outlined, size: 140,)
                 ),
                 Text('${widget.username}',
                     style: TextStyle(
