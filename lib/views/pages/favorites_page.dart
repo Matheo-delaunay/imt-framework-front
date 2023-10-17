@@ -2,7 +2,8 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:imt_framework_front/views/utils/pageSeparator.dart';
 import 'package:imt_framework_front/views/widgets/appbar/appBar.dart';
-import 'package:imt_framework_front/views/widgets/favorites/favorites_widget.dart';
+
+import '../widgets/dish_tile/dish_tile_widget.dart';
 
 class FavoritesPage extends StatefulWidget {
 
@@ -14,7 +15,6 @@ class FavoritesPage extends StatefulWidget {
 }
 
 class _FavoritesPageState extends State<FavoritesPage> {
-
 
   @override
   Widget build(BuildContext context) {
@@ -37,19 +37,19 @@ class _FavoritesPageState extends State<FavoritesPage> {
                         color: Colors.white,
                         child: ListView(
                           children: [
-                            FavoritesWidget(title: 'HIIII',description: 'Hi', imagePath: 'assets/images/food.jpg'),
+                            dishTile(title: 'HIIII',description: 'Hi', imagePath: 'assets/images/food.jpg', quantitySelector: false,),
                             PageSeparator(),
-                            FavoritesWidget(title: 'HIIII',description: 'Hi', imagePath: 'assets/images/food.jpg'),
+                            dishTile(title: 'HIIII',description: 'Hi', imagePath: 'assets/images/food.jpg', quantitySelector: false,),
                             PageSeparator(),
-                            FavoritesWidget(title: 'HIIII',description: 'Hi', imagePath: 'assets/images/food.jpg'),
+                            dishTile(title: 'HIIII',description: 'Hi', imagePath: 'assets/images/food.jpg', quantitySelector: false,),
                           ],
 
 
 
-                        ),
-                      )),
-                ),
-              ],
+                      ),
+                    )),
+              ),
+            ],
 
           ),
         ],

@@ -9,17 +9,25 @@ class HomeNavBar extends StatelessWidget {
   Widget build(BuildContext context) {
 
     var appState = context.watch<MyAppState>();
+    double borderNavBarRadius;
+    BoxShadow shadowDisplay;
+    if(appState.currentPageIndex == 2 ){
+      borderNavBarRadius = 0;
+      shadowDisplay = BoxShadow();
+    }else{
+      borderNavBarRadius = 40;
+      shadowDisplay = BoxShadow(
+          color: Colors.grey, //New
+          blurRadius: 40.0,
+          offset: Offset(0, 10));
+    }
 
     return  Scaffold(
             bottomNavigationBar: Container(
-              decoration: const BoxDecoration(
+              decoration: BoxDecoration(
                 color: Colors.white,
-                borderRadius: BorderRadius.only(topRight: Radius.circular(40),topLeft: Radius.circular(40)),
-                boxShadow: [
-                  BoxShadow(
-                      color: Colors.grey, //New
-                      blurRadius: 40.0,
-                      offset: Offset(0, 10))
+                borderRadius:  BorderRadius.only(topRight: Radius.circular(borderNavBarRadius),topLeft: Radius.circular(borderNavBarRadius)),
+                boxShadow: [ shadowDisplay
                 ],
               ),
               child: ClipRRect(

@@ -88,7 +88,8 @@ class DownBarWithButton extends StatelessWidget {
                         borderRadius: BorderRadius.circular(20),
                       ),
                     ),
-                    minimumSize: MaterialStatePropertyAll(
+
+                    fixedSize: MaterialStatePropertyAll(
                       Size(MediaQuery.of(context).size.width * 0.65,75)
                     )
                   ),

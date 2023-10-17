@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:imt_framework_front/views/pages/dishes_page.dart';
 import 'package:imt_framework_front/views/pages/favorites_page.dart';
+import 'package:imt_framework_front/views/order_page.dart';
 import 'package:imt_framework_front/views/pages/onboarding.dart';
 import 'package:provider/provider.dart';
 
@@ -23,6 +24,7 @@ class MyApp extends StatelessWidget {
         theme: ThemeData(
           useMaterial3: true,
           fontFamily: 'Sora',
+          scaffoldBackgroundColor: Colors.white,
           colorScheme: ColorScheme.fromSeed(seedColor: Colors.amber),
           elevatedButtonTheme: ElevatedButtonThemeData(
             style: ElevatedButton.styleFrom(
@@ -32,7 +34,7 @@ class MyApp extends StatelessWidget {
           ),
         ),
         home: OnboardingScreen(),
-      )
+      ),
     );
   }
 }
@@ -52,7 +54,7 @@ class MyAppState extends ChangeNotifier {
         page = FavoritesPage(arrowVisible: false,);
         break;
       case 2:
-        page = Placeholder();
+        page = OrderPage();
         break;
       default:
         throw UnimplementedError('no widget for $currentPageIndex');
