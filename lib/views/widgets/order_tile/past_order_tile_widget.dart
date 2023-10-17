@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 
-import '../../pages/details_page.dart';
 
 class PastOrderTile extends StatelessWidget {
 
@@ -13,12 +12,8 @@ class PastOrderTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: (){Navigator.push(context, MaterialPageRoute(builder: (context) =>
-          DetailPage(image: 'assets/images/food.jpg', alergens: [],)));
-      },
 
-      child: Card(
+      return Card(
           margin: EdgeInsets.only(top: 20),
           color: Colors.white,
           surfaceTintColor: Colors.white,
@@ -35,7 +30,7 @@ class PastOrderTile extends StatelessWidget {
                 )
             ),
           )
-      ),
+
     );
   }
 }
