@@ -21,22 +21,22 @@ class TopAppBar extends StatelessWidget implements PreferredSizeWidget {
   Widget build(BuildContext context) {
     return SafeArea(
         child: Padding(
-          padding: const EdgeInsets.only(top: 20.0),
+          padding: const EdgeInsets.only(top: 20.0, bottom: 10),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Visibility(
                 visible: arrowVisible,
                 child: Padding(
-                  padding: const EdgeInsets.only(left: 20.0),
+                  padding: const EdgeInsets.only(left: 15.0),
                   child: IconButton(
                       onPressed: () => {Navigator.pop(context)},
-                      icon: Icon(Icons.keyboard_arrow_left, size: 50,),),
+                      icon: Icon(Icons.keyboard_arrow_left, size: 40,),),
                 ),
               ),
                 Text(title,
                   style: TextStyle(
-                      fontSize: 26,
+                      fontSize: 23,
                       fontWeight: FontWeight.bold,
                   ),
               ),
@@ -44,12 +44,12 @@ class TopAppBar extends StatelessWidget implements PreferredSizeWidget {
               Visibility(
                 visible: true,
                 child: Padding(
-                  padding: const EdgeInsets.only(right: 20.0),
+                  padding: const EdgeInsets.only(right: 15.0),
                   child: AbsorbPointer(
                     absorbing: true,
                     child: IconButton(
                         onPressed: () {},
-                        icon: Icon(Icons.favorite_border,size: 40,color: heartVisible? Colors.black:AppColors.transparent,)
+                        icon: Icon(Icons.favorite_border,size: 45,color: heartVisible? Colors.black:AppColors.transparent,)
                     ),
                   ),
                 ),

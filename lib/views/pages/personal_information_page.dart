@@ -1,5 +1,6 @@
 import 'dart:ui';
 import 'package:flutter/material.dart';
+import 'package:imt_framework_front/views/widgets/appbar/appBar.dart';
 import 'package:imt_framework_front/views/widgets/text_field/textfieldwidget.dart';
 
 class PersonalInfo extends StatefulWidget {
@@ -29,29 +30,8 @@ class _PersonalInfoState extends State<PersonalInfo> {
           Container(
             child: Column(
               children: [
-                SizedBox(
-                  height: 50,
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    IconButton(
-                      onPressed: () {
-                        Navigator.pop(context);
-                      },
-                      icon: Icon(Icons.arrow_back_ios),
-                      padding: EdgeInsets.only(top: 38, left: 38),
-                    ),
-                  ],
-                ),
-                Text('Personal Information',
-                    style: TextStyle(
-                        fontFamily: 'Sora',
-                        fontSize: 25,
-                        fontWeight: FontWeight.bold)),
-                SizedBox(
-                  height: 15,
-                ),
+                TopAppBar(arrowVisible: true, heartVisible: false, title: 'Personal Information'),
+
                 Expanded(
                   flex: 3,
                   child: ClipRRect(
