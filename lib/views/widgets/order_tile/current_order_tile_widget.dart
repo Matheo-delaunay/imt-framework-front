@@ -6,9 +6,10 @@ class CurrentOrderTile extends StatelessWidget {
 
 
   const CurrentOrderTile({super.key,
-    required this.currentOrders});
+    required this.currentOrder, required this.price});
 
-  final List currentOrders;
+  final List currentOrder;
+  final double price;
 
   @override
   Widget build(BuildContext context) {
@@ -28,8 +29,8 @@ class CurrentOrderTile extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text('Current Order ', style: TextStyle(fontSize: 17, fontWeight: FontWeight.w600),),
-                    Text('Description ', style: TextStyle(fontSize: 14, color: Colors.grey),)
+                    Text('CurrentOrder ', style: TextStyle(fontSize: 17, fontWeight: FontWeight.w600),),
+                    Text('€ ${price}', style: TextStyle(fontSize: 14, color: Colors.grey),)
                   ],
                 )
               ),
