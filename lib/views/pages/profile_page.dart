@@ -2,6 +2,7 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:imt_framework_front/views/pages/crous_balance_page.dart';
 import 'package:imt_framework_front/views/pages/favorites_page.dart';
+import 'package:imt_framework_front/views/pages/orders_history.dart';
 import 'package:imt_framework_front/views/pages/personal_information_page.dart';
 import 'package:imt_framework_front/views/widgets/appbar/appBar.dart';
 
@@ -16,13 +17,16 @@ class ProfilePage extends StatefulWidget {
 class _ProfilePageState extends State<ProfilePage> {
   final List<String> entries = <String>[
     'Personal Information',
+    'Orders History',
     'My Favorites',
     'Crous Balance',
   ];
   final List<Widget> routes = <Widget>[
     PersonalInfo(),
+    OrdersHistory(),
     FavoritesPage(arrowVisible: true),
-    CrousBalance(balance: 90)
+    CrousBalance(balance: 90),
+
   ];
 
 
