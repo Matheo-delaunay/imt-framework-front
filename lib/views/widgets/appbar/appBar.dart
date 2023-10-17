@@ -28,7 +28,7 @@ class TopAppBar extends StatelessWidget implements PreferredSizeWidget {
               Padding(
                   padding: const EdgeInsets.only(left: 15.0),
                   child: AbsorbPointer(
-                    absorbing: arrowVisible,
+                    absorbing: !arrowVisible,
                     child: IconButton(
                         onPressed: () => {Navigator.pop(context)},
                         icon: Icon(Icons.keyboard_arrow_left, size: 40,color: arrowVisible? Colors.black:AppColors.transparent,),),
@@ -45,7 +45,7 @@ class TopAppBar extends StatelessWidget implements PreferredSizeWidget {
               Padding(
                   padding: const EdgeInsets.only(right: 15.0),
                   child: AbsorbPointer(
-                    absorbing: true,
+                    absorbing: !heartVisible,
                     child: IconButton(
                         onPressed: () {},
                         icon: Icon(Icons.favorite_border,size: 45,color: heartVisible? Colors.black:AppColors.transparent,)
