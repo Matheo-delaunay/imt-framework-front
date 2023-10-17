@@ -1,27 +1,143 @@
 import 'package:flutter/material.dart';
+import 'package:imt_framework_front/views/order_confirmation_page.dart';
 import 'package:imt_framework_front/views/utils/colors.dart';
 import 'package:imt_framework_front/views/utils/pageSeparator.dart';
 import 'package:imt_framework_front/views/widgets/appbar/appBar.dart';
+import 'package:imt_framework_front/views/widgets/favorites/favorites_widget.dart';
 
-class OrderPage extends StatelessWidget {
+class OrderPage extends StatefulWidget {
   const OrderPage({super.key});
 
   @override
+  State<OrderPage> createState() => _OrderPageState();
+}
+
+class _OrderPageState extends State<OrderPage> {
+  int quantity = 1;
+
+  void incrementQuantity() {
+    setState(() {
+      quantity++;
+    });
+  }
+
+  void decrementQuantity() {
+    if (quantity > 1) {
+      setState(() {
+        quantity--;
+      });
+    }
+  }
+
+  @override
   Widget build(BuildContext context) {
+
+    Widget trailingWidget = Row(
+      mainAxisSize: MainAxisSize.min,
+      children: <Widget>[
+        IconButton(
+          icon: Icon(Icons.remove),
+          onPressed: decrementQuantity,
+        ),
+        Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 8.0),
+          child: Text(
+            quantity.toString(),
+            style: TextStyle(fontSize: 16),
+          ),
+        ),
+        IconButton(
+          icon: Icon(Icons.add),
+          onPressed: incrementQuantity,
+        ),
+      ],
+    );
+
     return Scaffold(
       body: Column(
         children: [
           TopAppBar(arrowVisible: false, heartVisible: false, title: 'Order'),
           Expanded(
             child: ListView(
-                children: [
-                  DeliveryAddressWidget(),
-
-                ],
+              children: [
+                DeliveryAddressWidget(),
+                FavoritesWidget(imagePath: 'assets/images/food.jpg', title: 'Test', description: 'Test',quantitySelector: true,),
+                FavoritesWidget(imagePath: 'assets/images/food.jpg', title: 'Test', description: 'Test',quantitySelector: true,),
+                FavoritesWidget(imagePath: 'assets/images/food.jpg', title: 'Test', description: 'Test',quantitySelector: true,),
+                FavoritesWidget(imagePath: 'assets/images/food.jpg', title: 'Test', description: 'Test',quantitySelector: true,),
+                PriceContainer()
+              ],
             ),
           ),
-          PageSeparator(),
           DownBarWithButton()
+        ],
+      ),
+    );
+  }
+}
+
+class PriceContainer extends StatelessWidget {
+  const PriceContainer({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: EdgeInsets.symmetric(horizontal: 30.0),
+      child: Column(
+        children: [
+          PageSeparator(),
+          SizedBox(height: 20,),
+          Row(
+            children: [
+              Text('Payment Summary',style: TextStyle(
+                fontWeight: FontWeight.bold,
+                fontSize: 20,
+              ),),
+            ],
+          ),
+          SizedBox(height: 20,),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Text('Price',style: TextStyle(
+                  fontSize: 18
+              ),),
+              Text('€ 19.90',style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                  fontSize: 18
+              ),)
+            ],
+          ),
+          SizedBox(height: 20,),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Text('Delivery fee',style: TextStyle(
+                  fontSize: 18
+              ),),
+              Text('€ 2',style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                  fontSize: 18
+              ),)
+            ],
+          ),
+          PageSeparator(),
+          SizedBox(height: 20,),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Text('Total payment',style: TextStyle(
+                  fontSize: 18
+              ),),
+              Text('€ 19.90',style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                  fontSize: 18
+              ),)
+            ],
+          ),
+          SizedBox(height: 60,),
         ],
       ),
     );
@@ -96,146 +212,146 @@ class _DeliveryAddressWidgetState extends State<DeliveryAddressWidget> {
           ),
           Visibility(
             visible: _selectedButton[0],
-              child: Column(
-                children: [
-                  Row(
-                    children: [
-                      Text(
-                        'Delivery Address',
-                        style: TextStyle(
-                            fontWeight: FontWeight.bold, fontSize: 20),
-                      ),
-                    ],
-                  ),
-                  SizedBox(
-                    height: 10,
-                  ),
-                  Row(
-                    children: [
-                      Container(
-                        width: MediaQuery.of(context).size.width - 60,
-                        child: TextField(
-                          style: TextStyle(fontSize: 16, color: Colors.grey),
-                          onSubmitted: (text) {
-                            setState(() {
-                              _isEnable = false;
-                            });
-                          },
-                          enabled: _isEnable,
-                        ),
-                      ),
-                    ],
-                  ),
-                  Visibility(
-                    visible: _noteVisible,
-                    child: Column(
-                      children: [
-                        SizedBox(
-                          height: 30,
-                        ),
-                        Row(
-                          children: [
-                            Text(
-                              'Note',
-                              style: TextStyle(
-                                  fontSize: 20, fontWeight: FontWeight.bold),
-                            ),
-                          ],
-                        ),
-                        SizedBox(
-                          height: 10,
-                        ),
-                        Row(
-                          children: [
-                            Container(
-                              width: MediaQuery.of(context).size.width - 120,
-                              child: TextField(
-                                style:
-                                TextStyle(fontSize: 16, color: Colors.grey),
-                                onSubmitted: (text) {},
-                              ),
-                            ),
-                          ],
-                        ),
-                      ],
+            child: Column(
+              children: [
+                Row(
+                  children: [
+                    Text(
+                      'Delivery Address',
+                      style: TextStyle(
+                          fontWeight: FontWeight.bold, fontSize: 20),
                     ),
-                  ),
-                  SizedBox(
-                    height: 15,
-                  ),
-                  Row(
-                    children: <Widget>[
-                      ElevatedButton(
-                          style: ButtonStyle(
-                              elevation: MaterialStatePropertyAll(0),
-                              surfaceTintColor:
-                              MaterialStatePropertyAll(Colors.white),
-                              backgroundColor:
-                              MaterialStatePropertyAll(Colors.white),
-                              side: MaterialStatePropertyAll(
-                                  BorderSide(color: Colors.grey))),
-                          onPressed: () {
-                            setState(() {
-                              _isEnable = true;
-                            });
-                          },
-                          child: Row(
-                            children: [
-                              Icon(
-                                Icons.edit_location_alt_outlined,
-                                color: Colors.black,
-                              ),
-                              SizedBox(
-                                width: 3,
-                              ),
-                              Text(
-                                'Edit Address',
-                                style: TextStyle(color: Colors.black),
-                              )
-                            ],
-                          )),
-                      SizedBox(
-                        width: 12,
+                  ],
+                ),
+                SizedBox(
+                  height: 10,
+                ),
+                Row(
+                  children: [
+                    Container(
+                      width: MediaQuery.of(context).size.width - 60,
+                      child: TextField(
+                        style: TextStyle(fontSize: 16, color: Colors.grey),
+                        onSubmitted: (text) {
+                          setState(() {
+                            _isEnable = false;
+                          });
+                        },
+                        enabled: _isEnable,
                       ),
-                      ElevatedButton(
-                          style: ButtonStyle(
-                              elevation: MaterialStatePropertyAll(0),
-                              surfaceTintColor:
-                              MaterialStatePropertyAll(Colors.white),
-                              backgroundColor:
-                              MaterialStatePropertyAll(Colors.white),
-                              side: MaterialStatePropertyAll(
-                                  BorderSide(color: Colors.grey))),
-                          onPressed: () {
-                            setState(() {
-                              if (_noteVisible) {
-                                _noteVisible = false;
-                              } else {
-                                _noteVisible = true;
-                              }
-                            });
-                          },
-                          child: Row(
-                            children: [
-                              Icon(
-                                Icons.edit_note,
-                                color: Colors.black,
-                              ),
-                              SizedBox(
-                                width: 3,
-                              ),
-                              Text(
-                                'Add Note',
-                                style: TextStyle(color: Colors.black),
-                              )
-                            ],
-                          ))
+                    ),
+                  ],
+                ),
+                Visibility(
+                  visible: _noteVisible,
+                  child: Column(
+                    children: [
+                      SizedBox(
+                        height: 30,
+                      ),
+                      Row(
+                        children: [
+                          Text(
+                            'Note',
+                            style: TextStyle(
+                                fontSize: 20, fontWeight: FontWeight.bold),
+                          ),
+                        ],
+                      ),
+                      SizedBox(
+                        height: 10,
+                      ),
+                      Row(
+                        children: [
+                          Container(
+                            width: MediaQuery.of(context).size.width - 120,
+                            child: TextField(
+                              style:
+                              TextStyle(fontSize: 16, color: Colors.grey),
+                              onSubmitted: (text) {},
+                            ),
+                          ),
+                        ],
+                      ),
                     ],
                   ),
-                  PageSeparator(),
-                ],
-              ),
+                ),
+                SizedBox(
+                  height: 15,
+                ),
+                Row(
+                  children: <Widget>[
+                    ElevatedButton(
+                        style: ButtonStyle(
+                            elevation: MaterialStatePropertyAll(0),
+                            surfaceTintColor:
+                            MaterialStatePropertyAll(Colors.white),
+                            backgroundColor:
+                            MaterialStatePropertyAll(Colors.white),
+                            side: MaterialStatePropertyAll(
+                                BorderSide(color: Colors.grey))),
+                        onPressed: () {
+                          setState(() {
+                            _isEnable = true;
+                          });
+                        },
+                        child: Row(
+                          children: [
+                            Icon(
+                              Icons.edit_location_alt_outlined,
+                              color: Colors.black,
+                            ),
+                            SizedBox(
+                              width: 3,
+                            ),
+                            Text(
+                              'Edit Address',
+                              style: TextStyle(color: Colors.black),
+                            )
+                          ],
+                        )),
+                    SizedBox(
+                      width: 12,
+                    ),
+                    ElevatedButton(
+                        style: ButtonStyle(
+                            elevation: MaterialStatePropertyAll(0),
+                            surfaceTintColor:
+                            MaterialStatePropertyAll(Colors.white),
+                            backgroundColor:
+                            MaterialStatePropertyAll(Colors.white),
+                            side: MaterialStatePropertyAll(
+                                BorderSide(color: Colors.grey))),
+                        onPressed: () {
+                          setState(() {
+                            if (_noteVisible) {
+                              _noteVisible = false;
+                            } else {
+                              _noteVisible = true;
+                            }
+                          });
+                        },
+                        child: Row(
+                          children: [
+                            Icon(
+                              Icons.edit_note,
+                              color: Colors.black,
+                            ),
+                            SizedBox(
+                              width: 3,
+                            ),
+                            Text(
+                              'Add Note',
+                              style: TextStyle(color: Colors.black),
+                            )
+                          ],
+                        ))
+                  ],
+                ),
+                PageSeparator(),
+              ],
             ),
+          ),
         ],
       ),
     );
@@ -269,17 +385,17 @@ class DownBarWithButton extends StatelessWidget {
           right: MediaQuery.of(context).size.width * 0.05,
         ),
         child:
-            ElevatedButton(
-              style: ButtonStyle(
-                  shape: MaterialStatePropertyAll(
-                    RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(20),
-                    ),
-                  ),
+        ElevatedButton(
+          style: ButtonStyle(
+            shape: MaterialStatePropertyAll(
+              RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(20),
               ),
-              onPressed: () {},
-              child: Text('Add to cart',
-                style: TextStyle(fontSize: 20, fontFamily: 'Sora', fontWeight: FontWeight.bold),),),
+            ),
+          ),
+          onPressed: () {Navigator.of(context).push(MaterialPageRoute(builder: (context) {return OrderConfirmation(balance: 900);}));},
+          child: Text('Order',
+            style: TextStyle(fontSize: 20, fontFamily: 'Sora', fontWeight: FontWeight.bold),),),
       ),
     );
   }
