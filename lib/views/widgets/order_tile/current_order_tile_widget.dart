@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 
-import '../../pages/details_page.dart';
 
 class CurrentOrderTile extends StatelessWidget {
 
@@ -13,12 +12,7 @@ class CurrentOrderTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: (){Navigator.push(context, MaterialPageRoute(builder: (context) =>
-          DetailPage(image: 'assets/images/food.jpg', alergens: [],)));
-      },
-
-      child: Card(
+    return Card(
           margin: EdgeInsets.only(top: 20),
           color: Colors.white,
           surfaceTintColor: Colors.white,
@@ -37,7 +31,6 @@ class CurrentOrderTile extends StatelessWidget {
               trailing: TextButton(onPressed: (){},
                 child: Text('cancel'), style: ElevatedButton.styleFrom(foregroundColor: Colors.red, )),
           )
-      ),
     );
   }
 }
