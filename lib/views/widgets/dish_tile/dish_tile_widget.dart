@@ -77,8 +77,8 @@ class dishTile extends StatelessWidget {
           title: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text(title, style: TextStyle(fontFamily: 'Sora', fontWeight: FontWeight.bold, fontSize: 20)),
-              Text(description, style: TextStyle(fontFamily: 'Sora', fontWeight: FontWeight.w200, fontSize: 15, color: Colors.grey),)
+              Text(title, overflow: TextOverflow.ellipsis, style: TextStyle(fontFamily: 'Sora', fontWeight: FontWeight.bold, fontSize: 20)),
+              Text(description, overflow: TextOverflow.ellipsis, style: TextStyle(fontFamily: 'Sora', fontWeight: FontWeight.w200, fontSize: 15, color: Colors.grey),)
             ],
           ),
           trailing: quantitySelector ? quantitySelectorWidget : trashButtonWidget
