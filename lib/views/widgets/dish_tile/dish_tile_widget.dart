@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 
 import '../../pages/details_page.dart';
 
-class FavoritesWidget extends StatelessWidget {
+class dishTile extends StatelessWidget {
 
 
-  const FavoritesWidget({super.key,
+  const dishTile({super.key,
     required this.imagePath,
     required this.title,
     required this.description,

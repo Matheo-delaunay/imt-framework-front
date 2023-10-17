@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:imt_framework_front/views/order_confirmation_page.dart';
+import 'package:imt_framework_front/views/pages/order_confirmation_page.dart';
 import 'package:imt_framework_front/views/utils/colors.dart';
 import 'package:imt_framework_front/views/utils/pageSeparator.dart';
 import 'package:imt_framework_front/views/widgets/appbar/appBar.dart';
-import 'package:imt_framework_front/views/widgets/favorites/favorites_widget.dart';
+import 'package:imt_framework_front/views/widgets/dish_tile/dish_tile_widget.dart';
 
 class OrderPage extends StatefulWidget {
   const OrderPage({super.key});
@@ -13,45 +13,9 @@ class OrderPage extends StatefulWidget {
 }
 
 class _OrderPageState extends State<OrderPage> {
-  int quantity = 1;
-
-  void incrementQuantity() {
-    setState(() {
-      quantity++;
-    });
-  }
-
-  void decrementQuantity() {
-    if (quantity > 1) {
-      setState(() {
-        quantity--;
-      });
-    }
-  }
 
   @override
   Widget build(BuildContext context) {
-
-    Widget trailingWidget = Row(
-      mainAxisSize: MainAxisSize.min,
-      children: <Widget>[
-        IconButton(
-          icon: Icon(Icons.remove),
-          onPressed: decrementQuantity,
-        ),
-        Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 8.0),
-          child: Text(
-            quantity.toString(),
-            style: TextStyle(fontSize: 16),
-          ),
-        ),
-        IconButton(
-          icon: Icon(Icons.add),
-          onPressed: incrementQuantity,
-        ),
-      ],
-    );
 
     return Scaffold(
       body: Column(
@@ -61,15 +25,15 @@ class _OrderPageState extends State<OrderPage> {
             child: ListView(
               children: [
                 DeliveryAddressWidget(),
-                FavoritesWidget(imagePath: 'assets/images/food.jpg', title: 'Test', description: 'Test',quantitySelector: true,),
-                FavoritesWidget(imagePath: 'assets/images/food.jpg', title: 'Test', description: 'Test',quantitySelector: true,),
-                FavoritesWidget(imagePath: 'assets/images/food.jpg', title: 'Test', description: 'Test',quantitySelector: true,),
-                FavoritesWidget(imagePath: 'assets/images/food.jpg', title: 'Test', description: 'Test',quantitySelector: true,),
+                dishTile(imagePath: 'assets/images/food.jpg', title: 'Test', description: 'Test',quantitySelector: true,),
+                dishTile(imagePath: 'assets/images/food.jpg', title: 'Test', description: 'Test',quantitySelector: true,),
+                dishTile(imagePath: 'assets/images/food.jpg', title: 'Test', description: 'Test',quantitySelector: true,),
+                dishTile(imagePath: 'assets/images/food.jpg', title: 'Test', description: 'Test',quantitySelector: true,),
                 PriceContainer()
               ],
             ),
           ),
-          DownBarWithButton()
+          DownBarWithButtonOrder()
         ],
       ),
     );
@@ -358,8 +322,8 @@ class _DeliveryAddressWidgetState extends State<DeliveryAddressWidget> {
   }
 }
 
-class DownBarWithButton extends StatelessWidget {
-  const DownBarWithButton({
+class DownBarWithButtonOrder extends StatelessWidget {
+  const DownBarWithButtonOrder({
     super.key,
   });
 

@@ -25,15 +25,15 @@ class TopAppBar extends StatelessWidget implements PreferredSizeWidget {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Visibility(
-                visible: arrowVisible,
-                child: Padding(
+              Padding(
                   padding: const EdgeInsets.only(left: 15.0),
-                  child: IconButton(
-                      onPressed: () => {Navigator.pop(context)},
-                      icon: Icon(Icons.keyboard_arrow_left, size: 40,),),
+                  child: AbsorbPointer(
+                    absorbing: arrowVisible,
+                    child: IconButton(
+                        onPressed: () => {Navigator.pop(context)},
+                        icon: Icon(Icons.keyboard_arrow_left, size: 40,color: arrowVisible? Colors.black:AppColors.transparent,),),
+                  ),
                 ),
-              ),
                 Text(title,
                   style: TextStyle(
                       fontSize: 23,
@@ -41,9 +41,8 @@ class TopAppBar extends StatelessWidget implements PreferredSizeWidget {
                   ),
               ),
 
-              Visibility(
-                visible: true,
-                child: Padding(
+
+              Padding(
                   padding: const EdgeInsets.only(right: 15.0),
                   child: AbsorbPointer(
                     absorbing: true,
@@ -53,7 +52,6 @@ class TopAppBar extends StatelessWidget implements PreferredSizeWidget {
                     ),
                   ),
                 ),
-              )
             ],
           ),
         )
