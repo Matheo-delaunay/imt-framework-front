@@ -23,6 +23,7 @@ class _OrderPageState extends State<OrderPage> {
           TopAppBar(arrowVisible: false, heartVisible: false, title: 'Order'),
           Expanded(
             child: ListView(
+              padding: EdgeInsets.zero,
               children: [
                 DeliveryAddressWidget(),
                 dishTile(imagePath: 'assets/images/food.jpg', title: 'Test', description: 'Test',quantitySelector: true,),
@@ -131,7 +132,7 @@ class _DeliveryAddressWidgetState extends State<DeliveryAddressWidget> {
       child: Column(
         children: [
           SizedBox(
-            height: 30,
+            height: 10,
           ),
           Container(
             padding: EdgeInsets.all(3),
