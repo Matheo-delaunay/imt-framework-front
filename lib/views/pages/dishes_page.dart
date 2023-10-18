@@ -50,6 +50,7 @@ class DishesPage extends StatelessWidget {
                               width: MediaQuery.of(context).size.width *
                                   Constants.betweenCardWidth,
                             ),
+
                             DishCard(
                               title: 'Margherita',
                               category: 'Pizza',

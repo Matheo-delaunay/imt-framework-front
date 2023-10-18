@@ -64,4 +64,25 @@ class MyAppState extends ChangeNotifier {
     return page;
   }
 
+  Map<String, bool> filter = {
+    'Végie': false,
+    'Viande': false,
+    'Healthy': false,
+    'Gras': false,
+  };
+
+  void changeChipState(bool status, String filterSelected) {
+    if(status){
+      if(!filter[filterSelected]!){
+       filter[filterSelected] = true;
+      }
+    }else{
+      if(filter[filterSelected]!){
+        filter[filterSelected] = false;
+      }
+    }
+    notifyListeners();
+  }
+
+
 }

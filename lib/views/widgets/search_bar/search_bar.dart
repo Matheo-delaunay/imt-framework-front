@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:imt_framework_front/views/pages/filter_page.dart';
 
 class SearchBarApp extends StatefulWidget {
   const SearchBarApp({super.key});
@@ -10,9 +11,7 @@ class SearchBarApp extends StatefulWidget {
 class _SearchBarAppState extends State<SearchBarApp> {
   @override
   Widget build(BuildContext context) {
-
-    ///TODO SearchAnchor for filter
-
+    
     return Padding(
       padding: const EdgeInsets.only(top: 6,),
       child: Container(
@@ -30,6 +29,12 @@ class _SearchBarAppState extends State<SearchBarApp> {
             Icons.search_outlined,
             color: Colors.white,
           ),
+          trailing: <Widget>[
+            IconButton(
+              icon: Icon(Icons.filter_alt_rounded, color: Colors.white,),
+              onPressed: () {Navigator.of(context).push(MaterialPageRoute(builder: (context) { return FilterPage();}));},
+            ),
+          ],
         ),
       ),
     );
