@@ -24,8 +24,9 @@ class DishCard extends StatelessWidget {
         onTap: () => {
           Navigator.push(context, MaterialPageRoute(builder: (context) => DetailPage(image: 'assets/images/food.jpg', alergens: [],)))
         },
-      child: SizedBox(
+      child: Container(
         width: MediaQuery.of(context).size.width * Constants.width,
+        height: MediaQuery.of(context).size.width * Constants.height + 135,
         child: Card(
           elevation: 5,
           surfaceTintColor: Colors.white,

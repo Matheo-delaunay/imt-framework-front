@@ -1,9 +1,12 @@
 import 'dart:ui';
 import 'package:flutter/material.dart';
-import 'package:imt_framework_front/views/pages/home_nav_bar.dart';
+import 'package:imt_framework_front/main.dart';
 import 'package:imt_framework_front/views/utils/fade_animation.dart';
 import 'package:imt_framework_front/views/utils/colors.dart';
 import 'package:imt_framework_front/views/pages/signup_screen.dart';
+import 'package:provider/provider.dart';
+
+import '../../../API/api_service.dart';
 
 class loginCard extends StatefulWidget {
   const loginCard({super.key});
@@ -13,6 +16,7 @@ class loginCard extends StatefulWidget {
 }
 
 class _loginCardState extends State<loginCard> {
+  var apiService = ApiService();
 
 bool ispasswordev = true;
 FormData? selected;
@@ -22,7 +26,7 @@ TextEditingController passwordController = new TextEditingController();
 
 @override
   Widget build(BuildContext context) {
-
+    var appState = context.watch<MyAppState>();
 
     return Container(
       width: 400,
@@ -161,10 +165,8 @@ TextEditingController passwordController = new TextEditingController();
             delay: 1.1,
             child: TextButton(
                 onPressed: () {
-                   Navigator.of(context)
-                       .push(MaterialPageRoute(builder: (context) {
-                     return HomeNavBar();
-                   }));
+                  appState.authentification(emailController.text, emailController.text);
+
                 },
                 style: TextButton.styleFrom(
                     backgroundColor: Color(0xFFE9BE4B),
