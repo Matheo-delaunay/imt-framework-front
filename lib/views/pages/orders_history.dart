@@ -37,15 +37,15 @@ class _OrdersHistoryState extends State<OrdersHistory> {
                       child: ListView(
                         children: [
                           Text('\t Current Orders', style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),textAlign: TextAlign.center,),
-                          CurrentOrderTile(currentOrder: ['Pepperoni', 'Margherita'],price: 29),
+                          CurrentOrderTile(currentOrder: 'date',price: 29),
                           PageSeparator(),
-                          CurrentOrderTile(currentOrder: ['khukduhzk'], price: 13),
+                          CurrentOrderTile(currentOrder: 'date', price: 13),
                           PageSeparator(),
                           SizedBox(height: 20,),
                           Text('\t Past Orders', style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold), textAlign: TextAlign.center,),
-                          PastOrderTile(pastOrders: ['jfdvcldf'],price: 42),
+                          PastOrderTile(pastOrders: 'date',price: 42),
                           PageSeparator(),
-                          PastOrderTile(pastOrders: ['kjcejkj'], price: 30,)
+                          PastOrderTile(pastOrders: 'date', price: 30,)
                         ],
 
 
