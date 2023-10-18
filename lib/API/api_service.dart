@@ -1,4 +1,5 @@
 import 'dart:developer';
+import 'dart:io';
 
 import 'package:http/http.dart' as http;
 import 'package:imt_framework_front/API/models/DishesModel.dart';
@@ -9,11 +10,11 @@ import 'package:imt_framework_front/API/models/results/UserRes.dart';
 import 'package:imt_framework_front/views/utils/constants.dart';
 
 class ApiService {
-  Future<List<DishesModel>?> getDishes() async {
+  Future<List<DishesModel>?> getDishes(String jwt) async {
     //gets the LIST of dishes
     try {
       var url = Uri.parse(ApiConstants.baseUrl + ApiConstants.dishesEndpoint);
-      var response = await http.get(url);
+      var response = await http.get(url, headers: {HttpHeaders.authorizationHeader: 'Bearer $jwt'});
       if (response.statusCode == 200) {
         List<DishesModel> _model = dishModelFromJson(response.body);
         return _model;
