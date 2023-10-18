@@ -1,3 +1,4 @@
+import 'dart:convert';
 import 'dart:developer';
 import 'dart:io';
 
@@ -5,7 +6,11 @@ import 'package:http/http.dart' as http;
 import 'package:imt_framework_front/API/models/DishModel.dart';
 import 'package:imt_framework_front/API/models/FavoriteModel.dart';
 import 'package:imt_framework_front/API/models/OrderModel.dart';
+import 'package:imt_framework_front/API/models/UserModel.dart';
 import 'package:imt_framework_front/API/models/requests/AuthUserReq.dart';
+import 'package:imt_framework_front/API/models/requests/CreateUserReq.dart';
+import 'package:imt_framework_front/API/models/requests/OrderLineReq.dart';
+import 'package:imt_framework_front/API/models/requests/UpdateUserReq.dart';
 import 'package:imt_framework_front/API/models/results/UserRes.dart';
 import 'package:imt_framework_front/views/utils/constants.dart';
 
@@ -13,10 +18,10 @@ class ApiService {
   Future<UserRes?> authUser(String mail, String password) async {
     //get user and JWT
     try {
-      var url = Uri.parse(ApiConstants.baseUrl + ApiConstants.authUserEndpoint);
+      var url = Uri.http(ApiConstants.baseUrl, ApiConstants.authUserEndpoint);
       var response = await http.post(url,
           headers: {"Content-Type": "application/json"},
-          body: userResToJson(AuthModelReq(mail: mail, password: password)));
+          body: authUserReqToJson(AuthUserReq(mail: mail, password: password)));
       if (response.statusCode == 200) {
         return userResFromJson(response.body);
       }
@@ -26,12 +31,51 @@ class ApiService {
     return null;
   }
 
-  Future<List<DishModel>?> getDishes(String jwt) async {
-    //gets the LIST of dishes
+  Future<void> createUser(
+      String mail, String firstname, String lastname, String password) async {
+    //create user
     try {
-      var url = Uri.parse(ApiConstants.baseUrl + ApiConstants.dishesEndpoint);
-      var response = await http
-          .get(url, headers: {HttpHeaders.authorizationHeader: 'Bearer $jwt'});
+      var url = Uri.http(ApiConstants.baseUrl, ApiConstants.usersEndpoint);
+      await http.post(url,
+          headers: {"Content-Type": "application/json"},
+          body: createUserReqToJson(CreateUserReq(
+              mail: mail,
+              firstname: firstname,
+              lastname: lastname,
+              password: password)));
+    } catch (e) {
+      log(e.toString());
+    }
+  }
+
+  Future<UserModel?> updateUser(
+      {String? firstname, String? lastname, String? password}) async {
+    //update user
+    try {
+      Map<String, dynamic> params = {};
+      if(firstname != null) params["firstname"] = firstname;
+      if(lastname != null) params["lastname"] = lastname;
+
+      var url = Uri.http(ApiConstants.baseUrl, ApiConstants.usersEndpoint, params);
+      var response = await http.put(url,
+          headers: {"Content-Type": "application/json"}, body: password);
+      if (response.statusCode == 200) {
+        return userModelFromJson(response.body);
+      }
+    } catch (e) {
+      log(e.toString());
+    }
+    return null;
+  }
+
+  Future<List<DishModel>?> getDishes(String jwt) async {
+    //get the LIST of dishes
+    try {
+      var url = Uri.http(ApiConstants.baseUrl, ApiConstants.dishesEndpoint);
+      var response = await http.get(
+        url,
+        headers: {HttpHeaders.authorizationHeader: 'Bearer $jwt'},
+      );
       if (response.statusCode == 200) {
         return dishModelsFromJson(response.body);
       }
@@ -41,32 +85,94 @@ class ApiService {
     return null;
   }
 
-  Future<List<FavoriteModel>?> getFavorites(int userId) async {
-    //gets a LIST of favorites for a given USER ID
+  Future<OrderModel?> createOrder(
+      String jwt, int userId, String note, List<OrderLineReq> orderLines,
+      [String? address]) async {
+    //create order
     try {
-      var url =
-          Uri.parse(ApiConstants.baseUrl + ApiConstants.favoritesEndpoint);
-      var response = await http.get(url);
+      String orderLinesJson =
+          json.encode(orderLines.map((ol) => orderLineReqToJson(ol)).toList());
+      Map<String, dynamic> params = {"userId": userId, "note": note};
+      params["address"] = address;
+      Uri url = Uri.http(
+        ApiConstants.baseUrl,
+        ApiConstants.ordersEndpoint,
+        params,
+      );
+      var response = await http.post(url,
+          headers: {
+            HttpHeaders.authorizationHeader: 'Bearer $jwt',
+            "Content-Type": "application/json",
+          },
+          body: orderLinesJson);
       if (response.statusCode == 200) {
-        List<FavoriteModel> _model = favoriteModelFromJson(response.body);
-        return _model;
+        return orderModelFromJson(response.body);
       }
+    } catch (e) {
+      log(e.toString());
+    }
+    return null;
+  }
+
+  Future<List<OrderModel>?> getOrders(String jwt, int userId) async {
+    //gets a LIST of orders for a given USER ID
+    try {
+      var url = Uri.http(
+        ApiConstants.baseUrl,
+        ApiConstants.ordersEndpoint,
+        {"userId": userId},
+      );
+      var response = await http.get(
+        url,
+        headers: {
+          HttpHeaders.authorizationHeader: 'Bearer $jwt',
+        },
+      );
+      if (response.statusCode == 200) {
+        return orderModelsFromJson(response.body);
+      }
+    } catch (e) {
+      log(e.toString());
+    }
+    return null;
+  }
+
+  Future<void> updateFavorites(String jwt, int userId, int dishId) async {
+    //add or remove one user's favorite
+    try {
+      Uri url = Uri.http(
+        ApiConstants.baseUrl,
+        ApiConstants.ordersEndpoint,
+        {"userId": userId, "dishId": dishId},
+      );
+      await http.put(
+        url,
+        headers: {
+          HttpHeaders.authorizationHeader: 'Bearer $jwt',
+        },
+      );
     } catch (e) {
       log(e.toString());
     }
   }
 
-  Future<List<OrderModel>?> getOrders(userId) async {
-    //gets a LIST of orders for a given USER ID
+  Future<List<FavoriteModel>?> getFavorites(String jwt, int userId) async {
+    //gets a LIST of favorites for a given USER ID
     try {
-      var url = Uri.parse(ApiConstants.baseUrl + ApiConstants.ordersEndpoint);
-      var response = await http.get(url);
+      var url =
+          Uri.parse(ApiConstants.baseUrl + ApiConstants.favoritesEndpoint);
+      var response = await http.get(
+        url,
+        headers: {
+          HttpHeaders.authorizationHeader: 'Bearer $jwt',
+        },
+      );
       if (response.statusCode == 200) {
-        List<OrderModel> _model = orderModelFromJson(response.body);
-        return _model;
+        return favoriteModelFromJson(response.body);
       }
     } catch (e) {
       log(e.toString());
     }
+    return null;
   }
 }

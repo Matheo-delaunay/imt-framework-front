@@ -1,12 +1,12 @@
 import 'dart:convert';
 
-String userResToJson(AuthModelReq data) => json.encode(data.toJson());
+String authUserReqToJson(AuthUserReq data) => json.encode(data.toJson());
 
-class AuthModelReq {
+class AuthUserReq {
   String mail;
   String password;
 
-  AuthModelReq({
+  AuthUserReq({
     required this.mail,
     required this.password,
   });

@@ -1,7 +1,8 @@
 import 'dart:convert';
 
-List<OrderModel> orderModelFromJson(String str) => List<OrderModel>.from(
+List<OrderModel> orderModelsFromJson(String str) => List<OrderModel>.from(
     json.decode(str).map((x) => OrderModel.fromJson(x)));
+OrderModel orderModelFromJson(String str) => OrderModel.fromJson(json.decode(str));
 
 class OrderModel {
   int id;
