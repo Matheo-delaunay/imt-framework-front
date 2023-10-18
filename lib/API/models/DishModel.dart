@@ -4,8 +4,9 @@
 
 import 'dart:convert';
 
-List<DishModel> dishModelFromJson(String str) =>
+List<DishModel> dishModelsFromJson(String str) =>
     List<DishModel>.from(json.decode(str).map((x) => DishModel.fromJson(x)));
+DishModel dishModelFromMap(Map<String, dynamic> map) => DishModel.fromJson(map);
 
 class DishModel {
   int id;

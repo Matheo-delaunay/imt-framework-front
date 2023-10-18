@@ -10,6 +10,22 @@ import 'package:imt_framework_front/API/models/results/UserRes.dart';
 import 'package:imt_framework_front/views/utils/constants.dart';
 
 class ApiService {
+  Future<UserRes?> authUser(String mail, String password) async {
+    //get user and JWT
+    try {
+      var url = Uri.parse(ApiConstants.baseUrl + ApiConstants.authUserEndpoint);
+      var response = await http.post(url,
+          headers: {"Content-Type": "application/json"},
+          body: userResToJson(AuthModelReq(mail: mail, password: password)));
+      if (response.statusCode == 200) {
+        return userResFromJson(response.body);
+      }
+    } catch (e) {
+      log(e.toString());
+    }
+    return null;
+  }
+
   Future<List<DishModel>?> getDishes(String jwt) async {
     //gets the LIST of dishes
     try {
@@ -17,12 +33,12 @@ class ApiService {
       var response = await http
           .get(url, headers: {HttpHeaders.authorizationHeader: 'Bearer $jwt'});
       if (response.statusCode == 200) {
-        List<DishModel> _model = dishModelFromJson(response.body);
-        return _model;
+        return dishModelsFromJson(response.body);
       }
     } catch (e) {
       log(e.toString());
     }
+    return null;
   }
 
   Future<List<FavoriteModel>?> getFavorites(int userId) async {
@@ -47,22 +63,6 @@ class ApiService {
       var response = await http.get(url);
       if (response.statusCode == 200) {
         List<OrderModel> _model = orderModelFromJson(response.body);
-        return _model;
-      }
-    } catch (e) {
-      log(e.toString());
-    }
-  }
-
-  Future<UserRes?> authUser(String mail, String password) async {
-    //get user and JWT
-    try {
-      var url = Uri.parse(ApiConstants.baseUrl + ApiConstants.authUserEndpoint);
-      var response = await http.post(url,
-          headers: {"Content-Type": "application/json"},
-          body: userResToJson(AuthModelReq(mail: mail, password: password)));
-      if (response.statusCode == 200) {
-        UserRes _model = userResFromJson(response.body);
         return _model;
       }
     } catch (e) {

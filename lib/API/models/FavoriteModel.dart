@@ -20,7 +20,7 @@ class FavoriteModel {
 
   factory FavoriteModel.fromJson(Map<String, dynamic> json) => FavoriteModel(
         id: json["id"],
-        user: json["user"],
-        dish: json["dish"],
+        user: userModelFromMap(Map.from(json["user"])),
+        dish: dishModelFromMap(Map.from(json["dish"])),
       );
 }

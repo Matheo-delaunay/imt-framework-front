@@ -13,8 +13,8 @@ class UserRes {
     required this.jwt,
   });
 
-  factory UserRes.fromJson(Map<String, dynamic> jsonRes) => UserRes(
-        user: userModelFromMap(Map.from(jsonRes["user"])),
-        jwt: jsonRes["jwt"],
+  factory UserRes.fromJson(Map<String, dynamic> json) => UserRes(
+        user: userModelFromMap(Map.from(json["user"])),
+        jwt: json["jwt"],
       );
 }
