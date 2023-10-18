@@ -19,12 +19,18 @@ class LoginScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     var appState = context.watch<MyAppState>();
 
-    if(appState.user != null){
-      Navigator.of(context)
-          .push(MaterialPageRoute(builder: (context) {
-        return HomeNavBar();
-      }));
-    }
+    WidgetsBinding.instance.addPostFrameCallback((_){
+
+      if(appState.user != null){
+        Navigator.of(context)
+            .push(MaterialPageRoute(builder: (context) {
+          return HomeNavBar();
+        }));
+      }
+
+    });
+
+
 
     return Scaffold(
       resizeToAvoidBottomInset: false,
