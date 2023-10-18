@@ -175,4 +175,27 @@ class ApiService {
     }
     return null;
   }
+
+  Future<OrderModel> getOrderDetails(String jwt, int userId) async {
+    //gets a LIST of orders for a given USER ID
+    try {
+      var url = Uri.http(
+        ApiConstants.baseUrl,
+        ApiConstants.ordersEndpoint,
+        {"userId": userId},
+      );
+      var response = await http.get(
+        url,
+        headers: {
+          HttpHeaders.authorizationHeader: 'Bearer $jwt',
+        },
+      );
+      if (response.statusCode == 200) {
+        return orderModelsFromJson(response.body);
+      }
+    } catch (e) {
+      log(e.toString());
+    }
+    return null;
+  }
 }

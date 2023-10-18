@@ -7,7 +7,7 @@ OrderModel orderModelFromJson(String str) => OrderModel.fromJson(json.decode(str
 class OrderModel {
   int id;
   int userId;
-  int price;
+  double price;
   int date;
   bool isFinished;
 
