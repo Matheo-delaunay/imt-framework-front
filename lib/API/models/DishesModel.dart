@@ -33,8 +33,8 @@ class DishesModel {
     title: json["title"],
     description: json["description"],
     price: json["price"],
-    categories: List<String>.from(json["categories"].map((x) => x)),
-    allergens: List<String>.from(json["allergens"].map((x) => x)),
+    categories: List<String>.from(json["categories"]),
+    allergens: List<String>.from(json["allergens"]),
   );
 
   Map<String, dynamic> toJson() => {
