@@ -1,12 +1,11 @@
 import 'dart:convert';
-import 'package:imt_framework_front/API/models/UserModel.dart';
 
+import 'package:imt_framework_front/API/models/UserModel.dart';
 
 UserRes userResFromJson(String str) => UserRes.fromJson(json.decode(str));
 
 class UserRes {
-  //UserModel user;
-  dynamic user;
+  UserModel user;
   String jwt;
 
   UserRes({
@@ -15,8 +14,7 @@ class UserRes {
   });
 
   factory UserRes.fromJson(Map<String, dynamic> jsonRes) => UserRes(
-    user: userModelFromMap(Map.from(jsonRes["user"])),
-    //user: jsonRes["user"],
-    jwt: jsonRes["jwt"],
-  );
+        user: userModelFromMap(Map.from(jsonRes["user"])),
+        jwt: jsonRes["jwt"],
+      );
 }

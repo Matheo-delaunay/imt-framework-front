@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:imt_framework_front/API/models/DishesModel.dart';
+import 'package:imt_framework_front/API/models/DishModel.dart';
 import 'package:imt_framework_front/API/models/results/UserRes.dart';
 import 'package:imt_framework_front/API/api_service.dart';
 
@@ -11,7 +11,7 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
-  late List<DishesModel>? _dishModel = [];
+  late List<DishModel>? _dishModel = [];
   late UserRes? _userRes;
   @override
   void initState() {
