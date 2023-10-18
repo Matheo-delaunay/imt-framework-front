@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:imt_framework_front/API/api_service.dart';
+import 'package:imt_framework_front/main.dart';
 import 'package:imt_framework_front/views/widgets/dish_card/dish_card.dart';
 import 'package:imt_framework_front/views/widgets/search_bar/search_bar.dart';
 import 'package:imt_framework_front/views/widgets/user_button/user_button.dart';
+import 'package:provider/provider.dart';
 
 import '../utils/constants.dart';
 
@@ -10,6 +13,9 @@ class DishesPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var appState = context.watch<MyAppState>();
+    var apiService = ApiService();
+
     return Stack(
       children: [
         Container(
@@ -32,33 +38,45 @@ class DishesPage extends StatelessWidget {
                 ),
               ]),
               Container(child: SearchBarApp()),
-              Expanded(
-                  child: Padding(
-                padding: const EdgeInsets.only(top: 12.0),
-                child: GridView.builder(
-                  shrinkWrap: true,
-                  padding: const EdgeInsets.symmetric(horizontal: 30),
-                  itemCount: 4,
-                  itemBuilder: (ctx, i) {
-                    return DishCard(
-                      title: 'Margherita',
-                      category: 'Pizza',
-                      description: 'Pizza italienne',
-                      image: 'assets/images/background.jpg',
-                      price: '19.90',
+              FutureBuilder(
+                future: apiService.getDishes(appState.jwt),
+                builder: (BuildContext context, AsyncSnapshot<dynamic> snapshot) {
+                  if(snapshot.hasData){
+                    return Expanded(
+                        child: Padding(
+                          padding: const EdgeInsets.only(top: 12.0),
+                          child: GridView.builder(
+                            shrinkWrap: true,
+                            padding: const EdgeInsets.symmetric(horizontal: 30),
+                            itemCount: 4,
+                            itemBuilder: (ctx, i) {
+                              return DishCard(
+                                title: 'Margherita',
+                                category: 'Pizza',
+                                description: 'Pizza italienne',
+                                image: 'assets/images/background.jpg',
+                                price: '19.90',
+                              );
+                            },
+                            gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                              crossAxisCount: 2,
+                              childAspectRatio: 1.0,
+                              crossAxisSpacing: 8.0,
+                              mainAxisSpacing: 8,
+                              mainAxisExtent:
+                              (MediaQuery.of(context).size.width * Constants.height +
+                                  135),
+                            ),
+                          ),
+                        )
                     );
-                  },
-                  gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                    crossAxisCount: 2,
-                    childAspectRatio: 1.0,
-                    crossAxisSpacing: 8.0,
-                    mainAxisSpacing: 8,
-                    mainAxisExtent:
-                        (MediaQuery.of(context).size.width * Constants.height +
-                            135),
-                  ),
-                ),
-              )),
+                  }else{
+                    return Text("no data");
+                  }
+                },
+    ),
+
+
             ],
           ),
         ),

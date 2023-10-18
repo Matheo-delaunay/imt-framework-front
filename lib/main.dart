@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:imt_framework_front/API/models/DishModel.dart';
 import 'package:imt_framework_front/views/order_page.dart';
 import 'package:imt_framework_front/views/pages/dishes_page.dart';
 import 'package:imt_framework_front/views/pages/favorites_page.dart';
@@ -50,6 +51,7 @@ class MyAppState extends ChangeNotifier {
   Widget page = DishesPage();
   late String jwt;
   UserModel? user;
+  late List<DishModel> listDishes;
 
 
   Map<String, bool> filter = {
@@ -102,6 +104,14 @@ class MyAppState extends ChangeNotifier {
     }
     notifyListeners();
   }
+
+  /*Future<List<DishModel>> getDishList(String jwt) async {
+    List<DishModel>? response = await apiService.getDishes(this.jwt)
+    if(response != null){
+      listDishes = response;
+      print('success');
+    }
+  }*/
 
 
 }
