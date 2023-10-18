@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../../pages/order_history_detail_page.dart';
+
 
 class PastOrderTile extends StatelessWidget {
 
@@ -14,7 +16,8 @@ class PastOrderTile extends StatelessWidget {
   Widget build(BuildContext context) {
 
       return GestureDetector(
-        onTap: () {},
+        onTap: () {Navigator.push(context, MaterialPageRoute(builder: (context) {
+          return DetailOrderHistory(price: 40,date: 'hh',);},));},
         child: Card(
           margin: EdgeInsets.only(top: 20),
           color: Colors.white,
