@@ -1,18 +1,20 @@
 import 'dart:developer';
+import 'dart:io';
 
 import 'package:http/http.dart' as http;
 import 'package:imt_framework_front/API/models/DishesModel.dart';
 import 'package:imt_framework_front/API/models/FavoritesModel.dart';
 import 'package:imt_framework_front/API/models/OrdersModel.dart';
-import 'package:imt_framework_front/API/models/UserModel.dart';
+import 'package:imt_framework_front/API/models/requests/AuthUserReq.dart';
+import 'package:imt_framework_front/API/models/results/UserRes.dart';
 import 'package:imt_framework_front/views/utils/constants.dart';
 
 class ApiService {
-  Future<List<DishesModel>?> getDishes() async {
+  Future<List<DishesModel>?> getDishes(String jwt) async {
     //gets the LIST of dishes
     try {
       var url = Uri.parse(ApiConstants.baseUrl + ApiConstants.dishesEndpoint);
-      var response = await http.get(url);
+      var response = await http.get(url, headers: {HttpHeaders.authorizationHeader: 'Bearer $jwt'});
       if (response.statusCode == 200) {
         List<DishesModel> _model = dishModelFromJson(response.body);
         return _model;
@@ -21,10 +23,12 @@ class ApiService {
       log(e.toString());
     }
   }
+
   Future<List<FavoritesModel>?> getFavorites(int userId) async {
     //gets a LIST of favorites for a given USER ID
     try {
-      var url = Uri.parse(ApiConstants.baseUrl + ApiConstants.favoritesEndpoint);
+      var url =
+          Uri.parse(ApiConstants.baseUrl + ApiConstants.favoritesEndpoint);
       var response = await http.get(url);
       if (response.statusCode == 200) {
         List<FavoritesModel> _model = favoritesModelFromJson(response.body);
@@ -34,6 +38,7 @@ class ApiService {
       log(e.toString());
     }
   }
+
   Future<List<OrdersModel>?> getOrders(userId) async {
     //gets a LIST of orders for a given USER ID
     try {
@@ -47,13 +52,16 @@ class ApiService {
       log(e.toString());
     }
   }
-  Future<UserModel?> getUser() async {
-    //gets a SINGLE user
+
+  Future<UserRes?> authUser(String mail, String password) async {
+    //get user and JWT
     try {
-      var url = Uri.parse(ApiConstants.baseUrl + ApiConstants.usersEndpoint);
-      var response = await http.get(url);
+      var url = Uri.parse(ApiConstants.baseUrl + ApiConstants.authUserEndpoint);
+      var response = await http.post(url,
+          headers: {"Content-Type": "application/json"},
+          body: userResToJson(AuthModelReq(mail: mail, password: password)));
       if (response.statusCode == 200) {
-        UserModel _model = userModelFromJson(response.body);
+        UserRes _model = userResFromJson(response.body);
         return _model;
       }
     } catch (e) {
