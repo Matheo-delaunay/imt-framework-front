@@ -1,5 +1,5 @@
 class ApiConstants {
-  static String baseUrl = 'http://localhost:8080';
+  static String baseUrl = 'localhost:8080';
   static String dishesEndpoint = '/v1/dishes';
   static String usersEndpoint = '/v1/users';
   static String authUserEndpoint = '/v1/users/auth';

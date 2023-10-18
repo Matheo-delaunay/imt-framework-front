@@ -165,7 +165,7 @@ TextEditingController passwordController = new TextEditingController();
             delay: 1.1,
             child: TextButton(
                 onPressed: () {
-                  appState.authentification(emailController.text, emailController.text);
+                  appState.authentification(emailController.text, passwordController.text);
 
                 },
                 style: TextButton.styleFrom(

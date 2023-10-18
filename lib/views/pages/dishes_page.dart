@@ -48,14 +48,14 @@ class DishesPage extends StatelessWidget {
                           child: GridView.builder(
                             shrinkWrap: true,
                             padding: const EdgeInsets.symmetric(horizontal: 30),
-                            itemCount: 4,
+                            itemCount: snapshot.data.length,
                             itemBuilder: (ctx, i) {
                               return DishCard(
-                                title: 'Margherita',
-                                category: 'Pizza',
-                                description: 'Pizza italienne',
-                                image: 'assets/images/background.jpg',
-                                price: '19.90',
+                                title: snapshot.data[i].title,
+                                category: snapshot.data[i].categories,
+                                description: snapshot.data[i].description,
+                                image: snapshot.data[i].image,
+                                price: snapshot.data[i].price,
                               );
                             },
                             gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(

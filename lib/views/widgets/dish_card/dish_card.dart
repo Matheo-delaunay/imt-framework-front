@@ -5,10 +5,10 @@ import '../../utils/constants.dart';
 
 class DishCard extends StatelessWidget {
   final String title;
-  final String category;
+  final List<String> category;
   final String description;
   final String image;
-  final String price;
+  final double price;
 
   const DishCard(
       {super.key,
@@ -36,12 +36,12 @@ class DishCard extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              DishCardImage(image: image),
-              CardTittle(),
-              CardDescription(),
+              DishCardImage(image: 'assets/images/food.jpg'),
+              CardTittle(title: title,),
+              CardDescription(description: description,),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [CardPrice(), AddButton()],
+                children: [CardPrice(price: price,), AddButton()],
               )
             ],
           ),
@@ -76,15 +76,17 @@ class AddButton extends StatelessWidget {
 
 class CardPrice extends StatelessWidget {
   const CardPrice({
-    super.key,
+    super.key, required this.price,
   });
+
+  final double price;
 
   @override
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.fromLTRB(13, 0, 0, 10),
       child: Text(
-          '€ 19.90',
+          price.toString(),
           overflow: TextOverflow.ellipsis,
           style: TextStyle(fontSize: 17, fontWeight: FontWeight.bold),
         ),
@@ -94,15 +96,17 @@ class CardPrice extends StatelessWidget {
 
 class CardDescription extends StatelessWidget {
   const CardDescription({
-    super.key,
+    super.key, required this.description,
   });
+
+  final String description;
 
   @override
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.fromLTRB(13, 0, 0, 10),
       child: Text(
-        'Classic cheese',
+        description,
         overflow: TextOverflow.ellipsis,
         style: TextStyle(fontSize: 14, color: Colors.grey),
       ),
@@ -112,15 +116,17 @@ class CardDescription extends StatelessWidget {
 
 class CardTittle extends StatelessWidget {
   const CardTittle({
-    super.key,
+    super.key, required this.title,
   });
+
+  final String title;
 
   @override
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.fromLTRB(13, 10, 0, 3),
       child: Text(
-        'Classic cheeseezezezezezezezez',
+        title,
         overflow: TextOverflow.ellipsis,
         style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
       ),
