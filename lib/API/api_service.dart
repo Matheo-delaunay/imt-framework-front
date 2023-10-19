@@ -10,7 +10,7 @@ import 'package:imt_framework_front/API/models/UserModel.dart';
 import 'package:imt_framework_front/API/models/requests/AuthUserReq.dart';
 import 'package:imt_framework_front/API/models/requests/CreateUserReq.dart';
 import 'package:imt_framework_front/API/models/requests/OrderLineReq.dart';
-import 'package:imt_framework_front/API/models/requests/UpdateUserReq.dart';
+import 'package:imt_framework_front/API/models/OrderDetailsModel.dart';
 import 'package:imt_framework_front/API/models/results/UserRes.dart';
 import 'package:imt_framework_front/views/utils/constants.dart';
 
@@ -142,7 +142,7 @@ class ApiService {
     try {
       Uri url = Uri.http(
         ApiConstants.baseUrl,
-        ApiConstants.ordersEndpoint,
+        ApiConstants.favoritesEndpoint,
         {"userId": userId, "dishId": dishId},
       );
       await http.put(
@@ -160,7 +160,7 @@ class ApiService {
     //gets a LIST of favorites for a given USER ID
     try {
       var url =
-          Uri.parse(ApiConstants.baseUrl + ApiConstants.favoritesEndpoint);
+          Uri.http(ApiConstants.baseUrl, ApiConstants.favoritesEndpoint);
       var response = await http.get(
         url,
         headers: {
@@ -169,6 +169,52 @@ class ApiService {
       );
       if (response.statusCode == 200) {
         return favoriteModelFromJson(response.body);
+      }
+    } catch (e) {
+      log(e.toString());
+    }
+    return null;
+  }
+
+  Future<OrderDetailsModel?> getOrderDetails(String jwt, int userId) async {
+    //get order's details for a given USER ID
+    try {
+      var url = Uri.http(
+        ApiConstants.baseUrl,
+        ApiConstants.orderDetailsEndpoint,
+        {"userId": userId},
+      );
+      var response = await http.get(
+        url,
+        headers: {
+          HttpHeaders.authorizationHeader: 'Bearer $jwt',
+        },
+      );
+      if (response.statusCode == 200) {
+        return orderDetailsModelFromJson(response.body);
+      }
+    } catch (e) {
+      log(e.toString());
+    }
+    return null;
+  }
+
+  Future<OrderDetailsModel?> deleteOrder(String jwt, int orderId) async {
+    //delete order for a given USER ID
+    try {
+      var url = Uri.http(
+        ApiConstants.baseUrl,
+        ApiConstants.ordersEndpoint,
+        {"orderId": orderId},
+      );
+      var response = await http.get(
+        url,
+        headers: {
+          HttpHeaders.authorizationHeader: 'Bearer $jwt',
+        },
+      );
+      if (response.statusCode == 200) {
+        return orderDetailsModelFromJson(response.body);
       }
     } catch (e) {
       log(e.toString());
