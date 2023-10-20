@@ -25,7 +25,7 @@ class FilterPage extends StatelessWidget {
               Wrap(
                   spacing: 10,
                   children:
-                  appState.filter.entries.map<FilterChip>((entry) =>
+                  appState.chipFilterState.entries.map<FilterChip>((entry) =>
                       FilterChip(
                         label: Text(entry.key),
                         onSelected: (bool) {appState.changeChipState(bool, entry.key);},

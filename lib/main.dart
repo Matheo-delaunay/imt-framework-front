@@ -5,6 +5,7 @@ import 'package:imt_framework_front/views/pages/dishes_page.dart';
 import 'package:imt_framework_front/views/pages/favorites_page.dart';
 import 'package:imt_framework_front/views/pages/onboarding.dart';
 import 'package:provider/provider.dart';
+import 'package:supercharged/supercharged.dart';
 
 import 'API/api_service.dart';
 import 'API/models/UserModel.dart';
@@ -55,6 +56,8 @@ class MyAppState extends ChangeNotifier {
   List<DishModel> listDishesAfterFilter = [];
   String searchFilter = "";
   List<String> categoryFilter = [];
+  Map<int,int> selectedDishesToOrder = {};
+  double totalPrice = 0.0;
 
 
   Map<String, bool> chipFilterState = {
@@ -114,6 +117,29 @@ class MyAppState extends ChangeNotifier {
       if
     }
   }*/
+
+void addDishToSelected(int id){
+  selectedDishesToOrder.update(
+    id,
+        (value) => ++value,
+    ifAbsent: () => 1,
+  );
+}
+
+void deleteDishFromSelected(int id){
+  selectedDishesToOrder.update(
+    id,
+        (value) => --value
+  );
+  selectedDishesToOrder.removeWhere((key, value) => value==0);
+}
+
+ void calculateTotalPrice(){
+    selectedDishesToOrder.forEach((key, value) {
+      totalPrice = listDishes.filter((element) => element.id == key).map((e) => e.price).fold(0.0, (p, e) => p + e);
+    });
+    notifyListeners();
+}
 
 
 }

@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:imt_framework_front/views/widgets/dish_card/dish_card_image.dart';
+import 'package:provider/provider.dart';
+import '../../../main.dart';
 import '../../pages/details_page.dart';
 import '../../utils/constants.dart';
 
@@ -42,7 +44,7 @@ class DishCard extends StatelessWidget {
               CardDescription(description: description,),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [CardPrice(price: price,), AddButton()],
+                children: [CardPrice(price: price,), AddButton(id: id,)],
               )
             ],
           ),
@@ -54,11 +56,15 @@ class DishCard extends StatelessWidget {
 
 class AddButton extends StatelessWidget {
   const AddButton({
+    required this.id,
     super.key,
   });
 
+  final int id;
+
   @override
   Widget build(BuildContext context) {
+    var appState = context.watch<MyAppState>();
     return Container(
       margin: EdgeInsets.only(bottom: 10,right: 3),
         child: FittedBox(
@@ -68,11 +74,12 @@ class AddButton extends StatelessWidget {
           minimumSize: MaterialStatePropertyAll(Size(45,45)),
           shape: MaterialStatePropertyAll(CircleBorder()),
       ),
-      onPressed: () => {},
+      onPressed: () => {appState.addDishToSelected(id)},
             child: Icon(Icons.add),
     ),
         ));
   }
+
 }
 
 class CardPrice extends StatelessWidget {

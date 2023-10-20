@@ -3,18 +3,7 @@ import 'package:flutter/material.dart';
 import '../../pages/details_page.dart';
 
 class dishTile extends StatelessWidget {
-
-
-  const dishTile({super.key,
-    required this.imagePath,
-    required this.title,
-    required this.description,
-    required this.quantitySelector});
-
-  final String imagePath;
-  final String title;
-  final String description;
-  final bool quantitySelector ;
+  const dishTile({super.key,});
 
   void incrementQuantity() {
   }

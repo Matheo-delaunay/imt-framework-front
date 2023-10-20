@@ -26,10 +26,7 @@ class _OrderPageState extends State<OrderPage> {
               padding: EdgeInsets.zero,
               children: [
                 DeliveryAddressWidget(),
-                dishTile(imagePath: 'assets/images/food.jpg', title: 'Test', description: 'Test',quantitySelector: true,),
-                dishTile(imagePath: 'assets/images/food.jpg', title: 'Test', description: 'Test',quantitySelector: true,),
-                dishTile(imagePath: 'assets/images/food.jpg', title: 'Test', description: 'Test',quantitySelector: true,),
-                dishTile(imagePath: 'assets/images/food.jpg', title: 'Test', description: 'Test',quantitySelector: true,),
+                dishTile(quantitySelector: true,),
                 PriceContainer()
               ],
             ),
