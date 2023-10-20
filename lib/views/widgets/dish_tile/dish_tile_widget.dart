@@ -54,7 +54,7 @@ class dishTile extends StatelessWidget {
 
     return GestureDetector(
       onTap: (){Navigator.push(context, MaterialPageRoute(builder: (context) =>
-          DetailPage(image: 'assets/images/food.jpg', alergens: [],)));
+          DetailPage(image: imagePath, alergens: [],)));
       },
 
       child: Card(
@@ -70,7 +70,7 @@ class dishTile extends StatelessWidget {
             width: 80,
             child: ClipRRect(
               borderRadius: BorderRadius.all(Radius.circular(10)),
-              child: Image(image: AssetImage(imagePath),
+              child: Image(image: NetworkImage(imagePath),
                   fit: BoxFit.cover,),
             ),
           ),

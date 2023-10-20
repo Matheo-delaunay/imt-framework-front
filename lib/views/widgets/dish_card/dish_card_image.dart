@@ -16,7 +16,7 @@ class DishCardImage extends StatelessWidget {
         borderRadius: BorderRadius.circular(20),
         child: Image(
           fit: BoxFit.cover,
-          image: AssetImage(image),
+          image: NetworkImage(image),
         ),
       ),
     );
