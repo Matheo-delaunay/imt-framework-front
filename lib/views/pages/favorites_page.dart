@@ -37,11 +37,11 @@ class _FavoritesPageState extends State<FavoritesPage> {
                         color: Colors.white,
                         child: ListView(
                           children: [
-                            dishTile(title: 'HIIII',description: 'Hi', imagePath: 'assets/images/food.jpg', quantitySelector: false,),
+                            dishTile(title: 'HIIII',description: 'Hi', imagePath: 'https://www.smilepizza.com.ua/uploads/pizza-s-moreproduktami-5.jpg', quantitySelector: false,),
                             PageSeparator(),
-                            dishTile(title: 'HIIII',description: 'Hi', imagePath: 'assets/images/food.jpg', quantitySelector: false,),
+                            dishTile(title: 'HIIII',description: 'Hi', imagePath: 'https://www.smilepizza.com.ua/uploads/pizza-s-moreproduktami-5.jpg', quantitySelector: false,),
                             PageSeparator(),
-                            dishTile(title: 'HIIII',description: 'Hi', imagePath: 'assets/images/food.jpg', quantitySelector: false,),
+                            dishTile(title: 'HIIII',description: 'Hi', imagePath: 'https://www.smilepizza.com.ua/uploads/pizza-s-moreproduktami-5.jpg', quantitySelector: false,),
                           ],
 
 

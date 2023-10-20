@@ -6,7 +6,10 @@ import 'package:imt_framework_front/views/widgets/appbar/appBar.dart';
 import 'package:imt_framework_front/views/widgets/dish_tile/dish_tile_widget.dart';
 
 class OrderPage extends StatefulWidget {
-  const OrderPage({super.key});
+  final String image;
+  const OrderPage({super.key, required this.image});
+
+
 
   @override
   State<OrderPage> createState() => _OrderPageState();
@@ -26,10 +29,10 @@ class _OrderPageState extends State<OrderPage> {
               padding: EdgeInsets.zero,
               children: [
                 DeliveryAddressWidget(),
-                dishTile(imagePath: 'assets/images/food.jpg', title: 'Test', description: 'Test',quantitySelector: true,),
-                dishTile(imagePath: 'assets/images/food.jpg', title: 'Test', description: 'Test',quantitySelector: true,),
-                dishTile(imagePath: 'assets/images/food.jpg', title: 'Test', description: 'Test',quantitySelector: true,),
-                dishTile(imagePath: 'assets/images/food.jpg', title: 'Test', description: 'Test',quantitySelector: true,),
+                dishTile(imagePath: widget.image, title: 'Test', description: 'Test',quantitySelector: true,),
+                dishTile(imagePath: widget.image, title: 'Test', description: 'Test',quantitySelector: true,),
+                dishTile(imagePath: widget.image, title: 'Test', description: 'Test',quantitySelector: true,),
+                dishTile(imagePath: widget.image, title: 'Test', description: 'Test',quantitySelector: true,),
                 PriceContainer()
               ],
             ),

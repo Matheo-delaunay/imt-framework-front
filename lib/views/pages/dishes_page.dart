@@ -43,7 +43,7 @@ class DishesPage extends StatelessWidget {
                               title: 'Margherita',
                               category: 'Pizza',
                               description: 'Pizza italienne',
-                              image: 'assets/images/background.jpg',
+                              image: 'https://fr.ooni.com/cdn/shop/articles/Margherita-9920.jpg?crop=center&height=800&v=1644590066&width=800',
                               price: '19.90',
                             ),
                             SizedBox(
@@ -52,10 +52,10 @@ class DishesPage extends StatelessWidget {
                             ),
 
                             DishCard(
-                              title: 'Margherita',
+                              title: 'Pepperoni',
                               category: 'Pizza',
                               description: 'Pizza italienne',
-                              image: 'assets/images/food.jpg',
+                              image: 'https://www.simplyrecipes.com/thmb/pjYMLcsKHkr8D8tYixmaFNxppPw=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/__opt__aboutcom__coeus__resources__content_migration__simply_recipes__uploads__2019__09__easy-pepperoni-pizza-lead-3-8f256746d649404baa36a44d271329bc.jpg',
                               price: '19.90',
                             ),
                           ],
@@ -64,10 +64,10 @@ class DishesPage extends StatelessWidget {
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             DishCard(
-                              title: 'Margherita',
+                              title: 'Capricciosa',
                               category: 'Pizza',
                               description: 'Pizza italienne',
-                              image: 'assets/images/background.jpg',
+                              image: 'https://giuliz.com/cdn/shop/articles/four_gaz_pizza_giuliz_recette_capricciosa_1200x1200.jpg?v=1640583517',
                               price: '19.90',
                             ),
                             SizedBox(
@@ -75,10 +75,10 @@ class DishesPage extends StatelessWidget {
                                   Constants.betweenCardWidth,
                             ),
                             DishCard(
-                              title: 'Margherita',
+                              title: 'Hawaian',
                               category: 'Pizza',
                               description: 'Pizza italienne',
-                              image: 'assets/images/food.jpg',
+                              image: 'https://cache.marieclaire.fr/data/photo/w1000_c17/cuisine/4l/pizza-hawaienne-ananas-jambon.jpg',
                               price: '19.90',
                             ),
                           ],
@@ -87,10 +87,10 @@ class DishesPage extends StatelessWidget {
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             DishCard(
-                              title: 'Margherita',
+                              title: 'Vegetariana',
                               category: 'Pizza',
                               description: 'Pizza italienne',
-                              image: 'assets/images/background.jpg',
+                              image: 'https://www.chacarabertolin.com.br/wp-content/uploads/2018/07/pizza-frango-pimentao.jpg',
                               price: '19.90',
                             ),
                             SizedBox(
@@ -98,10 +98,10 @@ class DishesPage extends StatelessWidget {
                                   Constants.betweenCardWidth,
                             ),
                             DishCard(
-                              title: 'Margherita',
+                              title: 'Mexicana',
                               category: 'Pizza',
                               description: 'Pizza italienne',
-                              image: 'assets/images/food.jpg',
+                              image: 'https://img.cuisineaz.com/1280x720/2018/03/19/i137571-pizza-mexicaine-rapide.webp',
                               price: '19.90',
                             ),
                           ],
@@ -110,10 +110,10 @@ class DishesPage extends StatelessWidget {
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             DishCard(
-                              title: 'Margherita',
+                              title: 'Mushroom',
                               category: 'Pizza',
                               description: 'Pizza italienne',
-                              image: 'assets/images/background.jpg',
+                              image: 'https://www.thursdaynightpizza.com/wp-content/uploads/2021/05/finished-without-chives_STAMP.png',
                               price: '19.90',
                             ),
                             SizedBox(
@@ -121,10 +121,10 @@ class DishesPage extends StatelessWidget {
                                   Constants.betweenCardWidth,
                             ),
                             DishCard(
-                              title: 'Margherita',
+                              title: 'Seafood',
                               category: 'Pizza',
                               description: 'Pizza italienne',
-                              image: 'assets/images/food.jpg',
+                              image: 'https://www.smilepizza.com.ua/uploads/pizza-s-moreproduktami-5.jpg',
                               price: '19.90',
                             ),
                           ],
