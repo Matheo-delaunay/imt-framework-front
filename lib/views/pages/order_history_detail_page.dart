@@ -45,9 +45,6 @@ class _DetailOrderHistoryState extends State<DetailOrderHistory> {
                           PageSeparator(),
                           Text('€ ${widget.price}', style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),textAlign: TextAlign.center,),
                         ],
-
-
-
                       ),
                     )),
               ),

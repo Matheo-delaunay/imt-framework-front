@@ -1,7 +1,8 @@
 import 'dart:ui';
 import 'package:flutter/material.dart';
-import 'package:imt_framework_front/views/utils/pageSeparator.dart';
+import 'package:imt_framework_front/main.dart';
 import 'package:imt_framework_front/views/widgets/appbar/appBar.dart';
+import 'package:provider/provider.dart';
 
 import '../widgets/dish_tile/dish_tile_widget.dart';
 
@@ -18,6 +19,7 @@ class _FavoritesPageState extends State<FavoritesPage> {
 
   @override
   Widget build(BuildContext context) {
+    var appState = context.watch<MyAppState>();
     return Scaffold(
       body: Stack(
         children: [
@@ -35,17 +37,19 @@ class _FavoritesPageState extends State<FavoritesPage> {
                       ),
                       child: Container(
                         color: Colors.white,
-                        child: ListView(
-                          children: [
-                            dishTile(title: 'HIIII',description: 'Hi', imagePath: 'assets/images/food.jpg', quantitySelector: false,),
-                            PageSeparator(),
-                            dishTile(title: 'HIIII',description: 'Hi', imagePath: 'assets/images/food.jpg', quantitySelector: false,),
-                            PageSeparator(),
-                            dishTile(title: 'HIIII',description: 'Hi', imagePath: 'assets/images/food.jpg', quantitySelector: false,),
-                          ],
+                        child: ListView.builder(
+                          itemCount: appState.selectedDishesToOrder.length,
+                          itemBuilder: (BuildContext context, int index) {
+                            if(appState.selectedDishesToOrder.length == 0) {
+                              return Center(
+                                child: Text("no favorites"),
+                              );
 
+                            }else{
+                              return DishTile(quantitySelector: false, id: appState.selectedDishesToOrder.values.elementAt(index),);
+                            }
 
-
+                        },
                       ),
                     )),
               ),

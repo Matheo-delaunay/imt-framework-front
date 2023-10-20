@@ -1,17 +1,25 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:imt_framework_front/API/models/DishModel.dart';
+import 'package:imt_framework_front/main.dart';
 import 'package:imt_framework_front/views/utils/pageSeparator.dart';
 import 'package:imt_framework_front/views/widgets/appbar/appBar.dart';
+import 'package:provider/provider.dart';
 
 class DetailPage extends StatelessWidget {
-  DetailPage({required this.image, Key? key, required this.alergens}) : super(key: key);
+  DetailPage({required this.id, Key? key,}) : super(key: key);
 
-  final String image;
-
-  final List<String> alergens;
+  final int id;
 
   @override
   Widget build(BuildContext context) {
+    var appState = context.watch<MyAppState>();
+
+    DishModel getDishById(){
+      return appState.listDishes.firstWhere((element) => id==element.id);
+    }
+
+
     return Scaffold(
       body: Column(
           children: [
@@ -22,14 +30,14 @@ class DetailPage extends StatelessWidget {
                     padding: const EdgeInsets.only(top: 20.0, left: 20, right: 20),
                     child: Column(
                       children: [
-                        DetailPageImage(image: image),
-                        DetailPageDishName(),
+                        DetailPageImage(image: getDishById().image),
+                        DetailPageDishName(name: getDishById().title),
                         DetailPageShortDescription(),
                         PageSeparator(),
                         DetailPageDescriptionTitle(),
-                        DetailPageDescription(),
+                        DetailPageDescription(description: getDishById().description),
                         DetailPageAlergenTitle(),
-                        DetailPageAlergen(alergens: alergens),
+                        DetailPageAlergen(alergens: getDishById().allergens),
                       ],
                     ),
                   ),
@@ -167,8 +175,10 @@ class DetailPageAlergenTitle extends StatelessWidget {
 
 class DetailPageDescription extends StatelessWidget {
   const DetailPageDescription({
-    super.key,
+    super.key, required this.description,
   });
+
+  final String description;
 
   @override
   Widget build(BuildContext context) {
@@ -176,7 +186,7 @@ class DetailPageDescription extends StatelessWidget {
       Padding(
         padding: const EdgeInsets.only(top: 10.0),
         child: Text(
-          'Classic cheese',
+          description,
           style: TextStyle(fontSize: 18, color: Colors.grey),
         ),
       )
@@ -225,8 +235,10 @@ class DetailPageShortDescription extends StatelessWidget {
 
 class DetailPageDishName extends StatelessWidget {
   const DetailPageDishName({
-    super.key,
+    super.key, required this.name,
   });
+
+  final String name;
 
   @override
   Widget build(BuildContext context) {
@@ -234,7 +246,7 @@ class DetailPageDishName extends StatelessWidget {
       Padding(
         padding:  EdgeInsets.only(top: 20.0),
         child: Text(
-          'hello',
+          name,
           style:
           TextStyle(fontSize: 26, fontWeight: FontWeight.bold),
         ),

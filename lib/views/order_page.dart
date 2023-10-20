@@ -4,6 +4,9 @@ import 'package:imt_framework_front/views/utils/colors.dart';
 import 'package:imt_framework_front/views/utils/pageSeparator.dart';
 import 'package:imt_framework_front/views/widgets/appbar/appBar.dart';
 import 'package:imt_framework_front/views/widgets/dish_tile/dish_tile_widget.dart';
+import 'package:provider/provider.dart';
+
+import '../main.dart';
 
 class OrderPage extends StatefulWidget {
   const OrderPage({super.key});
@@ -16,19 +19,36 @@ class _OrderPageState extends State<OrderPage> {
 
   @override
   Widget build(BuildContext context) {
+    var appState = context.watch<MyAppState>();
+
+    List<Widget> fillPageCore(){
+      List<Widget> pageCore = [];
+
+      pageCore.add(DeliveryAddressWidget(),);
+      if(appState.selectedDishesToOrder.isNotEmpty){
+        appState.selectedDishesToOrder.forEach((key, value) {pageCore.add(DishTile(quantitySelector: true, id: key,));});
+      }else{
+        pageCore.add(SizedBox(height: 20,));
+        pageCore.add(Center(child: Text("No dish selected")));
+        pageCore.add(SizedBox(height: 20,));
+      }
+      pageCore.add(PriceContainer());
+
+      return pageCore;
+    }
 
     return Scaffold(
       body: Column(
         children: [
           TopAppBar(arrowVisible: false, heartVisible: false, title: 'Order'),
           Expanded(
-            child: ListView(
+            child: ListView.builder(
               padding: EdgeInsets.zero,
-              children: [
-                DeliveryAddressWidget(),
-                dishTile(quantitySelector: true,),
-                PriceContainer()
-              ],
+              itemCount: fillPageCore().length,
+              itemBuilder: (BuildContext context, int index) {
+                List<Widget> core = fillPageCore();
+                return core[index];
+              },
             ),
           ),
           DownBarWithButtonOrder()

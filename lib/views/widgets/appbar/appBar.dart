@@ -1,24 +1,27 @@
 import 'package:flutter/material.dart';
+import 'package:imt_framework_front/main.dart';
 import 'package:imt_framework_front/views/utils/colors.dart';
+import 'package:provider/provider.dart';
 
-class TopAppBar extends StatelessWidget implements PreferredSizeWidget {
+class TopAppBar extends StatelessWidget {
   const TopAppBar({
     Key? key,
     required this.arrowVisible,
     required this.heartVisible,
     required this.title,
+    this.id,
   }) : super(key: key);
 
   final bool arrowVisible;
   final bool heartVisible;
   final String title;
-
-  @override
-  Size get preferredSize => const Size(double.infinity, 72);
+  final int? id;
 
 
   @override
   Widget build(BuildContext context) {
+    var appState = context.watch<MyAppState>();
+
     return SafeArea(
         child: Padding(
           padding: const EdgeInsets.only(top: 20.0, bottom: 10),

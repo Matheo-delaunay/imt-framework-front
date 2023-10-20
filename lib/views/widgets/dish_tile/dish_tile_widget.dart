@@ -1,38 +1,38 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
+import '../../../API/models/DishModel.dart';
+import '../../../main.dart';
 import '../../pages/details_page.dart';
 
-class dishTile extends StatelessWidget {
-  const dishTile({super.key,});
+class DishTile extends StatelessWidget {
+  DishTile({super.key, required this.quantitySelector, required this.id,});
 
-  void incrementQuantity() {
-  }
+  final int id;
 
-  void decrementQuantity() {
-  }
-
-
+  final bool quantitySelector;
 
   @override
   Widget build(BuildContext context) {
+    var appState = context.watch<MyAppState>();
+    
+    DishModel dish = appState.listDishes.firstWhere((element) => element.id==id);
 
     Widget quantitySelectorWidget = Row(
       mainAxisSize: MainAxisSize.min,
       children: <Widget>[
         IconButton(
           icon: Icon(Icons.remove),
-          onPressed: decrementQuantity,
+          onPressed: () {appState.deleteDishFromSelected(id);},
         ),
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: 8.0),
-          child: Text(
-            'quantity.toString()',
-            style: TextStyle(fontSize: 16),
+          child: Text(appState.selectedDishesToOrder[id] as String, style: TextStyle(fontSize: 16),
           ),
         ),
         IconButton(
           icon: Icon(Icons.add),
-          onPressed: incrementQuantity,
+          onPressed: () {appState.addDishToSelected(id);},
         ),
       ],
     );
@@ -43,7 +43,7 @@ class dishTile extends StatelessWidget {
 
     return GestureDetector(
       onTap: (){Navigator.push(context, MaterialPageRoute(builder: (context) =>
-          DetailPage(image: 'assets/images/food.jpg', alergens: [],)));
+          DetailPage(id: id,)));
       },
 
       child: Card(
@@ -59,15 +59,15 @@ class dishTile extends StatelessWidget {
             width: 80,
             child: ClipRRect(
               borderRadius: BorderRadius.all(Radius.circular(10)),
-              child: Image(image: AssetImage(imagePath),
+              child: Image(image: AssetImage(dish.image),
                   fit: BoxFit.cover,),
             ),
           ),
           title: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text(title, overflow: TextOverflow.ellipsis, style: TextStyle(fontFamily: 'Sora', fontWeight: FontWeight.bold, fontSize: 20)),
-              Text(description, overflow: TextOverflow.ellipsis, style: TextStyle(fontFamily: 'Sora', fontWeight: FontWeight.w200, fontSize: 15, color: Colors.grey),)
+              Text(dish.title, overflow: TextOverflow.ellipsis, style: TextStyle(fontFamily: 'Sora', fontWeight: FontWeight.bold, fontSize: 20)),
+              Text(dish.description, overflow: TextOverflow.ellipsis, style: TextStyle(fontFamily: 'Sora', fontWeight: FontWeight.w200, fontSize: 15, color: Colors.grey),)
             ],
           ),
           trailing: quantitySelector ? quantitySelectorWidget : trashButtonWidget

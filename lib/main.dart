@@ -90,10 +90,16 @@ class MyAppState extends ChangeNotifier {
   void changeChipState(bool status, String filterSelected) {
     if(status){
       if(!chipFilterState[filterSelected]!){
+        if(!categoryFilter.contains(filterSelected)){
+          categoryFilter.add(filterSelected);
+        }
         chipFilterState[filterSelected] = true;
       }
     }else{
       if(chipFilterState[filterSelected]!){
+        if(categoryFilter.contains(filterSelected)){
+          categoryFilter.remove(filterSelected);
+        }
         chipFilterState[filterSelected] = false;
       }
     }
