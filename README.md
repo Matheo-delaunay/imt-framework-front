@@ -1,16 +1,56 @@
 # imt_framework_front
 
-A new Flutter project.
+DishDash is a versatile food delivery app in Flutter designed for Android, IOS, and web platforms. It caters to Crous students and offers a wide selection of dishes for quick and easy food delivery right to their doorsteps.
 
-## Getting Started
+## Requirements
 
-This project is a starting point for a Flutter application.
+* Any operating system (ie. MacOS, Windows, Linux, etc.)
+* Any IDE with Flutter SDK installed (ie. Android Studio, VSCode, IntelliJ, etc.)
+* Flutter version 3.13.0 or higher
+* To upgrade flutter:
+```
+$ flutter upgrade
+```
 
-A few resources to get you started if this is your first Flutter project:
+## Install 
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+```
+$ pub get
+```
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+
+## Features
+
+* Onboarding screen
+* Login page with fade animation
+* Signup page with fade animation
+* Search bar
+* Filters
+* Add to cart
+* Favourites
+* User profile
+* User information editing
+* Delivery and pick up
+* Add notes
+
+## Demo
+Onboarding               | Login              | Sign Up               |  Home page
+:-------------------------:|:-------------------------:|:-------------------------:|:-------------------------:
+![image](https://github.com/Matheo-delaunay/imt-framework-front/assets/126581195/ef875b04-c295-4401-902b-4fcfdfbcc004)|![image](https://github.com/Matheo-delaunay/imt-framework-front/assets/126581195/93a450b0-4f09-49f1-b914-331d6e1c9b2e)|![image](https://github.com/Matheo-delaunay/imt-framework-front/assets/126581195/d2e1f17f-0c2b-430d-b149-a0af320ef754)|![image](https://github.com/Matheo-delaunay/imt-framework-front/assets/126581195/23515a12-817d-4284-99df-7b67f7dc194d)
+
+Dish Detail               |  Order Page              | Favorites Page             |  Profile
+:-------------------------:|:-------------------------:|:-------------------------:|:-------------------------:
+![image](https://github.com/Matheo-delaunay/imt-framework-front/assets/126581195/538031c8-dd39-416d-aefb-16197a409fbb)|![image](https://github.com/Matheo-delaunay/imt-framework-front/assets/126581195/4afa8733-9314-49bb-8db5-3b4631aa73f3)|![image](https://github.com/Matheo-delaunay/imt-framework-front/assets/126581195/7c51aa1c-8710-4991-a0bc-f199e64d6e44)|![image](https://github.com/Matheo-delaunay/imt-framework-front/assets/126581195/30e8b7cd-d7c2-43dd-8ae2-4fe3f3f78479)
+
+Personal Information       |  Order History            | Crous balance             |  Order Confirmation
+:-------------------------:|:-------------------------:|:-------------------------:|:-------------------------:
+![image](https://github.com/Matheo-delaunay/imt-framework-front/assets/126581195/4a6b190b-7aeb-40ba-a43c-581a938ad95b)|![image](https://github.com/Matheo-delaunay/imt-framework-front/assets/126581195/f20f1471-9c45-47f3-a21d-7fecf8f04396)|![image](https://github.com/Matheo-delaunay/imt-framework-front/assets/126581195/9ed441f3-7c36-4058-b3e2-0f0bf8427da9)|![image](https://github.com/Matheo-delaunay/imt-framework-front/assets/126581195/c7834c88-3d2b-41e5-8056-a79e6ac7a098)
+
+
+
+
+
+
+
+
+
