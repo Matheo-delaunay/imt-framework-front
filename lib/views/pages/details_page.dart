@@ -190,7 +190,7 @@ class DetailPageDescription extends StatelessWidget {
         padding: const EdgeInsets.only(top: 10.0),
         child: Text(
           description,
-          style: TextStyle(fontSize: 18, color: Colors.grey),
+          style: TextStyle(fontSize: 18, color: Colors.grey,overflow: TextOverflow.ellipsis),
         ),
       )
     ]);

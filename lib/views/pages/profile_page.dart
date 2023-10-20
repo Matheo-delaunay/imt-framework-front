@@ -75,16 +75,11 @@ class _ProfilePageState extends State<ProfilePage> {
                                 color: Colors.white,
                                 child: InkWell(
                                   onTap: () {
-                                  if(entries[index] == 'Personal Information'){
-                                    appState.getOrdersFromUser();
-                                  }
                                     if(entries[index] == 'Orders History'){
                                       appState.getOrdersFromUser();
                                     }
                                     if(entries[index] == 'My Favorites'){
-                                      appState.getOrdersFromUser();
-                                    }
-                                    if(entries[index] == 'Crous Balance'){
+                                      appState.getFavoritesFromUser();
                                     }
                                     Navigator.push(context,
                                         MaterialPageRoute(builder: (context) {return routes[index];}));

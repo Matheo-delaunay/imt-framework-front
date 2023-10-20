@@ -221,13 +221,14 @@ void deleteDishFromSelected(int id){
 
   void createOrder() async{
     await apiService.createOrder(jwt,userId,createOrderLine(),noteController.text,destinationController.text);
-    selectedDishesToOrder.clear();
-    notifyListeners();
   }
 
   double newBalance(){
+    selectedDishesToOrder.clear();
+    notifyListeners();
     user!.balance -= totalPrice;
     return user!.balance;
+
   }
 
 
