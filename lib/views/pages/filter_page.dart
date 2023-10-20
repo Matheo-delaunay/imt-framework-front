@@ -28,7 +28,9 @@ class FilterPage extends StatelessWidget {
                   appState.chipFilterState.entries.map<FilterChip>((entry) =>
                       FilterChip(
                         label: Text(entry.key),
-                        onSelected: (bool) {appState.changeChipState(bool, entry.key);},
+                        onSelected: (bool) {
+                          appState.changeChipState(bool, entry.key);
+                          },
                         selectedColor: Colors.amber,
                         selected: entry.value,
                       )).toList()

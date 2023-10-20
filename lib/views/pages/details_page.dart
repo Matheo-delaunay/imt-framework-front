@@ -43,7 +43,7 @@ class DetailPage extends StatelessWidget {
                   ),
                 ),
             ),
-            DownBarWithButton()
+            DownBarWithButton(id: id,)
           ],
         ),
     );
@@ -52,11 +52,14 @@ class DetailPage extends StatelessWidget {
 
 class DownBarWithButton extends StatelessWidget {
   const DownBarWithButton({
-    super.key,
+    super.key, required this.id,
   });
+
+  final int id;
 
   @override
   Widget build(BuildContext context) {
+    var appState = context.watch<MyAppState>();
     return Container(
       height: 120,
       padding: EdgeInsets.only(bottom: 10),
@@ -101,7 +104,7 @@ class DownBarWithButton extends StatelessWidget {
                       Size(MediaQuery.of(context).size.width * 0.65,75)
                     )
                   ),
-                  onPressed: () {},
+                  onPressed: () {appState.addDishToSelected(id);},
                   child: Text('Add to cart',
                     style: TextStyle(fontSize: 20, fontFamily: 'Sora', fontWeight: FontWeight.bold),),),
               ],

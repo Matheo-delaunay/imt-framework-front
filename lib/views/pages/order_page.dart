@@ -64,6 +64,8 @@ class PriceContainer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var appState = context.watch<MyAppState>();
+
     return Padding(
       padding: EdgeInsets.symmetric(horizontal: 30.0),
       child: Column(
@@ -85,7 +87,7 @@ class PriceContainer extends StatelessWidget {
               Text('Price',style: TextStyle(
                   fontSize: 18
               ),),
-              Text('€ 19.90',style: TextStyle(
+              Text('€ ${appState.calculateTotalPrice()}',style: TextStyle(
                   fontWeight: FontWeight.bold,
                   fontSize: 18
               ),)
@@ -112,7 +114,7 @@ class PriceContainer extends StatelessWidget {
               Text('Total payment',style: TextStyle(
                   fontSize: 18
               ),),
-              Text('€ 19.90',style: TextStyle(
+              Text('€ ${appState.calculateTotalPrice()+2}',style: TextStyle(
                   fontWeight: FontWeight.bold,
                   fontSize: 18
               ),)
@@ -133,7 +135,7 @@ class DeliveryAddressWidget extends StatefulWidget {
 }
 
 class _DeliveryAddressWidgetState extends State<DeliveryAddressWidget> {
-  List<String> fruits = <String>[
+  List<String> where = <String>[
     'Delivery',
     'Pick Up',
   ];
@@ -143,6 +145,7 @@ class _DeliveryAddressWidgetState extends State<DeliveryAddressWidget> {
 
   @override
   Widget build(BuildContext context) {
+    var appState = context.watch<MyAppState>();
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 30.0),
       child: Column(
@@ -184,7 +187,7 @@ class _DeliveryAddressWidgetState extends State<DeliveryAddressWidget> {
                         height: 50,
                         alignment: Alignment.center,
                         child: Text(
-                          fruits[index],
+                          where[index],
                           style: TextStyle(fontSize: 20),
                         )))),
           ),
@@ -212,6 +215,7 @@ class _DeliveryAddressWidgetState extends State<DeliveryAddressWidget> {
                     Container(
                       width: MediaQuery.of(context).size.width - 60,
                       child: TextField(
+                        controller: appState. destinationController,
                         style: TextStyle(fontSize: 16, color: Colors.grey),
                         onSubmitted: (text) {
                           setState(() {
@@ -247,6 +251,7 @@ class _DeliveryAddressWidgetState extends State<DeliveryAddressWidget> {
                           Container(
                             width: MediaQuery.of(context).size.width - 120,
                             child: TextField(
+                              controller: appState.noteController,
                               style:
                               TextStyle(fontSize: 16, color: Colors.grey),
                               onSubmitted: (text) {},
@@ -374,7 +379,10 @@ class DownBarWithButtonOrder extends StatelessWidget {
               ),
             ),
           ),
-          onPressed: () {Navigator.of(context).push(MaterialPageRoute(builder: (context) {return OrderConfirmation(balance: 900);}));},
+          onPressed: () {
+
+            Navigator.of(context).push(MaterialPageRoute(builder: (context) {return OrderConfirmation(balance: 900);}));
+            },
           child: Text('Order',
             style: TextStyle(fontSize: 20, fontFamily: 'Sora', fontWeight: FontWeight.bold),),),
       ),

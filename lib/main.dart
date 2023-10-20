@@ -64,6 +64,8 @@ class MyAppState extends ChangeNotifier {
   List<OrderModel> orders = [];
   OrderDetailsModel? orderDetails;
   List<FavoriteModel> favoritesList= [];
+  TextEditingController destinationController = TextEditingController();
+  TextEditingController noteController = TextEditingController();
 
 
   Map<String, bool> chipFilterState = {
@@ -109,6 +111,7 @@ class MyAppState extends ChangeNotifier {
         chipFilterState[filterSelected] = false;
       }
     }
+    getDishes();
     notifyListeners();
   }
 
@@ -124,20 +127,19 @@ class MyAppState extends ChangeNotifier {
   }
 
   Future<void> getDishes() async {
-    List<DishModel>? response = await apiService.getDishes(jwt,);
+    List<DishModel>? response = await apiService.getDishes(jwt,categoryFilter,searchFilter);
     if(response != null){
       listDishes = response;
     }
     notifyListeners();
   }
 
-  /*List<DishModel> filterDishes(){
-    if(searchFilter.isEmpty && categoryFilter.isEmpty){
-      return listDishes;
-    }else{
-      if
-    }
-  }*/
+  void filterSearchBar(String text){
+    searchFilter = text;
+    getDishes();
+    notifyListeners();
+  }
+
 
 void addDishToSelected(int id){
   selectedDishesToOrder.update(
@@ -153,15 +155,17 @@ void deleteDishFromSelected(int id){
     id,
         (value) => --value
   );
-  if(selectedDishesToOrder)
+  selectedDishesToOrder.removeWhere((key, value) => value == 0);
   notifyListeners();
 }
 
- void calculateTotalPrice(){
+ double calculateTotalPrice(){
+    print(selectedDishesToOrder);
+    print(listDishes);
     selectedDishesToOrder.forEach((key, value) {
-      totalPrice = listDishes.filter((element) => element.id == key).map((e) => e.price).fold(0.0, (p, e) => p + e);
-    });
-    notifyListeners();
+      totalPrice += listDishes.filter((element) => element.id == key).first.price;});
+    return totalPrice;
+
 }
 
   void getOrdersFromUser() async {

@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:imt_framework_front/main.dart';
 import 'package:imt_framework_front/views/pages/filter_page.dart';
+import 'package:provider/provider.dart';
 
 class SearchBarApp extends StatefulWidget {
   const SearchBarApp({super.key});
@@ -11,12 +13,14 @@ class SearchBarApp extends StatefulWidget {
 class _SearchBarAppState extends State<SearchBarApp> {
   @override
   Widget build(BuildContext context) {
+    var appState = context.watch<MyAppState>();
     
     return Padding(
       padding: const EdgeInsets.only(top: 6,),
       child: Container(
         width: MediaQuery.of(context).size.width * 0.83,
         child: SearchBar(
+          onSubmitted:(text) {appState.filterSearchBar(text);},
           hintStyle: MaterialStatePropertyAll(TextStyle(color: Colors.grey, fontSize: 16)),
           hintText: "Search item",
           shape: MaterialStatePropertyAll(RoundedRectangleBorder( borderRadius: BorderRadius.circular(20) )),
