@@ -14,10 +14,23 @@ $ flutter upgrade
 
 ## Install 
 
+Get dependencies
 ```
 $ pub get
 ```
 
+## Launch
+
+Once everything is updated, you  need to execute the Main in the root of the project.
+
+```
+$ flutter run
+```
+
+## Architecture
+ ### MVC Architecture
+
+ We opted for MVC (Model-View-Controller) architecture in our project for a multitude of reasons. First, it aligns seamlessly with the established norms for Flutter development. Additionnaly, our team's Techlead Front's personal experience with MVC have proven its effectiveness, making it a reliable choice. This architectural pattern is also incredibly straightforward and easy to explain. Moreover, MVC harmonizes effortlessly with Flutter's widget-based structure, streamlining our development process and enhancing the overall functionality of our application.
 
 ## Features
 
