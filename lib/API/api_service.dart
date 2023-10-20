@@ -68,10 +68,13 @@ class ApiService {
     return null;
   }
 
-  Future<List<DishModel>?> getDishes(String jwt) async {
+  Future<List<DishModel>?> getDishes(String jwt, List<String>? categoryFilter, String? searchFilter) async {
     //get the LIST of dishes
     try {
-      var url = Uri.http(ApiConstants.baseUrl, ApiConstants.dishesEndpoint);
+      Map<String, dynamic> params = {};
+      if(categoryFilter != null) params["categoryFilter"] = categoryFilter;
+      if(searchFilter != null) params["searchFilter"] = searchFilter;
+      var url = Uri.http(ApiConstants.baseUrl, ApiConstants.dishesEndpoint, params);
       var response = await http.get(
         url,
         headers: {HttpHeaders.authorizationHeader: 'Bearer $jwt'},
