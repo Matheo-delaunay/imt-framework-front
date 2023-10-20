@@ -52,11 +52,12 @@ https://www.figma.com/file/ttnFNzXwfx7TcryW3pER4E/Projet-web?type=design&node-id
 ## Demo
 Onboarding               | Login              | Sign Up               |  Home page
 :-------------------------:|:-------------------------:|:-------------------------:|:-------------------------:
-![image](https://github.com/Matheo-delaunay/imt-framework-front/assets/126581195/ef875b04-c295-4401-902b-4fcfdfbcc004)|![image](https://github.com/Matheo-delaunay/imt-framework-front/assets/126581195/93a450b0-4f09-49f1-b914-331d6e1c9b2e)|![image](https://github.com/Matheo-delaunay/imt-framework-front/assets/126581195/d2e1f17f-0c2b-430d-b149-a0af320ef754)|![image](https://github.com/Matheo-delaunay/imt-framework-front/assets/126581195/23515a12-817d-4284-99df-7b67f7dc194d)
+![image](https://github.com/Matheo-delaunay/imt-framework-front/assets/126581195/ef875b04-c295-4401-902b-4fcfdfbcc004)|![image](https://github.com/Matheo-delaunay/imt-framework-front/assets/126581195/93a450b0-4f09-49f1-b914-331d6e1c9b2e)|![image](https://github.com/Matheo-delaunay/imt-framework-front/assets/126581195/d2e1f17f-0c2b-430d-b149-a0af320ef754)|![image](https://github.com/Matheo-delaunay/imt-framework-front/assets/126581195/ed147a80-4342-408a-9d41-4bd673c7c4f9)
+
 
 Dish Detail               |  Order Page              | Favorites Page             |  Profile
 :-------------------------:|:-------------------------:|:-------------------------:|:-------------------------:
-![image](https://github.com/Matheo-delaunay/imt-framework-front/assets/126581195/538031c8-dd39-416d-aefb-16197a409fbb)|![image](https://github.com/Matheo-delaunay/imt-framework-front/assets/126581195/4afa8733-9314-49bb-8db5-3b4631aa73f3)|![image](https://github.com/Matheo-delaunay/imt-framework-front/assets/126581195/7c51aa1c-8710-4991-a0bc-f199e64d6e44)|![image](https://github.com/Matheo-delaunay/imt-framework-front/assets/126581195/30e8b7cd-d7c2-43dd-8ae2-4fe3f3f78479)
+![image](https://github.com/Matheo-delaunay/imt-framework-front/assets/126581195/7c8a66ef-b940-4209-8c7b-5d2862524232)|![image](https://github.com/Matheo-delaunay/imt-framework-front/assets/126581195/d6e71258-7698-4178-83c4-afcb37f8fe9c)|![image](https://github.com/Matheo-delaunay/imt-framework-front/assets/126581195/a15f6d4e-3d08-42c2-95eb-01f6d991e79b)|![image](https://github.com/Matheo-delaunay/imt-framework-front/assets/126581195/30e8b7cd-d7c2-43dd-8ae2-4fe3f3f78479)
 
 Personal Information       |  Order History            | Crous balance             |  Order Confirmation
 :-------------------------:|:-------------------------:|:-------------------------:|:-------------------------:
