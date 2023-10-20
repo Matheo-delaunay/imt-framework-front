@@ -38,7 +38,7 @@ class DishTile extends StatelessWidget {
     );
 
     Widget trashButtonWidget = IconButton(
-        onPressed: () {},
+        onPressed: () {appState.addFavorites();},
         icon: Icon(Icons.delete));
 
     return GestureDetector(
@@ -59,7 +59,7 @@ class DishTile extends StatelessWidget {
             width: 80,
             child: ClipRRect(
               borderRadius: BorderRadius.all(Radius.circular(10)),
-              child: Image(image: AssetImage(dish.image),
+              child: Image(image: NetworkImage(dish.image),
                   fit: BoxFit.cover,),
             ),
           ),

@@ -17,7 +17,7 @@ class FilterPage extends StatelessWidget {
             children: [
               Padding(
                 padding: EdgeInsets.symmetric(vertical: 30.0),
-                child: Text("Alergens",style: TextStyle(
+                child: Text("category",style: TextStyle(
                     fontSize: 20,
                     fontWeight: FontWeight.bold
                 ),),

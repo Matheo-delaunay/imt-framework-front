@@ -39,7 +39,7 @@ class DishCard extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              DishCardImage(image: 'assets/images/food.jpg'),
+              DishCardImage(image: image),
               CardTittle(title: title,),
               CardDescription(description: description,),
               Row(

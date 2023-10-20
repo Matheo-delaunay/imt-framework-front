@@ -65,6 +65,8 @@ class PriceContainer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var appState = context.watch<MyAppState>();
+    appState.totalPrice = 0;
+    double price = appState.calculateTotalPrice();
 
     return Padding(
       padding: EdgeInsets.symmetric(horizontal: 30.0),
@@ -87,7 +89,7 @@ class PriceContainer extends StatelessWidget {
               Text('Price',style: TextStyle(
                   fontSize: 18
               ),),
-              Text('€ ${appState.calculateTotalPrice()}',style: TextStyle(
+              Text('€ ${price}',style: TextStyle(
                   fontWeight: FontWeight.bold,
                   fontSize: 18
               ),)
@@ -114,7 +116,7 @@ class PriceContainer extends StatelessWidget {
               Text('Total payment',style: TextStyle(
                   fontSize: 18
               ),),
-              Text('€ ${appState.calculateTotalPrice()+2}',style: TextStyle(
+              Text('€ ${price+2}',style: TextStyle(
                   fontWeight: FontWeight.bold,
                   fontSize: 18
               ),)
@@ -351,6 +353,7 @@ class DownBarWithButtonOrder extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var appState= context.watch<MyAppState>();
     return Container(
       height: 80,
       width: MediaQuery.of(context).size.width,
@@ -381,7 +384,7 @@ class DownBarWithButtonOrder extends StatelessWidget {
           ),
           onPressed: () {
 
-            Navigator.of(context).push(MaterialPageRoute(builder: (context) {return OrderConfirmation(balance: 900);}));
+            Navigator.of(context).push(MaterialPageRoute(builder: (context) {return OrderConfirmation(balance: appState.newBalance());}));
             },
           child: Text('Order',
             style: TextStyle(fontSize: 20, fontFamily: 'Sora', fontWeight: FontWeight.bold),),),

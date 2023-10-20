@@ -88,8 +88,8 @@ class ApiService {
   }
 
   Future<OrderModel?> createOrder(
-      String jwt, int userId, String note, List<OrderLineReq> orderLines,
-      [String? address]) async {
+      String jwt, int userId, List<OrderLineReq> orderLines,
+      [String? address, String? note]) async {
     //create order
     try {
       String orderLinesJson =

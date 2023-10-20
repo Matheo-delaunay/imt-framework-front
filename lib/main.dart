@@ -3,6 +3,7 @@ import 'package:imt_framework_front/API/models/DishModel.dart';
 import 'package:imt_framework_front/API/models/FavoriteModel.dart';
 import 'package:imt_framework_front/API/models/OrderDetailsModel.dart';
 import 'package:imt_framework_front/API/models/OrderModel.dart';
+import 'package:imt_framework_front/API/models/requests/OrderLineReq.dart';
 import 'package:imt_framework_front/views/pages/order_page.dart';
 import 'package:imt_framework_front/views/pages/dishes_page.dart';
 import 'package:imt_framework_front/views/pages/favorites_page.dart';
@@ -50,8 +51,8 @@ class MyApp extends StatelessWidget {
 
 class MyAppState extends ChangeNotifier {
   var apiService = ApiService();
-  late int userId;
-  late String jwt;
+  int userId = 0;
+  String jwt = "";
   var currentPageIndex = 0;
   Widget page = DishesPage();
   UserModel? user;
@@ -66,12 +67,14 @@ class MyAppState extends ChangeNotifier {
   List<FavoriteModel> favoritesList= [];
   TextEditingController destinationController = TextEditingController();
   TextEditingController noteController = TextEditingController();
+  int? potentielFavorit;
 
 
   Map<String, bool> chipFilterState = {
-    'Végie': false,
-    'Viande': false,
-    'Healthy': false,
+    'fish': false,
+    'vege': false,
+    'viandard': false,
+    'gluten free': false,
     'Gras': false,
   };
 
@@ -160,10 +163,8 @@ void deleteDishFromSelected(int id){
 }
 
  double calculateTotalPrice(){
-    print(selectedDishesToOrder);
-    print(listDishes);
     selectedDishesToOrder.forEach((key, value) {
-      totalPrice += listDishes.filter((element) => element.id == key).first.price;});
+      totalPrice += listDishes.filter((element) => element.id == key).first.price*value;});
     return totalPrice;
 
 }
@@ -192,13 +193,15 @@ void deleteDishFromSelected(int id){
     notifyListeners();
   }
 
-  void addFavorites(id) async {
-    FavoriteModel addedDish = FavoriteModel(id: id, user: user!, dish: listDishes.firstWhere((element) => element.id == id));
+  void addFavorites() async {
+    FavoriteModel addedDish = FavoriteModel(id: potentielFavorit!, user: user!, dish: listDishes.firstWhere((element) => element.id == potentielFavorit!));
     if(!favoritesList.contains(addedDish)){
       favoritesList.add(addedDish);
     }
-    await apiService.updateFavorites(jwt,userId,id);
+    await apiService.updateFavorites(jwt,userId,potentielFavorit!);
+    notifyListeners();
   }
+
 
   void cancelOrder(orderId) async{
     await apiService.deleteOrder(jwt, orderId);
@@ -208,6 +211,23 @@ void deleteDishFromSelected(int id){
   Future<void> changeUserData(String firstname, String lastname, String password) async {
     await apiService.updateUser(firstname: firstname,lastname: lastname,password: password);
     notifyListeners();
+  }
+
+  List<OrderLineReq> createOrderLine(){
+    List<OrderLineReq> orderLine=[];
+    selectedDishesToOrder.forEach((key, value) {orderLine.add(OrderLineReq(dishId: key, quantity: value));});
+    return orderLine;
+  }
+
+  void createOrder() async{
+    await apiService.createOrder(jwt,userId,createOrderLine(),noteController.text,destinationController.text);
+    selectedDishesToOrder.clear();
+    notifyListeners();
+  }
+
+  double newBalance(){
+    user!.balance -= totalPrice;
+    return user!.balance;
   }
 
 

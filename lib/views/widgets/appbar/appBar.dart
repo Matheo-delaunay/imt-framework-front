@@ -10,13 +10,11 @@ class TopAppBar extends StatelessWidget {
     required this.arrowVisible,
     required this.heartVisible,
     required this.title,
-    this.idDish,
   }) : super(key: key);
 
   final bool arrowVisible;
   final bool heartVisible;
   final String title;
-  final int? idDish;
 
 
   @override
@@ -25,7 +23,7 @@ class TopAppBar extends StatelessWidget {
     List<FavoriteModel> favoriteList = appState.favoritesList;
     
     Widget ColoredHeart(){
-      if(favoriteList.map((e) => e.id).toList().contains(idDish)){
+      if(favoriteList.map((e) => e.id).toList().contains(appState.potentielFavorit)){
         return Icon(Icons.favorite,size: 45,color: heartVisible? Colors.amber:AppColors.transparent,);
       }else{
         return Icon(Icons.favorite_border,size: 45,color: heartVisible? Colors.black:AppColors.transparent,);
@@ -60,7 +58,9 @@ class TopAppBar extends StatelessWidget {
                   child: AbsorbPointer(
                     absorbing: !heartVisible,
                     child: IconButton(
-                        onPressed: () {appState.addFavorites(idDish);},
+                        onPressed: () {
+                          appState.addFavorites();
+                          },
                         icon: ColoredHeart()
                     ),
                   ),

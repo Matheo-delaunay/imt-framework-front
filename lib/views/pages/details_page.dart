@@ -32,7 +32,6 @@ class DetailPage extends StatelessWidget {
                       children: [
                         DetailPageImage(image: getDishById().image),
                         DetailPageDishName(name: getDishById().title),
-                        DetailPageShortDescription(),
                         PageSeparator(),
                         DetailPageDescriptionTitle(),
                         DetailPageDescription(description: getDishById().description),
@@ -60,6 +59,7 @@ class DownBarWithButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var appState = context.watch<MyAppState>();
+    appState.potentielFavorit = id;
     return Container(
       height: 120,
       padding: EdgeInsets.only(bottom: 10),
@@ -217,25 +217,6 @@ class DetailPageDescriptionTitle extends StatelessWidget {
   }
 }
 
-class DetailPageShortDescription extends StatelessWidget {
-  const DetailPageShortDescription({
-    super.key,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return Row(children: [
-      Padding(
-        padding: const EdgeInsets.only(top: 10.0),
-        child: Text(
-          'Classic cheese',
-          style: TextStyle(fontSize: 18, color: Colors.grey),
-        ),
-      )
-    ]);
-  }
-}
-
 class DetailPageDishName extends StatelessWidget {
   const DetailPageDishName({
     super.key, required this.name,
@@ -281,7 +262,7 @@ class DetailPageImage extends StatelessWidget {
         borderRadius: BorderRadius.circular(20),
         child: Image(
           fit: BoxFit.cover,
-          image: AssetImage(image),
+          image: NetworkImage(image),
         ),
       ),
     );

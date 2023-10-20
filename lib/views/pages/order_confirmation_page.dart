@@ -16,7 +16,7 @@ class OrderConfirmation extends StatelessWidget {
               children: [
                 Text('DishDash', style: TextStyle(fontSize: 50, fontFamily: 'Sofia'),),
                 SizedBox(height: 20,),
-                Image(image: AssetImage('assets/images/delivery.png'), 
+                Image(image: AssetImage('assets/images/delivery.png'),
                     width: MediaQuery.sizeOf(context).width *0.8,
                     height: MediaQuery.sizeOf(context).height *0.4 ),
                 SizedBox(height: 20,),
