@@ -13,7 +13,7 @@ class DishModel {
   String image;
   String title;
   String description;
-  int price;
+  double price;
   List<String> categories;
   List<String> allergens;
 

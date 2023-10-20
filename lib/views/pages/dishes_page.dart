@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:imt_framework_front/API/api_service.dart';
 import 'package:imt_framework_front/main.dart';
 import 'package:imt_framework_front/views/widgets/dish_card/dish_card.dart';
 import 'package:imt_framework_front/views/widgets/search_bar/search_bar.dart';
@@ -14,7 +13,47 @@ class DishesPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var appState = context.watch<MyAppState>();
-    var apiService = ApiService();
+
+    Widget fillPageCore(){
+      Widget pageCore;
+      if(appState.listDishes.isEmpty){
+        pageCore = Center(child: Text('No data'));
+      }else {
+        pageCore = Expanded(
+            child: Padding(
+              padding: const EdgeInsets.only(top: 12.0),
+              child: GridView.builder(
+                shrinkWrap: true,
+                padding: const EdgeInsets.symmetric(horizontal: 30),
+                itemCount: appState.listDishes.length,
+                itemBuilder: (ctx, i) {
+                  return DishCard(
+                    id: appState.listDishes[i].id,
+                    title: appState.listDishes[i].title,
+                    category: appState.listDishes[i].categories,
+                    description: appState.listDishes[i].description,
+                    image: appState.listDishes[i].image,
+                    price: appState.listDishes[i].price,
+                  );
+                },
+                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                  crossAxisCount: 2,
+                  childAspectRatio: 1.0,
+                  crossAxisSpacing: 8.0,
+                  mainAxisSpacing: 8,
+                  mainAxisExtent:
+                  (MediaQuery
+                      .of(context)
+                      .size
+                      .width * Constants.height +
+                      135),
+                ),
+              ),
+            ));
+      }
+      return pageCore;
+    }
+
 
     return Stack(
       children: [
@@ -38,55 +77,7 @@ class DishesPage extends StatelessWidget {
                 ),
               ]),
               SearchBarApp(),
-              FutureBuilder(
-                future: apiService.getDishes(appState.jwt),
-                builder: (BuildContext context, AsyncSnapshot<dynamic> snapshot) {
-                  if(snapshot.data != null) {
-                    if (snapshot.data.length != 0) {
-                      appState.listDishes = snapshot.data;
-                      return Expanded(
-                          child: Padding(
-                            padding: const EdgeInsets.only(top: 12.0),
-                            child: GridView.builder(
-                              shrinkWrap: true,
-                              padding: const EdgeInsets.symmetric(
-                                  horizontal: 30),
-                              itemCount: snapshot.data.length,
-                              itemBuilder: (ctx, i) {
-                                return DishCard(
-                                  id: snapshot.data[i].id,
-                                  title: snapshot.data[i].title,
-                                  category: snapshot.data[i].categories,
-                                  description: snapshot.data[i].description,
-                                  image: snapshot.data[i].image,
-                                  price: snapshot.data[i].price,
-                                );
-                              },
-                              gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                                crossAxisCount: 2,
-                                childAspectRatio: 1.0,
-                                crossAxisSpacing: 8.0,
-                                mainAxisSpacing: 8,
-                                mainAxisExtent:
-                                (MediaQuery
-                                    .of(context)
-                                    .size
-                                    .width * Constants.height +
-                                    135),
-                              ),
-                            ),
-                          )
-                      );
-                    } else {
-                      return
-                        Text("no data", textAlign: TextAlign.center,);
-                    }
-                  }else {
-                    return
-                    Text("no data", textAlign: TextAlign.center,);
-                  }
-                },
-    ),
+              fillPageCore()
             ],
           ),
         ),

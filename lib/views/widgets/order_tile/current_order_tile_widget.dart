@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:imt_framework_front/API/models/OrderModel.dart';
+import 'package:imt_framework_front/main.dart';
+import 'package:provider/provider.dart';
 
 import '../../pages/order_history_detail_page.dart';
 
@@ -6,16 +9,23 @@ class CurrentOrderTile extends StatelessWidget {
 
 
   const CurrentOrderTile({super.key,
-    required this.currentOrder, required this.price});
+    required this.order});
 
-  final String currentOrder;
-  final double price;
+  final OrderModel order;
+
 
   @override
   Widget build(BuildContext context) {
+    var appState = context.watch<MyAppState>();
+
+    String dateTime = DateTime.fromMillisecondsSinceEpoch(order.date).toIso8601String().split("T")[0].replaceAll("-", "/");
+
     return GestureDetector(
-      onTap: () {Navigator.push(context, MaterialPageRoute(builder: (context) {
-        return DetailOrderHistory(price: 30,date: 'hh',);},));},
+      onTap: () {
+        appState.getOrderDetailFromId(order.id);
+        Navigator.push(context, MaterialPageRoute(builder: (context) {
+        return DetailOrderHistory(date: dateTime);},));
+        },
       child: Card(
             margin: EdgeInsets.only(top: 20),
             color: Colors.white,
@@ -27,13 +37,14 @@ class CurrentOrderTile extends StatelessWidget {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text('12/07/2023 ', style: TextStyle(fontSize: 17, fontWeight: FontWeight.w600),),
-                      Text('€ ${price}', style: TextStyle(fontSize: 14, color: Colors.grey),)
+                      Text(dateTime, style: TextStyle(fontSize: 17, fontWeight: FontWeight.w600),),
+                      Text('${order.price} €', style: TextStyle(fontSize: 14, color: Colors.grey),)
                     ],
                   )
                 ),
-                trailing: TextButton(onPressed: (){},
-                  child: Text('cancel'), style: ElevatedButton.styleFrom(foregroundColor: Colors.red, )),
+                trailing: TextButton(
+                    onPressed: (){},
+                  child: Text('Cancel'), style: ElevatedButton.styleFrom(foregroundColor: Colors.red, )),
             )
       ),
     );

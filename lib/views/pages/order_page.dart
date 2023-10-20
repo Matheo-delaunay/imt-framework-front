@@ -6,7 +6,7 @@ import 'package:imt_framework_front/views/widgets/appbar/appBar.dart';
 import 'package:imt_framework_front/views/widgets/dish_tile/dish_tile_widget.dart';
 import 'package:provider/provider.dart';
 
-import '../main.dart';
+import '../../main.dart';
 
 class OrderPage extends StatefulWidget {
   const OrderPage({super.key});
@@ -46,8 +46,7 @@ class _OrderPageState extends State<OrderPage> {
               padding: EdgeInsets.zero,
               itemCount: fillPageCore().length,
               itemBuilder: (BuildContext context, int index) {
-                List<Widget> core = fillPageCore();
-                return core[index];
+                return fillPageCore()[index];
               },
             ),
           ),

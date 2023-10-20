@@ -48,8 +48,7 @@ class ApiService {
     }
   }
 
-  Future<UserModel?> updateUser(
-      {String? firstname, String? lastname, String? password}) async {
+  Future<UserModel?> updateUser({String? firstname, String? lastname, String? password}) async {
     //update user
     try {
       Map<String, dynamic> params = {};
@@ -179,13 +178,13 @@ class ApiService {
     return null;
   }
 
-  Future<OrderDetailsModel?> getOrderDetails(String jwt, int userId) async {
+  Future<OrderDetailsModel?> getOrderDetails(String jwt, int orderId) async {
     //get order's details for a given USER ID
     try {
       var url = Uri.http(
         ApiConstants.baseUrl,
         ApiConstants.orderDetailsEndpoint,
-        {"userId": userId},
+        {"orderId": orderId},
       );
       var response = await http.get(
         url,

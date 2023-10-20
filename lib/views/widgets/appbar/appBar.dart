@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:imt_framework_front/API/models/FavoriteModel.dart';
 import 'package:imt_framework_front/main.dart';
 import 'package:imt_framework_front/views/utils/colors.dart';
 import 'package:provider/provider.dart';
@@ -9,18 +10,27 @@ class TopAppBar extends StatelessWidget {
     required this.arrowVisible,
     required this.heartVisible,
     required this.title,
-    this.id,
+    this.idDish,
   }) : super(key: key);
 
   final bool arrowVisible;
   final bool heartVisible;
   final String title;
-  final int? id;
+  final int? idDish;
 
 
   @override
   Widget build(BuildContext context) {
     var appState = context.watch<MyAppState>();
+    List<FavoriteModel> favoriteList = appState.favoritesList;
+    
+    Widget ColoredHeart(){
+      if(favoriteList.map((e) => e.id).toList().contains(idDish)){
+        return Icon(Icons.favorite,size: 45,color: heartVisible? Colors.amber:AppColors.transparent,);
+      }else{
+        return Icon(Icons.favorite_border,size: 45,color: heartVisible? Colors.black:AppColors.transparent,);
+      }
+    }
 
     return SafeArea(
         child: Padding(
@@ -50,8 +60,8 @@ class TopAppBar extends StatelessWidget {
                   child: AbsorbPointer(
                     absorbing: !heartVisible,
                     child: IconButton(
-                        onPressed: () {},
-                        icon: Icon(Icons.favorite_border,size: 45,color: heartVisible? Colors.black:AppColors.transparent,)
+                        onPressed: () {appState.addFavorites(idDish);},
+                        icon: ColoredHeart()
                     ),
                   ),
                 ),

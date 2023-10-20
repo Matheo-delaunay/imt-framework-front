@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:imt_framework_front/API/models/DishModel.dart';
-import 'package:imt_framework_front/views/order_page.dart';
+import 'package:imt_framework_front/API/models/FavoriteModel.dart';
+import 'package:imt_framework_front/API/models/OrderDetailsModel.dart';
+import 'package:imt_framework_front/API/models/OrderModel.dart';
+import 'package:imt_framework_front/views/pages/order_page.dart';
 import 'package:imt_framework_front/views/pages/dishes_page.dart';
 import 'package:imt_framework_front/views/pages/favorites_page.dart';
 import 'package:imt_framework_front/views/pages/onboarding.dart';
@@ -58,6 +61,9 @@ class MyAppState extends ChangeNotifier {
   List<String> categoryFilter = [];
   Map<int,int> selectedDishesToOrder = {};
   double totalPrice = 0.0;
+  List<OrderModel> orders = [];
+  OrderDetailsModel? orderDetails;
+  List<FavoriteModel> favoritesList= [];
 
 
   Map<String, bool> chipFilterState = {
@@ -113,6 +119,15 @@ class MyAppState extends ChangeNotifier {
       jwt = response.jwt;
       print('success');
     }
+    getDishes();
+    notifyListeners();
+  }
+
+  Future<void> getDishes() async {
+    List<DishModel>? response = await apiService.getDishes(jwt,);
+    if(response != null){
+      listDishes = response;
+    }
     notifyListeners();
   }
 
@@ -130,6 +145,7 @@ void addDishToSelected(int id){
         (value) => ++value,
     ifAbsent: () => 1,
   );
+  notifyListeners();
 }
 
 void deleteDishFromSelected(int id){
@@ -137,7 +153,8 @@ void deleteDishFromSelected(int id){
     id,
         (value) => --value
   );
-  selectedDishesToOrder.removeWhere((key, value) => value==0);
+  if(selectedDishesToOrder)
+  notifyListeners();
 }
 
  void calculateTotalPrice(){
@@ -146,6 +163,48 @@ void deleteDishFromSelected(int id){
     });
     notifyListeners();
 }
+
+  void getOrdersFromUser() async {
+    List<OrderModel>? response = await apiService.getOrders(jwt,userId);
+    if(response != null){
+      orders = response;
+    }
+    notifyListeners();
+  }
+
+  void getOrderDetailFromId(int id) async{
+  OrderDetailsModel? response = await apiService.getOrderDetails(jwt,id);
+  if(response != null){
+    orderDetails = response;
+  }
+  notifyListeners();
+  }
+
+  void getFavoritesFromUser() async{
+    List<FavoriteModel>? response = await apiService.getFavorites(jwt, userId);
+    if(response != null){
+      favoritesList = response;
+    }
+    notifyListeners();
+  }
+
+  void addFavorites(id) async {
+    FavoriteModel addedDish = FavoriteModel(id: id, user: user!, dish: listDishes.firstWhere((element) => element.id == id));
+    if(!favoritesList.contains(addedDish)){
+      favoritesList.add(addedDish);
+    }
+    await apiService.updateFavorites(jwt,userId,id);
+  }
+
+  void cancelOrder(orderId) async{
+    await apiService.deleteOrder(jwt, orderId);
+    notifyListeners();
+  }
+
+  Future<void> changeUserData(String firstname, String lastname, String password) async {
+    await apiService.updateUser(firstname: firstname,lastname: lastname,password: password);
+    notifyListeners();
+  }
 
 
 }

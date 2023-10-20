@@ -1,14 +1,16 @@
 import 'dart:ui';
 import 'package:flutter/material.dart';
+import 'package:imt_framework_front/API/api_service.dart';
+import 'package:imt_framework_front/main.dart';
 import 'package:imt_framework_front/views/pages/crous_balance_page.dart';
 import 'package:imt_framework_front/views/pages/favorites_page.dart';
 import 'package:imt_framework_front/views/pages/orders_history.dart';
 import 'package:imt_framework_front/views/pages/personal_information_page.dart';
 import 'package:imt_framework_front/views/widgets/appbar/appBar.dart';
+import 'package:provider/provider.dart';
 
 class ProfilePage extends StatefulWidget {
-  const ProfilePage({super.key, required this.username});
-  final String username;
+  const ProfilePage({super.key,});
 
   @override
   State<ProfilePage> createState() => _ProfilePageState();
@@ -32,6 +34,9 @@ class _ProfilePageState extends State<ProfilePage> {
 
   @override
   Widget build(BuildContext context) {
+    var appState = context.watch<MyAppState>();
+    var apiService = ApiService();
+
     return Scaffold(
       body: Stack(
         children: [
@@ -45,7 +50,7 @@ class _ProfilePageState extends State<ProfilePage> {
                 Container(
                   child: Icon(Icons.account_circle_outlined, size: 140,)
                 ),
-                Text('${widget.username}',
+                Text('${appState.user?.firstname} ${appState.user?.lastname}',
                     style: TextStyle(
                         fontFamily: 'Sora',
                         fontSize: 25,
@@ -70,6 +75,17 @@ class _ProfilePageState extends State<ProfilePage> {
                                 color: Colors.white,
                                 child: InkWell(
                                   onTap: () {
+                                  if(entries[index] == 'Personal Information'){
+                                    appState.getOrdersFromUser();
+                                  }
+                                    if(entries[index] == 'Orders History'){
+                                      appState.getOrdersFromUser();
+                                    }
+                                    if(entries[index] == 'My Favorites'){
+                                      appState.getOrdersFromUser();
+                                    }
+                                    if(entries[index] == 'Crous Balance'){
+                                    }
                                     Navigator.push(context,
                                         MaterialPageRoute(builder: (context) {return routes[index];}));
                                   },

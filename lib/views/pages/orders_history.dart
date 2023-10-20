@@ -1,22 +1,49 @@
 import 'dart:ui';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:imt_framework_front/API/models/OrderModel.dart';
+import 'package:imt_framework_front/main.dart';
 import 'package:imt_framework_front/views/utils/pageSeparator.dart';
 import 'package:imt_framework_front/views/widgets/appbar/appBar.dart';
 import 'package:imt_framework_front/views/widgets/order_tile/current_order_tile_widget.dart';
-import '../widgets/order_tile/past_order_tile_widget.dart';
+import 'package:imt_framework_front/views/widgets/order_tile/past_order_tile_widget.dart';
+import 'package:provider/provider.dart';
+import 'package:supercharged/supercharged.dart';
 
-class OrdersHistory extends StatefulWidget {
+class OrdersHistory extends StatelessWidget {
 
   const OrdersHistory({super.key});
 
   @override
-  State<OrdersHistory> createState() => _OrdersHistoryState();
-}
-
-class _OrdersHistoryState extends State<OrdersHistory> {
-
-  @override
   Widget build(BuildContext context) {
+    var appState = context.watch<MyAppState>();
+
+    List<OrderModel> orders = appState.orders;
+
+    List<Widget> fillPageCore(){
+      List<Widget> pageCore = [];
+
+      if(orders.length != 0){
+        pageCore.add(Text('\t Current Orders', style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),textAlign: TextAlign.center,),);
+        orders.filter((element) => !element.isFinished).toList().forEach((element) {
+          pageCore.add(CurrentOrderTile(order: element));
+          pageCore.add(PageSeparator());
+        });
+        pageCore.add(SizedBox(height: 20,),);
+        pageCore.add(Text('\t Past Orders', style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold), textAlign: TextAlign.center,),);
+        orders.filter((element) => element.isFinished).toList().forEach((element) {
+          pageCore.add(PastOrderTile(order: element,));
+          pageCore.add(PageSeparator());
+        });
+      }
+      else{
+        pageCore.add(Center(child: Text('No Orders')));
+      }
+
+
+      return pageCore;
+    }
+
     return Scaffold(
       body: Stack(
         children: [
@@ -34,22 +61,11 @@ class _OrdersHistoryState extends State<OrdersHistory> {
                     ),
                     child: Container(
                       color: Colors.white,
-                      child: ListView(
-                        children: [
-                          Text('\t Current Orders', style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),textAlign: TextAlign.center,),
-                          CurrentOrderTile(currentOrder: 'date',price: 29),
-                          PageSeparator(),
-                          CurrentOrderTile(currentOrder: 'date', price: 13),
-                          PageSeparator(),
-                          SizedBox(height: 20,),
-                          Text('\t Past Orders', style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold), textAlign: TextAlign.center,),
-                          PastOrderTile(pastOrders: 'date',price: 42),
-                          PageSeparator(),
-                          PastOrderTile(pastOrders: 'date', price: 30,)
-                        ],
-
-
-
+                      child: ListView.builder(
+                        itemCount: fillPageCore().length,
+                        itemBuilder: (BuildContext context, int index) {
+                          return fillPageCore()[index];
+                        },
                       ),
                     )),
               ),

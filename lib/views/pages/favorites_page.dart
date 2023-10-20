@@ -1,5 +1,6 @@
 import 'dart:ui';
 import 'package:flutter/material.dart';
+import 'package:imt_framework_front/API/models/FavoriteModel.dart';
 import 'package:imt_framework_front/main.dart';
 import 'package:imt_framework_front/views/widgets/appbar/appBar.dart';
 import 'package:provider/provider.dart';
@@ -20,6 +21,20 @@ class _FavoritesPageState extends State<FavoritesPage> {
   @override
   Widget build(BuildContext context) {
     var appState = context.watch<MyAppState>();
+    List<FavoriteModel> favorites = appState.favoritesList;
+
+    List<Widget> fillPageCore(){
+      List<Widget> pageCore = [];
+      if(favorites.isEmpty){
+        pageCore.add(Center(child: Text("no favorites yet")));
+      }else{
+        for (var element in favorites) {
+          pageCore.add(DishTile(quantitySelector: false, id: element.id,));
+        }
+      }
+      return pageCore;
+    }
+
     return Scaffold(
       body: Stack(
         children: [
@@ -38,17 +53,9 @@ class _FavoritesPageState extends State<FavoritesPage> {
                       child: Container(
                         color: Colors.white,
                         child: ListView.builder(
-                          itemCount: appState.selectedDishesToOrder.length,
+                          itemCount: fillPageCore().length,
                           itemBuilder: (BuildContext context, int index) {
-                            if(appState.selectedDishesToOrder.length == 0) {
-                              return Center(
-                                child: Text("no favorites"),
-                              );
-
-                            }else{
-                              return DishTile(quantitySelector: false, id: appState.selectedDishesToOrder.values.elementAt(index),);
-                            }
-
+                            return fillPageCore()[index];
                         },
                       ),
                     )),

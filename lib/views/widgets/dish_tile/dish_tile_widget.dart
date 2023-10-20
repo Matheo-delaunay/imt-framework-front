@@ -27,7 +27,7 @@ class DishTile extends StatelessWidget {
         ),
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: 8.0),
-          child: Text(appState.selectedDishesToOrder[id] as String, style: TextStyle(fontSize: 16),
+          child: Text('${appState.selectedDishesToOrder[id]}', style: TextStyle(fontSize: 16),
           ),
         ),
         IconButton(

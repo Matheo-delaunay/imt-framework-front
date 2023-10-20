@@ -1,23 +1,37 @@
 import 'dart:ui';
 import 'package:flutter/material.dart';
+import 'package:imt_framework_front/API/models/OrderDetailsModel.dart';
 import 'package:imt_framework_front/views/widgets/appbar/appBar.dart';
+import 'package:provider/provider.dart';
 
+import '../../main.dart';
 import '../utils/pageSeparator.dart';
 
-class DetailOrderHistory extends StatefulWidget {
+class DetailOrderHistory extends StatelessWidget {
 
-  const DetailOrderHistory({super.key, required this.date, required this.price});
+  const DetailOrderHistory({super.key, required this.date,});
+
   final String date;
-  final double price;
 
-  @override
-  State<DetailOrderHistory> createState() => _DetailOrderHistoryState();
-}
-
-class _DetailOrderHistoryState extends State<DetailOrderHistory> {
 
   @override
   Widget build(BuildContext context) {
+    var appState = context.watch<MyAppState>();
+    OrderDetailsModel orderDetails = appState.orderDetails!;
+
+    List<Widget> fillPageCore(){
+      List<Widget> pageCore = [];
+
+      pageCore.add(Text(date, style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),textAlign: TextAlign.center,),);
+      pageCore.add(PageSeparator(),);
+      orderDetails.orderLines.forEach((element) {Text(element, style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500),textAlign: TextAlign.left,) ;});
+      pageCore.add(SizedBox(height: 80,),);
+      pageCore.add(PageSeparator(),);
+      pageCore.add(Text('${orderDetails.price} €', style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),textAlign: TextAlign.center,),);
+
+      return pageCore;
+      }
+
     return Scaffold(
       body: Stack(
         children: [
@@ -35,16 +49,11 @@ class _DetailOrderHistoryState extends State<DetailOrderHistory> {
                     ),
                     child: Container(
                       color: Colors.white,
-                      child: ListView(
-                        children: [
-                          Text('12/07/2023', style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),textAlign: TextAlign.center,),
-                          PageSeparator(),
-                          SizedBox(height: 20,),
-                          Text('- Margherita', style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500),textAlign: TextAlign.left,),
-                          SizedBox(height: 80,),
-                          PageSeparator(),
-                          Text('€ ${widget.price}', style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),textAlign: TextAlign.center,),
-                        ],
+                      child: ListView.builder(
+                        itemCount: fillPageCore().length,
+                        itemBuilder: (BuildContext context, int index) {
+                          return fillPageCore()[index];
+                        },
                       ),
                     )),
               ),

@@ -1,23 +1,30 @@
 import 'package:flutter/material.dart';
+import 'package:imt_framework_front/API/models/OrderModel.dart';
+import 'package:provider/provider.dart';
 
+import '../../../main.dart';
 import '../../pages/order_history_detail_page.dart';
 
 
 class PastOrderTile extends StatelessWidget {
+  const PastOrderTile({super.key, required this.order,});
+
+  final OrderModel order;
 
 
-  const PastOrderTile({super.key,
-    required this.pastOrders, required this.price});
-
-  final String pastOrders;
-  final double price;
 
   @override
   Widget build(BuildContext context) {
+    var appState = context.watch<MyAppState>();
+
+    String dateTime = DateTime.fromMillisecondsSinceEpoch(order.date).toIso8601String().split("T")[0].replaceAll("-", "/");
 
       return GestureDetector(
-        onTap: () {Navigator.push(context, MaterialPageRoute(builder: (context) {
-          return DetailOrderHistory(price: 40,date: 'hh',);},));},
+        onTap: () {
+          appState.getOrderDetailFromId(order.id);
+          Navigator.push(context, MaterialPageRoute(builder: (context) {
+          return DetailOrderHistory(date: '',);},));
+          },
         child: Card(
           margin: EdgeInsets.only(top: 20),
           color: Colors.white,
@@ -29,8 +36,8 @@ class PastOrderTile extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text('12/07/2023 ', style: TextStyle(fontSize: 17, fontWeight: FontWeight.w600),),
-                    Text('€ ${price} ', style: TextStyle(fontSize: 13, color: Colors.grey),)
+                    Text(dateTime, style: TextStyle(fontSize: 17, fontWeight: FontWeight.w600),),
+                    Text('€ ${order.price} ', style: TextStyle(fontSize: 13, color: Colors.grey),)
                   ],
                 )
             ),

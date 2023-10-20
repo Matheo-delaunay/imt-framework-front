@@ -1,4 +1,3 @@
-import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:imt_framework_front/main.dart';
 import 'package:imt_framework_front/views/utils/fade_animation.dart';
@@ -21,8 +20,8 @@ class _loginCardState extends State<loginCard> {
 bool ispasswordev = true;
 FormData? selected;
 
-TextEditingController emailController = new TextEditingController();
-TextEditingController passwordController = new TextEditingController();
+TextEditingController emailController = TextEditingController();
+TextEditingController passwordController = TextEditingController();
 
 @override
   Widget build(BuildContext context) {
@@ -165,8 +164,8 @@ TextEditingController passwordController = new TextEditingController();
             delay: 1.1,
             child: TextButton(
                 onPressed: () {
+                  appState.getDishes();
                   appState.authentification(emailController.text, passwordController.text);
-
                 },
                 style: TextButton.styleFrom(
                     backgroundColor: Color(0xFFE9BE4B),
