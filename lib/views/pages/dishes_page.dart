@@ -37,46 +37,56 @@ class DishesPage extends StatelessWidget {
                   child: UserButton(),
                 ),
               ]),
-              Container(child: SearchBarApp()),
+              SearchBarApp(),
               FutureBuilder(
                 future: apiService.getDishes(appState.jwt),
                 builder: (BuildContext context, AsyncSnapshot<dynamic> snapshot) {
-                  if(snapshot.hasData){
-                    return Expanded(
-                        child: Padding(
-                          padding: const EdgeInsets.only(top: 12.0),
-                          child: GridView.builder(
-                            shrinkWrap: true,
-                            padding: const EdgeInsets.symmetric(horizontal: 30),
-                            itemCount: snapshot.data.length,
-                            itemBuilder: (ctx, i) {
-                              return DishCard(
-                                title: snapshot.data[i].title,
-                                category: snapshot.data[i].categories,
-                                description: snapshot.data[i].description,
-                                image: snapshot.data[i].image,
-                                price: snapshot.data[i].price,
-                              );
-                            },
-                            gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                              crossAxisCount: 2,
-                              childAspectRatio: 1.0,
-                              crossAxisSpacing: 8.0,
-                              mainAxisSpacing: 8,
-                              mainAxisExtent:
-                              (MediaQuery.of(context).size.width * Constants.height +
-                                  135),
+                  if(snapshot.data != null) {
+                    if (snapshot.data.length != 0) {
+                      appState.listDishes = snapshot.data;
+                      return Expanded(
+                          child: Padding(
+                            padding: const EdgeInsets.only(top: 12.0),
+                            child: GridView.builder(
+                              shrinkWrap: true,
+                              padding: const EdgeInsets.symmetric(
+                                  horizontal: 30),
+                              itemCount: snapshot.data.length,
+                              itemBuilder: (ctx, i) {
+                                return DishCard(
+                                  id: snapshot.data[i].id,
+                                  title: snapshot.data[i].title,
+                                  category: snapshot.data[i].categories,
+                                  description: snapshot.data[i].description,
+                                  image: snapshot.data[i].image,
+                                  price: snapshot.data[i].price,
+                                );
+                              },
+                              gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                                crossAxisCount: 2,
+                                childAspectRatio: 1.0,
+                                crossAxisSpacing: 8.0,
+                                mainAxisSpacing: 8,
+                                mainAxisExtent:
+                                (MediaQuery
+                                    .of(context)
+                                    .size
+                                    .width * Constants.height +
+                                    135),
+                              ),
                             ),
-                          ),
-                        )
-                    );
-                  }else{
-                    return Text("no data");
+                          )
+                      );
+                    } else {
+                      return
+                        Text("no data", textAlign: TextAlign.center,);
+                    }
+                  }else {
+                    return
+                    Text("no data", textAlign: TextAlign.center,);
                   }
                 },
     ),
-
-
             ],
           ),
         ),

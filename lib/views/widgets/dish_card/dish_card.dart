@@ -4,6 +4,7 @@ import '../../pages/details_page.dart';
 import '../../utils/constants.dart';
 
 class DishCard extends StatelessWidget {
+  final int id;
   final String title;
   final List<String> category;
   final String description;
@@ -16,7 +17,7 @@ class DishCard extends StatelessWidget {
       required this.category,
       required this.description,
       required this.image,
-      required this.price});
+      required this.price, required this.id});
 
   @override
   Widget build(BuildContext context) {

@@ -47,14 +47,17 @@ class MyApp extends StatelessWidget {
 class MyAppState extends ChangeNotifier {
   var apiService = ApiService();
   late int userId;
+  late String jwt;
   var currentPageIndex = 0;
   Widget page = DishesPage();
-  late String jwt;
   UserModel? user;
-  late List<DishModel> listDishes;
+  List<DishModel> listDishes = [];
+  List<DishModel> listDishesAfterFilter = [];
+  String searchFilter = "";
+  List<String> categoryFilter = [];
 
 
-  Map<String, bool> filter = {
+  Map<String, bool> chipFilterState = {
     'Végie': false,
     'Viande': false,
     'Healthy': false,
@@ -81,15 +84,14 @@ class MyAppState extends ChangeNotifier {
     return page;
   }
 
-
   void changeChipState(bool status, String filterSelected) {
     if(status){
-      if(!filter[filterSelected]!){
-       filter[filterSelected] = true;
+      if(!chipFilterState[filterSelected]!){
+        chipFilterState[filterSelected] = true;
       }
     }else{
-      if(filter[filterSelected]!){
-        filter[filterSelected] = false;
+      if(chipFilterState[filterSelected]!){
+        chipFilterState[filterSelected] = false;
       }
     }
     notifyListeners();
@@ -105,11 +107,11 @@ class MyAppState extends ChangeNotifier {
     notifyListeners();
   }
 
-  /*Future<List<DishModel>> getDishList(String jwt) async {
-    List<DishModel>? response = await apiService.getDishes(this.jwt)
-    if(response != null){
-      listDishes = response;
-      print('success');
+  /*List<DishModel> filterDishes(){
+    if(searchFilter.isEmpty && categoryFilter.isEmpty){
+      return listDishes;
+    }else{
+      if
     }
   }*/
 
