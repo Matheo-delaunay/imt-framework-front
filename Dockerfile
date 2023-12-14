@@ -1,4 +1,4 @@
-FROM nginx:1.19.3
+FROM nginx:1.24.0-alpine
 
 COPY build/web /usr/share/nginx/html
 COPY nginx /etc/nginx
