@@ -18,7 +18,7 @@ class ApiService {
   Future<UserRes?> authUser(String mail, String password) async {
     //get user and JWT
     try {
-      var url = Uri.http(ApiConstants.baseUrl, ApiConstants.authUserEndpoint);
+      var url = Uri.https(ApiConstants.baseUrl, ApiConstants.authUserEndpoint);
       var response = await http.post(url,
           headers: {"Content-Type": "application/json"},
           body: authUserReqToJson(AuthUserReq(mail: mail, password: password)));
@@ -35,7 +35,7 @@ class ApiService {
       String mail, String firstname, String lastname, String password) async {
     //create user
     try {
-      var url = Uri.http(ApiConstants.baseUrl, ApiConstants.usersEndpoint);
+      var url = Uri.https(ApiConstants.baseUrl, ApiConstants.usersEndpoint);
       await http.post(url,
           headers: {"Content-Type": "application/json"},
           body: createUserReqToJson(CreateUserReq(
@@ -55,7 +55,7 @@ class ApiService {
       if(firstname != null) params["firstname"] = firstname;
       if(lastname != null) params["lastname"] = lastname;
 
-      var url = Uri.http(ApiConstants.baseUrl, ApiConstants.usersEndpoint, params);
+      var url = Uri.https(ApiConstants.baseUrl, ApiConstants.usersEndpoint, params);
       var response = await http.put(url,
           headers: {"Content-Type": "application/json"}, body: password);
       if (response.statusCode == 200) {
@@ -73,7 +73,7 @@ class ApiService {
       Map<String, dynamic> params = {};
       if(categoryFilter != null) params["categoryFilter"] = categoryFilter;
       if(searchFilter != null) params["searchFilter"] = searchFilter;
-      var url = Uri.http(ApiConstants.baseUrl, ApiConstants.dishesEndpoint, params);
+      var url = Uri.https(ApiConstants.baseUrl, ApiConstants.dishesEndpoint, params);
       var response = await http.get(
         url,
         headers: {HttpHeaders.authorizationHeader: 'Bearer $jwt'},
@@ -96,7 +96,7 @@ class ApiService {
           json.encode(orderLines.map((ol) => orderLineReqToJson(ol)).toList());
       Map<String, dynamic> params = {"userId": userId, "note": note};
       params["address"] = address;
-      Uri url = Uri.http(
+      Uri url = Uri.https(
         ApiConstants.baseUrl,
         ApiConstants.ordersEndpoint,
         params,
@@ -119,7 +119,7 @@ class ApiService {
   Future<List<OrderModel>?> getOrders(String jwt, int userId) async {
     //gets a LIST of orders for a given USER ID
     try {
-      var url = Uri.http(
+      var url = Uri.https(
         ApiConstants.baseUrl,
         ApiConstants.ordersEndpoint,
         {"userId": userId},
@@ -142,7 +142,7 @@ class ApiService {
   Future<void> updateFavorites(String jwt, int userId, int dishId) async {
     //add or remove one user's favorite
     try {
-      Uri url = Uri.http(
+      Uri url = Uri.https(
         ApiConstants.baseUrl,
         ApiConstants.favoritesEndpoint,
         {"userId": userId, "dishId": dishId},
@@ -162,7 +162,7 @@ class ApiService {
     //gets a LIST of favorites for a given USER ID
     try {
       var url =
-          Uri.http(ApiConstants.baseUrl, ApiConstants.favoritesEndpoint);
+          Uri.https(ApiConstants.baseUrl, ApiConstants.favoritesEndpoint);
       var response = await http.get(
         url,
         headers: {
@@ -181,7 +181,7 @@ class ApiService {
   Future<OrderDetailsModel?> getOrderDetails(String jwt, int orderId) async {
     //get order's details for a given USER ID
     try {
-      var url = Uri.http(
+      var url = Uri.https(
         ApiConstants.baseUrl,
         ApiConstants.orderDetailsEndpoint,
         {"orderId": orderId},
@@ -204,7 +204,7 @@ class ApiService {
   Future<OrderDetailsModel?> deleteOrder(String jwt, int orderId) async {
     //delete order for a given USER ID
     try {
-      var url = Uri.http(
+      var url = Uri.https(
         ApiConstants.baseUrl,
         ApiConstants.ordersEndpoint,
         {"orderId": orderId},
