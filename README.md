@@ -1,6 +1,7 @@
 # imt_framework_front
 
-DishDash is a versatile food delivery app in Flutter designed for Android, IOS, and web platforms. It caters to Crous students and offers a wide selection of dishes for quick and easy food delivery right to their doorsteps.
+DishDash is a versatile food delivery app in Flutter designed for Android, IOS, and web platforms. It caters to Crous
+students and offers a wide selection of dishes for quick and easy food delivery right to their doorsteps.
 
 ## Requirements
 
@@ -8,29 +9,36 @@ DishDash is a versatile food delivery app in Flutter designed for Android, IOS, 
 * Any IDE with Flutter SDK installed (ie. Android Studio, VSCode, IntelliJ, etc.)
 * Flutter version 3.13.0 or higher
 * To upgrade flutter:
+
 ```
 $ flutter upgrade
 ```
 
-## Install 
+## Install
 
 Get dependencies
+
 ```
 $ pub get
 ```
 
 ## Launch
 
-Once everything is updated, you  need to execute the Main in the root of the project.
+Once everything is updated, you need to execute the Main in the root of the project.
 
 ```
 $ flutter run
 ```
 
 ## Architecture
- ### MVC Architecture
 
- We opted for MVC (Model-View-Controller) architecture in our project for a multitude of reasons. First, it aligns seamlessly with the established norms for Flutter development. Additionnaly, our team's Techlead Front's personal experience with MVC has proven its effectiveness, making it a reliable choice. This architectural pattern is also incredibly straightforward and easy to explain. Moreover, MVC harmonizes effortlessly with Flutter's widget-based structure, streamlining our development process and enhancing the overall functionality of our application.
+### MVC Architecture
+
+We opted for MVC (Model-View-Controller) architecture in our project for a multitude of reasons. First, it aligns
+seamlessly with the established norms for Flutter development. Additionnaly, our team's Techlead Front's personal
+experience with MVC has proven its effectiveness, making it a reliable choice. This architectural pattern is also
+incredibly straightforward and easy to explain. Moreover, MVC harmonizes effortlessly with Flutter's widget-based
+structure, streamlining our development process and enhancing the overall functionality of our application.
 
 ## Features
 
@@ -46,10 +54,12 @@ $ flutter run
 * Delivery and pick up
 * Add notes
 
-## Figma Design 
+## Figma Design
+
 https://www.figma.com/file/ttnFNzXwfx7TcryW3pER4E/Projet-web?type=design&node-id=2-2&mode=design&t=GjXz2kkPqkX2BSdR-0
 
 ## Demo
+
 Onboarding               | Login              | Sign Up               |  Home page
 :-------------------------:|:-------------------------:|:-------------------------:|:-------------------------:
 ![image](https://github.com/Matheo-delaunay/imt-framework-front/assets/126581195/ef875b04-c295-4401-902b-4fcfdfbcc004)|![image](https://github.com/Matheo-delaunay/imt-framework-front/assets/126581195/93a450b0-4f09-49f1-b914-331d6e1c9b2e)|![image](https://github.com/Matheo-delaunay/imt-framework-front/assets/126581195/d2e1f17f-0c2b-430d-b149-a0af320ef754)|![image](https://github.com/Matheo-delaunay/imt-framework-front/assets/126581195/23515a12-817d-4284-99df-7b67f7dc194d)
@@ -58,14 +68,7 @@ Dish Detail               |  Order Page              | Favorites Page           
 :-------------------------:|:-------------------------:|:-------------------------:|:-------------------------:
 ![image](https://github.com/Matheo-delaunay/imt-framework-front/assets/126581195/538031c8-dd39-416d-aefb-16197a409fbb)|![image](https://github.com/Matheo-delaunay/imt-framework-front/assets/126581195/4afa8733-9314-49bb-8db5-3b4631aa73f3)|![image](https://github.com/Matheo-delaunay/imt-framework-front/assets/126581195/7c51aa1c-8710-4991-a0bc-f199e64d6e44)|![image](https://github.com/Matheo-delaunay/imt-framework-front/assets/126581195/30e8b7cd-d7c2-43dd-8ae2-4fe3f3f78479)
 
-Personal Information       |  Order History            | Crous balance             |  Order Confirmation
-:-------------------------:|:-------------------------:|:-------------------------:|:-------------------------:
-![image](https://github.com/Matheo-delaunay/imt-framework-front/assets/126581195/4a6b190b-7aeb-40ba-a43c-581a938ad95b)|![image](https://github.com/Matheo-delaunay/imt-framework-front/assets/126581195/f20f1471-9c45-47f3-a21d-7fecf8f04396)|![image](https://github.com/Matheo-delaunay/imt-framework-front/assets/126581195/9ed441f3-7c36-4058-b3e2-0f0bf8427da9)|![image](https://github.com/Matheo-delaunay/imt-framework-front/assets/126581195/c7834c88-3d2b-41e5-8056-a79e6ac7a098)
-
-
-
-
-
-
-
+                                                  Personal Information                                                  |  Order History            | Crous balance             |  Order Confirmation
+:----------------------------------------------------------------------------------------------------------------------:|:-------------------------:|:-------------------------:|:-------------------------:
+ ![image](https://github.com/Matheo-delaunay/imt-framework-front/assets/126581195/4a6b190b-7aeb-40ba-a43c-581a938ad95b) |![image](https://github.com/Matheo-delaunay/imt-framework-front/assets/126581195/f20f1471-9c45-47f3-a21d-7fecf8f04396)|![image](https://github.com/Matheo-delaunay/imt-framework-front/assets/126581195/9ed441f3-7c36-4058-b3e2-0f0bf8427da9)|![image](https://github.com/Matheo-delaunay/imt-framework-front/assets/126581195/c7834c88-3d2b-41e5-8056-a79e6ac7a098)
 
