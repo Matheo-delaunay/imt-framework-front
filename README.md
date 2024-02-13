@@ -72,3 +72,4 @@ Dish Detail               |  Order Page              | Favorites Page           
 :----------------------------------------------------------------------------------------------------------------------:|:-------------------------:|:-------------------------:|:-------------------------:
  ![image](https://github.com/Matheo-delaunay/imt-framework-front/assets/126581195/4a6b190b-7aeb-40ba-a43c-581a938ad95b) |![image](https://github.com/Matheo-delaunay/imt-framework-front/assets/126581195/f20f1471-9c45-47f3-a21d-7fecf8f04396)|![image](https://github.com/Matheo-delaunay/imt-framework-front/assets/126581195/9ed441f3-7c36-4058-b3e2-0f0bf8427da9)|![image](https://github.com/Matheo-delaunay/imt-framework-front/assets/126581195/c7834c88-3d2b-41e5-8056-a79e6ac7a098)
 
+
